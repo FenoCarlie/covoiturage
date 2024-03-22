@@ -166,8 +166,11 @@ app.post("/api/login", async (req, res) => {
 
     const token = jwt.sign(
       {
+        id: user.id,
         email: user.email,
-        password: user.id,
+        lastName: user.l_name,
+        firstName: user.f_name,
+        avatar: user.profile_img,
       },
       process.env.JWT_SECRET || "your_default_secret",
       {
@@ -175,11 +178,43 @@ app.post("/api/login", async (req, res) => {
       }
     );
 
-    res.status(200).send({ token });
+    res.status(200).json({ token, user });
   } catch (error) {
     console.error("Error while logging in the user:", error);
     res.status(500).send("Error while logging in the user.");
   }
+});
+
+app.post("/api/logout", (req, res) => {
+  req.session.destroy((error) => {
+    if (error) {
+      console.error("Error while logging out the user:", error);
+      res.status(500).send("Error while logging out the user.");
+    } else {
+      res.status(200).send("User logged out successfully.");
+    }
+  });
+});
+
+// Middleware pour vérifier le token JWT et ajouter les informations de l'utilisateur à la requête
+function verifyToken(req, res, next) {
+  const token = req.header("Authorization");
+  if (!token) return res.status(401).json({ error: "Access denied" });
+  try {
+    const decoded = jwt.verify(
+      token,
+      process.env.JWT_SECRET || "your_default_secret"
+    );
+    req.user = decoded;
+    next();
+  } catch (error) {
+    res.status(401).json({ error: "Invalid token" });
+  }
+}
+
+// Utilisation du middleware pour protéger une route
+app.get("/protected", verifyToken, (req, res) => {
+  res.status(200).send({ user: req.user });
 });
 
 /* *************** PUT *************** */

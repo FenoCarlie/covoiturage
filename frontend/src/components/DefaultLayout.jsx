@@ -1,12 +1,11 @@
-import { Link, Navigate, Outlet } from "react-router-dom";
-import { useStateContext } from "../context/ContextProvider";
-import axiosClient from "../axios-client.js";
+import { Navigate, Outlet } from "react-router-dom";
+import { useStateContext } from "../context/ContextProvider.jsx";
 import { jwtDecode } from "jwt-decode";
 import { useEffect } from "react";
 import Header from "../content/Header.jsx";
 
 export default function DefaultLayout() {
-  const { user, token, setUser, setToken, notification } = useStateContext();
+  const { token, setUser, notification } = useStateContext();
 
   useEffect(() => {
     if (token) {
@@ -14,8 +13,6 @@ export default function DefaultLayout() {
       setUser(decoded);
     }
   }, [token, setUser]);
-
-  console.log(user);
 
   if (!token) {
     return <Navigate to="/login" />;

@@ -3,6 +3,7 @@ import axiosClient from "../axios-client.js";
 import { createRef } from "react";
 import { useStateContext } from "../context/ContextProvider.jsx";
 import { useState } from "react";
+import { jwtDecode } from "jwt-decode";
 
 export default function Login() {
   const emailRef = createRef();
@@ -31,25 +32,44 @@ export default function Login() {
   };
 
   return (
-    <div className="login-signup-form animated fadeInDown">
-      <div className="form">
-        <form onSubmit={onSubmit}>
-          <h1 className="title">Login into your account</h1>
-
-          {message && (
-            <div className="alert">
-              <p>{message}</p>
+    <>
+      <div className="mb-5 animated flex items-center justify-center w-full flex-col fadeInDown">
+        <div className="shadow-l fadeInDown rounded-[10px] bg-white w-[55%] flex flex-col items-center">
+          <h1 className="p-3">Login into your account</h1>
+          <div className="flex w-full flex-col p-6">
+            {message && (
+              <div className="alert">
+                <p>{message}</p>
+              </div>
+            )}
+            <div className="relative mb-3">
+              <input
+                ref={emailRef}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                type="email"
+                placeholder="Email"
+              />
             </div>
-          )}
-
-          <input ref={emailRef} type="email" placeholder="Email" />
-          <input ref={passwordRef} type="password" placeholder="Password" />
-          <button className="btn btn-block">Login</button>
-          <p className="message">
-            Not registered? <Link to="/signup">Create an account</Link>
-          </p>
-        </form>
+            <div className="relative">
+              <input
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                ref={passwordRef}
+                type="password"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <button
+            onClick={onSubmit}
+            className="text-white hover:bg-[#013d97] bg-[#124da5] p-3 w-full"
+          >
+            Login
+          </button>
+        </div>
       </div>
-    </div>
+      <p className="message">
+        Not registered? <Link to="/signup">Create an account</Link>
+      </p>
+    </>
   );
 }

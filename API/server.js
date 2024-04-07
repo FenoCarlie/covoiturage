@@ -1,10 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const connection = require("./src/config");
+const { User, Course, Reservation } = require("./src/config");
 const _ = require("lodash");
 const cors = require("cors");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const app = express();
@@ -12,214 +10,122 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("API for IHM project");
-});
-
-/* *************** GET *************** */
-// GET /user
-app.get("/api/user", (req, res) => {
-  const sql = `select * from user WHERE l_name = 'FENO'`;
-  connection.query(sql, (err, data) => {
-    if (err) {
-      console.error("Error retrieving data: " + err.message);
-      return res.status(500).json({ error: "Error retrieving data" }); // Return an error response
-    }
-    return res.json(data);
-  });
-});
-
-app.get("/api/user/with_token", (req, res) => {
-  const token = req.headers.authorization.split(" ")[1];
-  const payload = jwt.verify(token, process.env.JWT_SECRET);
-  const userId = payload.id;
-
-  const findUserQuery = "SELECT * FROM user WHERE id = ?";
-  connection.query(findUserQuery, [userId], (error, results) => {
-    if (error) {
-      console.error("Error while fetching user data:", error);
-      res.status(500).send("Error while fetching user data.");
-    } else {
-      res.status(200).send(results[0]);
-    }
-  });
-});
-
-// GET /course
-app.get("/api/course", (req, res) => {
-  const sql = "select * from course";
-  connection.query(sql, (err, data) => {
-    if (err) {
-      console.error("Error retrieving data: " + err.message);
-      return res.status(500).json({ error: "Error retrieving data" }); // Return an error response
-    }
-    return res.json(data);
-  });
-});
-
-// GET /booking
-app.get("/api/booking", (req, res) => {
-  const sql = "select * from booking";
-  connection.query(sql, (err, data) => {
-    if (err) {
-      console.error("Error retrieving data: " + err.message);
-      return res.status(500).json({ error: "Error retrieving data" }); // Return an error response
-    }
-    return res.json(data);
-  });
-});
-//
-
-/* *************** POST *************** */
-// create new user & signup
-
-// Check if the existing email is already registered
-app.post("/api/register", async (req, res) => {
+const registerUser = async (req, res, existingEmail, existingPhone) => {
   try {
-    let { f_name, l_name, email, contact, profile_img, password } = req.body;
+    let { firstName, lastName, email, password, phone, avatar } =
+      req.body.password;
 
-    if (!email) {
-      return res.status(400).send("Email is required.");
+    // Additional input validation
+    if (!firstName || !lastName) {
+      return res.status(400).send("firstName or lastName is required.");
     }
 
-    const findEmailQuery = "SELECT * FROM user WHERE email = ?";
-    const existingUserWithEmail = await new Promise((resolve, reject) => {
-      connection.query(findEmailQuery, [email], (error, results) => {
-        if (error) reject(error);
-        resolve(results);
-      });
-    });
-    if (existingUserWithEmail.length > 0) {
-      return res.status(400).send("The existing email is already registered.");
-    }
-
-    if (!contact) {
-      return res.status(400).send("Contact is required.");
-    }
-
-    const findContactQuery = "SELECT * FROM user WHERE contact = ?";
-    const existingUserWithContact = await new Promise((resolve, reject) => {
-      connection.query(findContactQuery, [contact], (error, results) => {
-        if (error) reject(error);
-        resolve(results);
-      });
-    });
-    if (existingUserWithContact.length > 0) {
-      return res
-        .status(400)
-        .send("The existing contact is already registered.");
+    if (!avatar) {
+      return res.status(400).send("avatar is required.");
     }
 
     if (!password) {
       return res.status(400).send("Password is required.");
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = {
-      f_name,
-      l_name,
-      email,
-      contact,
-      profile_img,
-      password: hashedPassword,
-    };
-
-    const insertQuery = "INSERT INTO user SET ?";
-    await new Promise((resolve, reject) => {
-      connection.query(insertQuery, newUser, (error, results) => {
-        if (error) reject(error);
-        resolve(results);
+    if (!email) {
+      return res.status(400).send("Email is required.");
+    } else if (existingEmail) {
+      const existingUserWithExistingEmail = await User.findOne({
+        email: existingEmail,
       });
+      if (existingUserWithExistingEmail) {
+        return res
+          .status(400)
+          .send("The existing email is already registered.");
+      }
+    }
+
+    if (!phone) {
+      return res.status(400).send("Phone number is required.");
+    } else if (existingPhone) {
+      const existingUserWithExistingPhone = await User.findOne({
+        phone: existingPhone,
+      });
+      if (existingUserWithExistingPhone) {
+        return res
+          .status(400)
+          .send("The existing phone number is already registered.");
+      }
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({
+      firstName,
+      lastName,
+      phone,
+      avatar,
+      email,
+      password: hashedPassword,
     });
+
+    await newUser.save();
     res.status(201).send("User registered successfully.");
   } catch (error) {
     console.error("Error while registering the user:", error);
     res.status(500).send("Error while registering the user.");
   }
+};
+
+app.post("/api/register", (req, res) => {
+  const existingEmail = req.query.existingEmail;
+  const existingPhone = req.query.existingPhone;
+  registerUser(req, res, existingEmail, existingPhone);
 });
 
-// login
-app.post("/api/login", async (req, res) => {
+const loginUser = async (req, res) => {
   try {
-    let { email, password } = req.body;
+    const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).send("Email and password are required.");
+      return res.status(400).send("Missing credentials.");
     }
 
-    const findUserQuery = "SELECT * FROM user WHERE email = ?";
-    const user = await new Promise((resolve, reject) => {
-      connection.query(findUserQuery, [email], (error, results) => {
-        if (error) reject(error);
-        resolve(results[0]);
-      });
+    const user = await User.findOne({ email }).select("+password");
+    if (!user) {
+      return res.status(401).send("Invalid email or password.");
+    }
+
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) {
+      return res.status(401).send("Invalid email or password.");
+    }
+
+    // Create token
+    const token = jwt.sign({ id: user._id }, process.env.SECRET_KEY, {
+      expiresIn: "7d",
     });
 
-    if (!user) {
-      return res.status(400).send("User not found.");
-    }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).send("Invalid password.");
-    }
-
-    const token = jwt.sign(
-      {
-        id: user.id,
-        email: user.email,
-        lastName: user.l_name,
-        firstName: user.f_name,
-        avatar: user.profile_img,
-      },
-      process.env.JWT_SECRET || "your_default_secret",
-      {
-        expiresIn: "1h",
-      }
-    );
-
-    res.status(200).json({ token, user });
+    res.json({ token, ..._.omit(user, ["password"]) });
   } catch (error) {
-    console.error("Error while logging in the user:", error);
-    res.status(500).send("Error while logging in the user.");
+    console.log("Login Error: ", error);
+    res.status(500).send("Server error");
   }
-});
+};
 
-app.post("/api/logout", (req, res) => {
-  req.session.destroy((error) => {
-    if (error) {
-      console.error("Error while logging out the user:", error);
-      res.status(500).send("Error while logging out the user.");
-    } else {
-      res.status(200).send("User logged out successfully.");
-    }
-  });
-});
+app.post("/api/login", loginUser);
 
-// Middleware pour vérifier le token JWT et ajouter les informations de l'utilisateur à la requête
-function verifyToken(req, res, next) {
-  const token = req.header("Authorization");
-  if (!token) return res.status(401).json({ error: "Access denied" });
+// Protected routes
+app.use(async (req, res, next) => {
+  const token = req.headers["x-auth"];
+
+  if (!token) {
+    return res.status(401).send({ msg: "No token provided." });
+  }
+
   try {
-    const decoded = jwt.verify(
-      token,
-      process.env.JWT_SECRET || "your_default_secret"
-    );
-    req.user = decoded;
+    const verifiedToken = jwt.verify(token, process.env.SECRET_KEY);
+    req.user = await User.findById(verifiedToken.id);
     next();
-  } catch (error) {
-    res.status(401).json({ error: "Invalid token" });
+  } catch (e) {
+    res.status(401).send({ msg: "Invalid Token!" });
   }
-}
-
-// Utilisation du middleware pour protéger une route
-app.get("/protected", verifyToken, (req, res) => {
-  res.status(200).send({ user: req.user });
 });
-
-/* *************** PUT *************** */
-
-/* *************** DELETE *************** */
 
 const port = process.env.PORT || 7000; // Use environment variable for port
 app.listen(port, () => {

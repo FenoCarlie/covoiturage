@@ -1,24 +1,101 @@
-const mysql = require("mysql");
+const mongoose = require("mongoose");
 require("dotenv").config();
 
-const host = process.env.DB_HOST;
-const user = process.env.DB_USERNAME;
-const password = process.env.DB_PASSWORD;
-const database = process.env.DB_NAME;
+const Url = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/?authMechanism=DEFAULT`;
 
-const connection = mysql.createConnection({
-  host: host,
-  user: user,
-  password: password,
-  database: database,
-});
+mongoose
+  .connect(Url)
+  .then(() => {
+    console.log("Database connected successfully");
+  })
+  .catch((error) => {
+    console.log("Database connection failed:", error);
+  });
 
-connection.connect((error) => {
-  if (error) {
-    console.error("Error connecting to MySQL database:", error);
-  } else {
-    console.log("Connected to MySQL database!");
-  }
-});
+const userSchema = new mongoose.Schema(
+  {
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    avatar: {
+      data: Buffer,
+      contentType: String,
+    },
+  },
+  { timestamps: true }
+);
 
-module.exports = connection;
+const CourseSchema = new mongoose.Schema(
+  {
+    idDriver: {
+      type: String,
+      required: true,
+    },
+    locStart: {
+      type: String,
+      required: true,
+    },
+    locEnd: {
+      type: String,
+      required: true,
+    },
+    cost: {
+      type: String,
+      required: true,
+    },
+    dateDep: {
+      type: Date,
+      required: true,
+    },
+    carPlace: {
+      type: Number,
+      required: true,
+    },
+    carNumber: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+
+const ReservationSchema = new mongoose.Schema(
+  {
+    idCourse: {
+      type: String,
+      required: true,
+    },
+    idClient: {
+      type: String,
+      required: true,
+    },
+    placeNum: {
+      type: Number,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
+
+const User = mongoose.model("User", userSchema);
+const Course = mongoose.model("Course", CourseSchema);
+const Reservation = mongoose.model("Reservation", ReservationSchema);
+
+module.exports = { User, Course, Reservation };

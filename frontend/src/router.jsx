@@ -7,6 +7,7 @@ import NotFound from "./views/NotFound";
 import Signup from "./views/Signup";
 import User from "./views/User.jsx";
 import Course from "./views/Course.jsx";
+import ItineraryInfo from "./views/ItineraryInfo.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/user",
         element: <User />,
+      },
+      {
+        path: "/dashboard/itinerary/",
+        element: <ItineraryInfo />,
       },
     ],
   },

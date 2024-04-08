@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axiosClient from "../axios-client";
+import { svg } from "../assets/image";
+import { Link } from "react-router-dom";
+import { useStateContext } from "../context/ContextProvider";
 
 function Itinerary({ searchData }) {
+  const { setItineraryId } = useStateContext();
   const [loading, setLoading] = useState();
   const [search, setSearch] = useState(null);
   //const [itinerary, setItinerary] = useState({});
@@ -21,6 +25,7 @@ function Itinerary({ searchData }) {
 
   const itinerary = {
     1: {
+      itineraryId: "465132",
       driver: {
         firstName: "Jhone",
         lastName: "DOE",
@@ -35,6 +40,7 @@ function Itinerary({ searchData }) {
       carNumber: "3695 PO",
     },
     0: {
+      itineraryId: "35432",
       driver: {
         firstName: "Jhone",
         lastName: "DOE",
@@ -49,6 +55,7 @@ function Itinerary({ searchData }) {
       carNumber: "1231 DER",
     },
     2: {
+      itineraryId: "643",
       driver: {
         firstName: "Jhone",
         lastName: "DOE",
@@ -63,6 +70,7 @@ function Itinerary({ searchData }) {
       carNumber: "5466 RT",
     },
     3: {
+      itineraryId: "621",
       driver: {
         firstName: "Jhone",
         lastName: "DOE",
@@ -77,6 +85,7 @@ function Itinerary({ searchData }) {
       carNumber: "8434 SER",
     },
     4: {
+      itineraryId: "32132",
       driver: {
         firstName: "Jhone",
         lastName: "DOE",
@@ -116,22 +125,31 @@ function Itinerary({ searchData }) {
             <div>Loading...</div>
           ) : (
             Object.values(itinerary).map((item) => (
-              <div
-                className="bg-[#ffffff] rounded-lg h-[30%] mb-5 p-3 w-[75%] flex flex-col"
+              <Link
+                id={item.itineraryId}
+                to={`/dashboard/itinerary/`}
+                onClick={setItineraryId}
+                className="bg-[#ffffff] rounded-lg mb-5 p-3 w-[75%] flex flex-col"
                 key={item.locStart + item.locEnd + item.dateDep}
               >
-                <div className="flex">
-                  <p>
-                    {item.driver.firstName} {item.driver.lastName}
-                  </p>
-                </div>
                 <p>From: {item.locStart}</p>
                 <p>To: {item.locEnd}</p>
                 <p>Cost: {item.cost}</p>
                 <p>Departure Date: {item.dateDep}</p>
                 <p>Car Place: {item.carPlace}</p>
                 <p>Car Number: {item.carNumber}</p>
-              </div>
+                <div className="flex mt-2 items-center">
+                  <div
+                    className={`mr-6 relative w-20 h-20 overflow-hidden bg-cover rounded-lg bg-center bg-no-repeat`}
+                    style={{ backgroundImage: `url(${svg.avatar})` }}
+                  ></div>
+                  <div>
+                    <span>
+                      {item.driver.firstName} {item.driver.lastName}
+                    </span>
+                  </div>
+                </div>
+              </Link>
             ))
           )}
         </div>

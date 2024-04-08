@@ -39,10 +39,20 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
-  const setItineraryId = (itineraryId) => {
+  const setItineraryId = (click) => {
+    var link, itineraryId;
+    link = click.target;
+    while (link.tagName != "A") {
+      if (link == document.body) {
+        return;
+      }
+      link = link.parentNode;
+    }
+
+    itineraryId = link.id;
     _setItineraryId(itineraryId);
     if (itineraryId) {
-      localStorage.setItem("ITINERARY_ID", JSON.stringify(itineraryId));
+      localStorage.setItem("ITINERARY_ID", itineraryId);
     } else {
       localStorage.removeItem("ITINERARY_ID");
     }

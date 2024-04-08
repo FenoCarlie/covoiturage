@@ -20,7 +20,7 @@ const Course = () => {
   const minValue = 1;
   const maxValue = 22;
   const [course, setCourse] = useState({
-    id_driver: user?._id || "",
+    id_driver: user?.id || "",
     loc_start: "",
     loc_end: "",
     cost_one: "",
@@ -29,7 +29,7 @@ const Course = () => {
     car_num: "",
   });
 
-  console.log(course);
+  console.log(user);
 
   console.log(course);
 

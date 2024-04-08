@@ -3,6 +3,7 @@ import axiosClient from "../axios-client";
 import { svg } from "../assets/image";
 import { Link } from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
+import { BsPersonPlusFill } from "react-icons/bs";
 
 function Itinerary({ searchData }) {
   const { setItineraryId } = useStateContext();
@@ -120,33 +121,50 @@ function Itinerary({ searchData }) {
         {/* search && <div>Search: {search.destination}</div> */}
         {/* itinerary && <div>Itinerary: {itinerary.title}</div> */}
         <div className="p-3 w-[40%] flex justify-center">filter side</div>
-        <div className="p-3 w-[60%] flex items-center flex-col overflow-y-auto">
+        <div className="p-3 w-[60%] flex justify-star items-center flex-col overflow-y-auto">
           {loading ? (
             <div>Loading...</div>
           ) : (
             Object.values(itinerary).map((item) => (
               <Link
-                id={item.itineraryId}
                 to={`/dashboard/itinerary/`}
-                onClick={setItineraryId}
-                className="bg-[#ffffff] rounded-lg mb-5 p-3 w-[75%] flex flex-col"
+                onClick={() => setItineraryId(item.itineraryId)}
+                className="bg-[#ffffff] rounded-lg mb-4 p-6 w-[60%] flex flex-col"
                 key={item.locStart + item.locEnd + item.dateDep}
               >
-                <p>From: {item.locStart}</p>
-                <p>To: {item.locEnd}</p>
-                <p>Cost: {item.cost}</p>
-                <p>Departure Date: {item.dateDep}</p>
-                <p>Car Place: {item.carPlace}</p>
-                <p>Car Number: {item.carNumber}</p>
-                <div className="flex mt-2 items-center">
-                  <div
-                    className={`mr-6 relative w-20 h-20 overflow-hidden bg-cover rounded-lg bg-center bg-no-repeat`}
-                    style={{ backgroundImage: `url(${svg.avatar})` }}
-                  ></div>
-                  <div>
-                    <span>
-                      {item.driver.firstName} {item.driver.lastName}
-                    </span>
+                <div className="flex w-full justify-between">
+                  <ol className="relative border-s-4 h-[54px] border-teal-400">
+                    <li className="mb-4 ms-6">
+                      <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
+                      <h3 className="font-medium leading-tight">
+                        {item.locStart}
+                      </h3>
+                      <p className="text-sm">{item.dateDep}</p>
+                    </li>
+                    <li className="ms-6 justify-between">
+                      <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-white"></span>
+                      <h3 className="font-medium leading-tight text-bold">
+                        {item.locEnd}
+                      </h3>
+                    </li>
+                  </ol>
+                  <span>{item.cost} $</span>
+                </div>
+                <div className="flex mt-10 justify-between">
+                  <div className="flex justify-center">
+                    <div
+                      className={`mr-6 relative w-16 h-16 overflow-hidden bg-cover rounded-lg bg-center bg-no-repeat`}
+                      style={{ backgroundImage: `url(${svg.avatar})` }}
+                    ></div>
+                    <div className="flex flex-col">
+                      <span>
+                        {item.driver.firstName} {item.driver.lastName}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="flex mb-2 relative items-center">
+                    <BsPersonPlusFill className="h-6 w-6 mr-6" />
+                    <span>{item.carPlace} Place</span>
                   </div>
                 </div>
               </Link>

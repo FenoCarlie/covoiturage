@@ -6,6 +6,7 @@ const StateContext = createContext({
   token: null,
   notification: null,
   setUser: () => {},
+  setItineraryId: () => {},
   setToken: () => {},
   setNotification: () => {},
 });
@@ -15,6 +16,9 @@ export const ContextProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("ACCESS_USER"))
   );
   const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
+  const [itineraryId, _setItineraryId] = useState(
+    localStorage.getItem("ITINERARY_ID")
+  );
   const [notification, _setNotification] = useState("");
 
   const setToken = (token) => {
@@ -35,6 +39,15 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
+  const setItineraryId = (itineraryId) => {
+    _setItineraryId(itineraryId);
+    if (itineraryId) {
+      localStorage.setItem("ITINERARY_ID", JSON.stringify(itineraryId));
+    } else {
+      localStorage.removeItem("ITINERARY_ID");
+    }
+  };
+
   const setNotification = (message) => {
     _setNotification(message);
     setTimeout(() => {
@@ -47,6 +60,8 @@ export const ContextProvider = ({ children }) => {
       value={{
         user,
         setUser,
+        itineraryId,
+        setItineraryId,
         token,
         setToken,
         notification,

@@ -16,7 +16,7 @@ export const ContextProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("ACCESS_USER"))
   );
   const [token, _setToken] = useState(localStorage.getItem("ACCESS_TOKEN"));
-  const [itineraryId, _setItineraryId] = useState(
+  var [itineraryId, _setItineraryId] = useState(
     localStorage.getItem("ITINERARY_ID")
   );
   const [notification, _setNotification] = useState("");
@@ -39,17 +39,7 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
-  const setItineraryId = (click) => {
-    var link, itineraryId;
-    link = click.target;
-    while (link.tagName != "A") {
-      if (link == document.body) {
-        return;
-      }
-      link = link.parentNode;
-    }
-
-    itineraryId = link.id;
+  const setItineraryId = (itineraryId) => {
     _setItineraryId(itineraryId);
     if (itineraryId) {
       localStorage.setItem("ITINERARY_ID", itineraryId);

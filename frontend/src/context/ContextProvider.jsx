@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { json } from "react-router";
 
 const StateContext = createContext({
   currentUser: null,

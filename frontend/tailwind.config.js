@@ -6,6 +6,9 @@ export default {
       boxShadow: {
         l: "0 0 40px -15px rgba(0, 0, 0, 0.3)",
       },
+      colors: {
+        myColor: "#054752",
+      },
     },
   },
   plugins: [],

@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema(
 
 const CourseSchema = new mongoose.Schema(
   {
-    idDriver: {
+    idUsers: {
       type: String,
       required: true,
     },
@@ -80,11 +80,11 @@ const CourseSchema = new mongoose.Schema(
 
 const ReservationSchema = new mongoose.Schema(
   {
-    idCourse: {
+    idCourses: {
       type: String,
       required: true,
     },
-    idClient: {
+    idUsers: {
       type: String,
       required: true,
     },

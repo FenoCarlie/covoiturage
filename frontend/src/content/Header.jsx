@@ -1,4 +1,4 @@
-import { IoIosAddCircleOutline } from "react-icons/io";
+import { IoIosAddCircleOutline, IoIosSearch } from "react-icons/io";
 import { useStateContext } from "../context/ContextProvider";
 import { useEffect, useState } from "react";
 import axiosClient from "../axios-client";
@@ -7,6 +7,10 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 export default function Header() {
   const { user, setUser, setToken } = useStateContext();
   const navigate = useNavigate();
+  const course = "/dashboard/course";
+  const dashboard = "/dashboard";
+  const location = useLocation();
+  const url = location.pathname;
 
   const [menu, setMenu] = useState(false);
 
@@ -23,7 +27,6 @@ export default function Header() {
     setMenu(!menu);
   };
 
-  const location = useLocation();
   useEffect(() => {
     setMenu(false);
   }, [location]);
@@ -40,9 +43,26 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex">
-          <span className="relative mr-20 text-white">
+          <span
+            className={
+              url === dashboard ? `hidden` : `relative mr-20 text-white`
+            }
+          >
             <span className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <IoIosAddCircleOutline className="w-[24px] h-[24px]" />
+              <IoIosSearch className="w-[24px] h-[24px] " />
+            </span>
+            <Link
+              to="/dashboard"
+              className="hover:bg-[#eeeeee2a] text-lg rounded-lg block ps-10 p-2.5"
+            >
+              Search an itinerary
+            </Link>
+          </span>
+          <span
+            className={url === course ? `hidden` : `relative mr-20 text-white`}
+          >
+            <span className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <IoIosAddCircleOutline className="w-[24px] h-[24px] mr-2" />
             </span>
             <Link
               to="/dashboard/course"
@@ -85,7 +105,7 @@ export default function Header() {
                 </Link>
 
                 <button
-                  onClick={(onLogout, handleMenu)}
+                  onClick={onLogout}
                   type="submit"
                   className="text-gray-700 block w-full px-4 py-2 text-left text-sm"
                   role="menuitem"

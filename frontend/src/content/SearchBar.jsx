@@ -15,7 +15,7 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <div className="w-full sticky bg-white p-10 flex items-center justify-center">
+    <div className="w-full sticky border-b-[1px] border-[#00000017] bg-white p-10 flex items-center justify-center">
       <form
         onSubmit={handleSubmit}
         className="flex items-center justify-center shadow-l rounded-[15px]"

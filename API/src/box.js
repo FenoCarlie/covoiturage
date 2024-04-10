@@ -8,8 +8,8 @@ base = "covoiturage";
 async function Select(request, response) {
   var primary, server, room, floor, nested, stable, stack, found;
   server = Connect();
-  if (server == null) response.send("server not response error");
-  {
+  if (server == null) {
+    response.send("server not response error");
     return;
   }
 

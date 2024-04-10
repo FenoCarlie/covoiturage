@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axiosClient from "../axios-client";
-import { svg } from "../assets/image";
 import { Link } from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
 import { BsPersonPlusFill } from "react-icons/bs";
@@ -9,99 +8,22 @@ import { GrMoney } from "react-icons/gr";
 
 function Itinerary({ searchData }) {
   const { setItineraryId } = useStateContext();
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState(null);
-  //const [itinerary, setItinerary] = useState({});
+  const [itinerary, setItinerary] = useState({});
 
-  /*const getItinerary = () => {
+  const getItinerary = () => {
     setLoading(true);
     axiosClient
-      .get("/itinerary")
+      .get("/show/courses")
       .then(({ data }) => {
+        console.log(data);
         setLoading(false);
         setItinerary(data);
       })
       .catch(() => {
         setLoading(false);
       });
-  };*/
-
-  const itinerary = {
-    1: {
-      itineraryId: "465132",
-      driver: {
-        firstName: "Jhone",
-        lastName: "DOE",
-        phone: "+261 33 00 000 00",
-        email: "doe@gmail.com",
-      },
-      locStart: "Paris",
-      locEnd: "Lyon",
-      cost: "35",
-      dateDep: "09-04-2024",
-      carPlace: "3",
-      carNumber: "3695 PO",
-    },
-    0: {
-      itineraryId: "35432",
-      driver: {
-        firstName: "Jhone",
-        lastName: "DOE",
-        phone: "+261 33 00 000 00",
-        email: "doe@gmail.com",
-      },
-      locStart: "Reims",
-      locEnd: "Bruxelles",
-      cost: "15",
-      dateDep: "10-04-2024",
-      carPlace: "4",
-      carNumber: "1231 DER",
-    },
-    2: {
-      itineraryId: "643",
-      driver: {
-        firstName: "Jhone",
-        lastName: "DOE",
-        phone: "+261 33 00 000 00",
-        email: "doe@gmail.com",
-      },
-      locStart: "Lille",
-      locEnd: "Paris",
-      cost: "45",
-      dateDep: "15-04.2024",
-      carPlace: "1",
-      carNumber: "5466 RT",
-    },
-    3: {
-      itineraryId: "621",
-      driver: {
-        firstName: "Jhone",
-        lastName: "DOE",
-        phone: "+261 33 00 000 00",
-        email: "doe@gmail.com",
-      },
-      locStart: "Nantes",
-      locEnd: "Nice",
-      cost: "56",
-      dateDep: "20-04-2024",
-      carPlace: "3",
-      carNumber: "8434 SER",
-    },
-    4: {
-      itineraryId: "32132",
-      driver: {
-        firstName: "Jhone",
-        lastName: "DOE",
-        phone: "+261 33 00 000 00",
-        email: "doe@gmail.com",
-      },
-      locStart: "Lyon",
-      locEnd: "Paris",
-      cost: "10",
-      dateDep: "22-04-2024",
-      carPlace: "3",
-      carNumber: "6555 AR",
-    },
   };
 
   useEffect(() => {
@@ -111,15 +33,15 @@ function Itinerary({ searchData }) {
     } else {
       console.log("no search data");
     }
-    //getItinerary();
+    getItinerary();
   }, [searchData]);
 
   return (
     <>
       <div className="flex overflow-hidden h-full w-ful text-myColor">
-        {/*  <span>{search?.from}</span>
+        <span>{search?.from}</span>
         <span>{search?.passengers}</span>
-        <span>{search?.to}</span> */}
+        <span>{search?.to}</span>
         {/* search && <div>Search: {search.destination}</div> */}
         {/* itinerary && <div>Itinerary: {itinerary.title}</div> */}
         <div className="p-6 w-[40%] flex">
@@ -239,11 +161,11 @@ function Itinerary({ searchData }) {
                   <div className="flex justify-center">
                     <div
                       className={`mr-6 relative w-16 h-16 overflow-hidden bg-cover rounded-lg bg-center bg-no-repeat`}
-                      style={{ backgroundImage: `url(${svg.avatar})` }}
+                      style={{ backgroundImage: `url(${item.users?.avatar})` }}
                     ></div>
                     <div className="flex flex-col">
                       <span>
-                        {item.driver.firstName} {item.driver.lastName}
+                        {item.users?.firstName} {item.users?.lastName}
                       </span>
                     </div>
                   </div>

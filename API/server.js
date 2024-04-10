@@ -8,8 +8,8 @@ require("dotenv").config();
 const bcrypt = require("bcrypt");
 
 const app = express();
-app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "25mb" }));
+app.use(express.urlencoded({ limit: "25mb", extended: true }));
 app.use(cors());
 
 const registerUser = async (req, res) => {
@@ -21,9 +21,9 @@ const registerUser = async (req, res) => {
       return res.status(400).send("firstName or lastName is required.");
     }
 
-    /*if (!avatar) {
-      return res.status(400).send("avatar is required.");
-    }*/
+    if (!avatar) {
+      avatar = "";
+    }
 
     if (!password) {
       return res.status(400).send("Password is required.");
@@ -126,6 +126,21 @@ const loginUser = async (req, res) => {
   }
 };
 
+const logoutUser = (req, res) => {
+  try {
+    // Clear the token from the client's storage
+    res.clearCookie("token");
+
+    // Send a success message
+    res.status(200).json({ message: "Logout successful" });
+  } catch (error) {
+    console.log("Logout Error: ", error);
+    res.status(500).send("Server error");
+  }
+};
+
+app.post("/api/login", loginUser);
+app.post("/api/logout", logoutUser);
 app.get("/api/itinerary", async (req, res) => {
   try {
     const itinerary = await Course.find({});
@@ -135,8 +150,6 @@ app.get("/api/itinerary", async (req, res) => {
     res.status(500).send("Error while fetching itinerary.");
   }
 });
-
-app.post("/api/login", loginUser);
 
 // Protected routes
 app.use(async (req, res, next) => {

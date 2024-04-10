@@ -8,6 +8,7 @@ import { IoMdPerson, IoMdPricetags } from "react-icons/io";
 //import { Stepper, Step, Button, Typography } from "@material-tailwind/react";
 import Calendar from "react-calendar";
 import { useStateContext } from "../context/ContextProvider.jsx";
+import axiosClient from "../axios-client.js";
 
 const Course = () => {
   const { user } = useStateContext();
@@ -28,6 +29,32 @@ const Course = () => {
     car_place: place,
     car_num: "",
   });
+
+  const onSubmit = async (ev) => {
+    ev.preventDefault();
+
+    const payload = {
+      idUser: course.id_driver,
+      locStart: course.loc_start,
+      locEnd: course.loc_end,
+      cost: course.cost_one,
+      dateDep: course.time_start,
+      carPlace: course.car_place,
+      carNumber: course.car_num,
+    };
+
+    console.log(payload);
+
+    try {
+      const response = await axiosClient.post("/add/courses", payload);
+      console.log(response);
+    } catch (err) {
+      const response = err.response;
+      if (response && response.status === 422) {
+        console.log(response.data.message);
+      }
+    }
+  };
 
   function getMonthName(monthNumber) {
     return new Date("1999-" + monthNumber + "-15").toLocaleString("en-us", {
@@ -248,7 +275,10 @@ const Course = () => {
                 />
               </div>
             </div>
-            <div className="flex text-white bg-[#30acd1] justify-center p-3">
+            <div
+              onClick={onSubmit}
+              className="flex text-white bg-[#30acd1] justify-center p-3"
+            >
               <span className="">Validate</span>
             </div>
           </div>

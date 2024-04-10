@@ -59,11 +59,9 @@ async function Select(request, response) {
 }
 async function Insert(request, response) {
   var server, field, stack, planted, floor, room;
-  console.log("insert");
   server = Connect();
   stack = request.body;
   field = request.params.table;
-  console.log(`stack= ${stack}, field = ${field}`);
   if (server == null) {
     response.send("server not response error");
     return;
@@ -75,11 +73,8 @@ async function Insert(request, response) {
   }
 
   floor = server.db(base);
-  console.log(`floor = ${floor}`);
   room = floor.collection(field);
-  console.log(`room = ${room}`);
   planted = await room.insertOne(stack);
-  console.log(`planted = ${planted}`);
   server.close();
   response.send(planted);
 }

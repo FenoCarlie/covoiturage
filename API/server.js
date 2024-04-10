@@ -7,10 +7,17 @@ const cors = require("cors");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 
+const { Select, Insert } = require ("./src/box.js");
+
 const app = express();
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
+
+app.get ("/show/:table", Select);
+app.post ("/add/:table", Insert);
+
 
 const registerUser = async (req, res) => {
   try {

@@ -7,17 +7,15 @@ const cors = require("cors");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 
-const { Select, Insert } = require ("./src/box.js");
+const { Select, Insert } = require("./src/box.js");
 
 const app = express();
 app.use(express.json({ limit: "25mb" }));
 app.use(express.urlencoded({ limit: "25mb", extended: true }));
 app.use(cors());
 
-
-app.get ("/show/:table", Select);
-app.post ("/add/:table", Insert);
-
+app.get("/api/show/:table", Select);
+app.post("/api/add/:table", Insert);
 
 const registerUser = async (req, res) => {
   try {
@@ -96,8 +94,8 @@ const registerUser = async (req, res) => {
 
 app.get("/api/users", async (req, res) => {
   try {
-    const users = await User.find({});
-    res.status(200).send(users);
+    const user = await User.find({});
+    res.status(200).send(user);
   } catch (error) {
     console.error("Error while fetching users:", error);
     res.status(500).send("Error while fetching users.");

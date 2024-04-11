@@ -9,12 +9,23 @@ import { IoMdPerson, IoMdPricetags } from "react-icons/io";
 import Calendar from "react-calendar";
 import { useStateContext } from "../context/ContextProvider.jsx";
 import axiosClient from "../axios-client.js";
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
+import { useNavigate } from "react-router-dom";
 
 const Course = () => {
+  const navigate = useNavigate();
+  const { setItineraryId, setNotification } = useStateContext();
   const { user } = useStateContext();
   const [place, setPlace] = useState(1);
   const [date] = useState(new Date());
   const [palaceMenu, setPlaceMenu] = useState(false);
+  const [hour, setHour] = useState(12);
+  const [minute, setMinute] = useState(0);
+  const [period, setPeriod] = useState("a.m.");
+  const [time, setTime] = useState(
+    `${hour} : ${minute === 0 ? `00` : `${minute}`} ${period}`
+  );
   const [calendarMenu, setCalendarMenu] = useState(false);
   const [incrementCondition, setIncrementCondition] = useState(false);
   const [decrementCondition, setDecrementCondition] = useState(false);
@@ -25,20 +36,36 @@ const Course = () => {
     loc_start: "",
     loc_end: "",
     cost_one: "",
-    time_start: date,
+    date_start: date,
+    hour_start: "12",
+    minute_start: "00",
+    period_start: period,
     car_place: place,
     car_num: "",
   });
 
+  console.log(course);
+
+  const navigates = () => {
+    navigate(`/dashboard/itinerary`);
+  };
+
   const onSubmit = async (ev) => {
     ev.preventDefault();
 
+    const time_start = `${course.hour_start} : ${
+      course.minute_start === 0 ? `00` : `${course.minute_start}`
+    } ${course.period_start}`;
+
     const payload = {
-      idUser: course.id_driver,
+      idUsers: course.id_driver,
       locStart: course.loc_start,
       locEnd: course.loc_end,
       cost: course.cost_one,
-      dateDep: course.time_start,
+      dateDep: {
+        date: course.date_start,
+        time: time_start,
+      },
       carPlace: course.car_place,
       carNumber: course.car_num,
     };
@@ -47,11 +74,13 @@ const Course = () => {
 
     try {
       const response = await axiosClient.post("/add/courses", payload);
-      console.log(response);
+      setItineraryId(response.insertedId);
+      navigate(`/dashboard/itinerary`);
+      setNotification("your course is added successfully");
     } catch (err) {
       const response = err.response;
       if (response && response.status === 422) {
-        console.log(response.data.message);
+        alert(response.data.message);
       }
     }
   };
@@ -62,9 +91,9 @@ const Course = () => {
     });
   }
 
-  const day = course.time_start.getDate();
-  const month = getMonthName(course.time_start.getMonth() + 1); // Months are zero-based
-  const year = course.time_start.getFullYear();
+  const day = course.date_start.getDate();
+  const month = getMonthName(course.date_start.getMonth() + 1); // Months are zero-based
+  const year = course.date_start.getFullYear();
 
   const handlePalaceMenu = () => {
     setPlaceMenu(!palaceMenu);
@@ -190,12 +219,14 @@ const Course = () => {
                 >
                   {`${day < 10 ? "0" + day : day} ${
                     month < 10 ? "0" + month : month
-                  } ${year}`}
+                  } ${year} - ${course.hour_start} : ${
+                    course.minute_start
+                  } ${period}`}
                 </span>
                 <div
                   className={
                     calendarMenu
-                      ? `absolute fadeInDown animated palace-menu -right-[14em] p-2  flex items-center justify-center z-10 w-56 top-0 text-xl  origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ease-in-out duration-500`
+                      ? `absolute fadeInDown animated palace-menu -right-[15em] flex items-center justify-center z-10 top-0 text-xl  origin-top-right rounded-md focus:outline-none ease-in-out duration-500`
                       : `hidden`
                   }
                   role="menu"
@@ -203,14 +234,85 @@ const Course = () => {
                   aria-labelledby="menu-button"
                 >
                   <div
-                    className="py-1 flex justify-between items-center"
+                    className="py-1 flex flex-col justify-between items-center"
                     role="none"
                   >
-                    <Calendar
-                      onChange={(e) => setCourse({ ...course, time_start: e })}
-                      value={course.time_start}
-                      minDate={new Date()}
+                    <DatePicker
+                      onChange={(e) => setCourse({ ...course, date_start: e })}
+                      value={course.date_start}
+                      selected={new Date()}
+                      inline
                     />
+                    <section className="bg-white justify-center items-center flex w-full mt-2 p-3 rounded-lg border">
+                      <section className="bg-[#f9fafb] border rounded-md p-2 mr-3 flex items-center justify-center">
+                        <input
+                          type="number"
+                          className="w-[30px]"
+                          min="0"
+                          max="12"
+                          step="1"
+                          pattern="[0-9]{2}"
+                          inputMode="numeric"
+                          placeholder={hour}
+                          onChange={(e) => {
+                            if (e.target.value < 0) e.target.value = "00";
+                            if (e.target.value > 12) e.target.value = "12";
+                            setCourse({
+                              ...course,
+                              hour_start: e.target.value,
+                            });
+                          }}
+                        />
+                        <span className="mr-1"> : </span>
+                        <input
+                          className="w-[30px]"
+                          min="0"
+                          max="60"
+                          step="1"
+                          pattern="[0-9]{2}"
+                          inputMode="numeric"
+                          type="number"
+                          placeholder={minute === 0 ? "00" : minute}
+                          onChange={(e) => {
+                            if (e.target.value < 0) e.target.value = "00";
+                            if (e.target.value > 60) e.target.value = "60";
+                            setCourse({
+                              ...course,
+                              minute_start: e.target.value,
+                            });
+                          }}
+                        />
+                      </section>
+                      <section className="flex select-none">
+                        <label className="radio flex flex-grow items-center justify-center rounded-lg cursor-pointer">
+                          <input
+                            type="radio"
+                            name="radio"
+                            value="a.m."
+                            checked={period === "a.m."}
+                            onChange={(e) => setPeriod(e.target.value)}
+                            className="peer hidden"
+                          />
+                          <span className="tracking-widest peer-checked:bg-gradient-to-r peer-checked:from-[#2b6be2] peer-checked:to-[#82a8ee] peer-checked:text-white text-gray-700 p-2 rounded-lg transition duration-150 ease-in-out">
+                            a.m.
+                          </span>
+                        </label>
+
+                        <label className="radio flex flex-grow items-center justify-center rounded-lg p-1 cursor-pointer">
+                          <input
+                            type="radio"
+                            name="radio"
+                            value="p.m."
+                            checked={period === "p.m."}
+                            onChange={(e) => setPeriod(e.target.value)}
+                            className="peer hidden"
+                          />
+                          <span className="tracking-widest peer-checked:bg-gradient-to-r peer-checked:from-[#2b6be2] peer-checked:to-[#82a8ee] peer-checked:text-white text-gray-700 p-2 rounded-lg transition duration-150 ease-in-out">
+                            p.m.
+                          </span>
+                        </label>
+                      </section>
+                    </section>
                   </div>
                 </div>
               </div>

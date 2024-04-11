@@ -78,8 +78,71 @@ async function Insert(request, response) {
   server.close();
   response.send(planted);
 }
-function Update(request, response) {}
-function Delete(request, response) {}
+function Update(request, response)
+    {
+       var server, field, stack, floor,
+         update, filter, plant, room;
+       server = Connect ();
+       stack = request.body;
+       field = request.params.table;
+       filter = { "_id": new ObjectId (stack.id) };
+       update = { $set: stack.data };
+
+       if (server == null)
+           {
+              response.send ("Unreachable server");
+              return;
+            }
+       if (stack == undefined || field == undefined || stack.id == undefined || stack.data == undefined)
+           {
+              response.send ("Invalid input");
+              server.close ();
+              return;
+            }
+
+       floor = server.db (base);
+       room = floor.collection (field);
+       plant = await room.updateOne (filter, update);
+
+       if (plant.acknowledged)
+           {  Select (request, response);  }
+       else
+           {  response.send ("Failed");  }
+
+       server.close ();
+     }
+function Delete(request, response)
+    {
+       var server, field, stack,
+         remove, filter, floor, room;
+       server = Connect ();
+       stack = request.body;
+       field = request.params.table;
+
+       if (server == null)
+           {
+              response.send ("Unreachable server");
+              return;
+            }
+       if (stack == undefined || field == undefined || stack.id == undefined)
+           {
+              response.send ("Invalid input");
+              server.close ();
+              return;
+            }
+       filter = { "_id": new ObjectId (stack.id) };
+
+       floor = server.db (base);
+       room = floor.collection (field);
+       remove = await room.deleteOne (filter);
+
+       if (remove.acknowledged)
+           {  Select (request, response);  }
+       else
+           {  response.send ("Failed");  }
+
+       server.close ();
+     }
 
 function Search() {}
 

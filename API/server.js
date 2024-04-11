@@ -7,15 +7,17 @@ const cors = require("cors");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
 
-const { Select, Insert } = require("./src/box.js");
+const { Select, Insert, Update, Delete } = require("./src/box.js");
 
 const app = express();
 app.use(express.json({ limit: "25mb" }));
 app.use(express.urlencoded({ limit: "25mb", extended: true }));
 app.use(cors());
 
-app.get("/api/show/:table", Select);
-app.post("/api/add/:table", Insert);
+app.get ("/api/show/:table", Select);
+app.post ("/api/add/:table", Insert);
+app.put ("/api/update/:table", Update);
+app.delete ("/api/delete/:table", Delete);
 
 const registerUser = async (req, res) => {
   try {

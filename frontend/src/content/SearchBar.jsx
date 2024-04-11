@@ -6,6 +6,7 @@ function SearchBar({ onSearch }) {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [passengers, setPassengers] = useState("");
+  //const [date, setDate] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();

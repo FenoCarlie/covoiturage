@@ -161,4 +161,4 @@ function Connect() {
   }
 }
 
-module.exports = { Select, Insert };
+module.exports = { Select, Insert, Update, Delete };

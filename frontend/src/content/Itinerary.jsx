@@ -12,26 +12,47 @@ function Itinerary({ searchData }) {
   const [search, setSearch] = useState(null);
   const [itinerary, setItinerary] = useState({});
 
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  };
+
   const getItinerary = () => {
     setLoading(true);
     axiosClient
       .get("/show/courses")
       .then(({ data }) => {
-        console.log(data);
         setLoading(false);
         setItinerary(data);
+        /*itinerary.forEach((item) => {
+          let date = new Date(item.dateDep);
+          item.date = date.toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          });
+          item.time = date.toLocaleTimeString("en-US", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+        });*/
       })
       .catch(() => {
         setLoading(false);
       });
   };
 
+  const setfilter = () => {
+    setSearch(null);
+    getItinerary();
+  };
+
   useEffect(() => {
     if (searchData) {
       setSearch(searchData);
-      console.log("search data loaded");
-    } else {
-      console.log("no search data");
     }
     getItinerary();
   }, [searchData]);
@@ -39,11 +60,6 @@ function Itinerary({ searchData }) {
   return (
     <>
       <div className="flex overflow-hidden h-full w-ful text-myColor">
-        <span>{search?.from}</span>
-        <span>{search?.passengers}</span>
-        <span>{search?.to}</span>
-        {/* search && <div>Search: {search.destination}</div> */}
-        {/* itinerary && <div>Itinerary: {itinerary.title}</div> */}
         <div className="p-6 w-[40%] flex">
           <div className="flex flex-col items-center relative transition-all duration-[450ms] ease-in-out w-[50%]">
             <h1 className="mb-6 font-bold text-xl">Sort by</h1>
@@ -140,13 +156,14 @@ function Itinerary({ searchData }) {
                 key={item.locStart + item.locEnd + item.dateDep}
               >
                 <div className="flex w-full justify-between">
-                  <ol className="relative border-s-4 h-[54px] border-teal-400">
+                  <ol className="relative border-s-4 h-[75px] border-teal-400">
                     <li className="mb-4 ms-6">
                       <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
                       <h3 className="font-medium leading-tight">
                         {item.locStart}
                       </h3>
-                      <p className="text-sm">{item.dateDep}</p>
+                      <p className="text-sm pl-4">{item.date}</p>
+                      <p className="text-sm pl-4">{item.time}</p>
                     </li>
                     <li className="ms-6 justify-between">
                       <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-white"></span>

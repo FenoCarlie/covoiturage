@@ -13,12 +13,16 @@ async function Select(request, response) {
     return;
   }
 
+  if (typeof (request.body) != "object")
+      {  request.body = undefined;  }
+
   room = request.params.table;
   floor = server.db(base);
   stack = floor.collection(room);
-  found = stack.find();
+  found = stack.find(request.body);
   primary = await found.toArray();
   if (primary.length < 1) {
+    response.send ("Not found");
     return;
   }
 
@@ -78,7 +82,7 @@ async function Insert(request, response) {
   server.close();
   response.send(planted);
 }
-function Update(request, response)
+async function Update(request, response)
     {
        var server, field, stack, floor,
          update, filter, plant, room;
@@ -111,7 +115,7 @@ function Update(request, response)
 
        server.close ();
      }
-function Delete(request, response)
+async function Delete(request, response)
     {
        var server, field, stack,
          remove, filter, floor, room;
@@ -144,7 +148,24 @@ function Delete(request, response)
        server.close ();
      }
 
-function Search() {}
+function Search()
+    {
+       var filter;
+       filter = request.body;
+
+       if (filter == undefined || filter == null)
+           {
+              Select (request, response);
+              return;
+            }
+       if (filter.id != undefined)
+           {
+              filter ["_id"] = new ObjectId (filter.id);
+              delete filter.id;
+            }
+       request.body = filter;
+       Select (request, response);
+     }
 
 function Connect() {
   if (path == null || path == undefined) {
@@ -161,4 +182,4 @@ function Connect() {
   }
 }
 
-module.exports = { Select, Insert, Update, Delete };
+module.exports = { Select, Insert, Update, Delete, Search };

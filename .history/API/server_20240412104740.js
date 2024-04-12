@@ -5,6 +5,7 @@ const { User, Course, Reservation } = require("./src/config");
 const _ = require("lodash");
 const cors = require("cors");
 require("dotenv").config();
+const bcrypt = require("bcrypt");
 
 const { Select, Insert, Update, Delete, Search } = require("./src/box.js");
 

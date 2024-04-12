@@ -13,12 +13,16 @@ async function Select(request, response) {
     return;
   }
 
+  if (typeof (request.body) != "object")
+      {  request.body = undefined;  }
+
   room = request.params.table;
   floor = server.db(base);
   stack = floor.collection(room);
-  found = stack.find();
+  found = stack.find(request.body);
   primary = await found.toArray();
   if (primary.length < 1) {
+    response.send ("Not found");
     return;
   }
 
@@ -78,10 +82,90 @@ async function Insert(request, response) {
   server.close();
   response.send(planted);
 }
-function Update(request, response) {}
-function Delete(request, response) {}
+async function Update(request, response)
+    {
+       var server, field, stack, floor,
+         update, filter, plant, room;
+       server = Connect ();
+       stack = request.body;
+       field = request.params.table;
+       filter = { "_id": new ObjectId (stack.id) };
+       update = { $set: stack.data };
 
-function Search() {}
+       if (server == null)
+           {
+              response.send ("Unreachable server");
+              return;
+            }
+       if (stack == undefined || field == undefined || stack.id == undefined || stack.data == undefined)
+           {
+              response.send ("Invalid input");
+              server.close ();
+              return;
+            }
+
+       floor = server.db (base);
+       room = floor.collection (field);
+       plant = await room.updateOne (filter, update);
+
+       if (plant.acknowledged)
+           {  Select (request, response);  }
+       else
+           {  response.send ("Failed");  }
+
+       server.close ();
+     }
+async function Delete(request, response)
+    {
+       var server, field, stack,
+         remove, filter, floor, room;
+       server = Connect ();
+       stack = request.body;
+       field = request.params.table;
+
+       if (server == null)
+           {
+              response.send ("Unreachable server");
+              return;
+            }
+       if (stack == undefined || field == undefined || stack.id == undefined)
+           {
+              response.send ("Invalid input");
+              server.close ();
+              return;
+            }
+       filter = { "_id": new ObjectId (stack.id) };
+
+       floor = server.db (base);
+       room = floor.collection (field);
+       remove = await room.deleteOne (filter);
+
+       if (remove.acknowledged)
+           {  Select (request, response);  }
+       else
+           {  response.send ("Failed");  }
+
+       server.close ();
+     }
+
+function Search()
+    {
+       var filter;
+       filter = request.body;
+
+       if (filter == undefined || filter == null)
+           {
+              Select (request, response);
+              return;
+            }
+       if (filter.id != undefined)
+           {
+              filter ["_id"] = new ObjectId (filter.id);
+              delete filter.id;
+            }
+       request.body = filter;
+       Select (request, response);
+     }
 
 function Connect() {
   if (path == null || path == undefined) {
@@ -98,4 +182,4 @@ function Connect() {
   }
 }
 
-module.exports = { Select, Insert };
+module.exports = { Select, Insert, Update, Delete, Search };

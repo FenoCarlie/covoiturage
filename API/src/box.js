@@ -4,10 +4,10 @@ require("dotenv").config();
 var path, base;
 path = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}?retryWrites=true&w=majority`;
 base = "covoiturage";
+server = Connect();
 
 async function Select(request, response) {
-  var primary, server, room, floor, nested, stable, stack, found;
-  server = Connect();
+  var primary, room, floor, nested, stable, stack, found;
   if (server == null) {
     response.send("server not response error");
     return;
@@ -39,7 +39,6 @@ async function Select(request, response) {
     }
   }
   response.send(primary);
-  server.close();
 
   async function GetNestedCollections(sample) {
     var nested, hay, field, chamber, stack;
@@ -62,8 +61,7 @@ async function Select(request, response) {
   }
 }
 async function Insert(request, response) {
-  var server, field, stack, planted, floor, room;
-  server = Connect();
+  var field, stack, planted, floor, room;
   stack = request.body;
   field = request.params.table;
   if (server == null) {
@@ -72,21 +70,18 @@ async function Insert(request, response) {
   }
   if (stack == undefined || field == undefined || typeof stack != "object") {
     response.send("amia data eeeee!");
-    server.close();
     return;
   }
 
   floor = server.db(base);
   room = floor.collection(field);
   planted = await room.insertOne(stack);
-  server.close();
   response.send(planted);
 }
 async function Update(request, response)
     {
-       var server, field, stack, floor,
+       var field, stack, floor,
          update, filter, plant, room;
-       server = Connect ();
        stack = request.body;
        field = request.params.table;
        filter = { "_id": new ObjectId (stack.id) };
@@ -100,7 +95,6 @@ async function Update(request, response)
        if (stack == undefined || field == undefined || stack.id == undefined || stack.data == undefined)
            {
               response.send ("Invalid input");
-              server.close ();
               return;
             }
 
@@ -112,14 +106,11 @@ async function Update(request, response)
            {  Select (request, response);  }
        else
            {  response.send ("Failed");  }
-
-       server.close ();
      }
 async function Delete(request, response)
     {
-       var server, field, stack,
+       var field, stack,
          remove, filter, floor, room;
-       server = Connect ();
        stack = request.body;
        field = request.params.table;
 
@@ -131,7 +122,6 @@ async function Delete(request, response)
        if (stack == undefined || field == undefined || stack.id == undefined)
            {
               response.send ("Invalid input");
-              server.close ();
               return;
             }
        filter = { "_id": new ObjectId (stack.id) };
@@ -144,11 +134,9 @@ async function Delete(request, response)
            {  Select (request, response);  }
        else
            {  response.send ("Failed");  }
-
-       server.close ();
      }
 
-function Search()
+function Search(request, response)
     {
        var filter;
        filter = request.body;

@@ -45,10 +45,9 @@ const Course = () => {
     car_num: "",
   });
 
-  console.log(import.meta.env.VITE_API_OPENCAGE_GEOCODING_API_KEY_TOKEN);
-
   const [locationStart, setLocationStart] = useState("");
   const [locationEnd, setLocationEnd] = useState("");
+  M;
 
   const onSubmit = async (ev) => {
     ev.preventDefault();

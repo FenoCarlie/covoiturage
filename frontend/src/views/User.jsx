@@ -103,7 +103,7 @@ function User() {
               }}
             ></div>
 
-            <h1 className="text-3xl font-bold pt-8 lg:pt-0">
+            <h1 className="text-3xl font-bold pt-8 lg:pt-0 text-myColor">
               {user?.firstName} {user?.lastName}
             </h1>
             <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>

@@ -10,12 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.17.0",
+    "@algolia/autocomplete-theme-classic": "^1.17.0",
+    "@opencage/geosearch-core": "^0.1.7",
     "axios": "^1.6.8",
+    "opencage-api-client": "^1.0.4",
     "react": "^18.2.0",
     "react-calendar": "^4.8.0",
     "react-datepicker": "^6.6.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
+    "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.22.3"
   },
   "devDependencies": {

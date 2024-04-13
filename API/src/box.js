@@ -106,7 +106,6 @@ async function Update(request, response) {
   room = floor.collection(field);
   plant = await room.updateOne(filter, update);
 
-<<<<<<< HEAD
   if (plant.acknowledged) {
     Select(request, response);
   } else {
@@ -117,7 +116,7 @@ async function Delete(request, response) {
   var field, stack, remove, filter, floor, room;
   stack = request.body;
   field = request.params.table;
-=======
+
        if (plant.acknowledged)
            {
               request.body = undefined;
@@ -132,7 +131,6 @@ async function Delete(request, response)
          remove, filter, floor, room;
        stack = request.body;
        field = request.params.table;
->>>>>>> 51654c3b1087f8f90258875e302e06c3bcbe4df0
 
   if (server == null) {
     response.send("Unreachable server");
@@ -148,14 +146,12 @@ async function Delete(request, response)
   room = floor.collection(field);
   remove = await room.deleteOne(filter);
 
-<<<<<<< HEAD
   if (remove.acknowledged) {
     Select(request, response);
   } else {
     response.send("Failed");
   }
 }
-=======
        if (remove.acknowledged)
            {
               request.body = undefined;
@@ -164,7 +160,6 @@ async function Delete(request, response)
        else
            {  response.send ("Failed");  }
      }
->>>>>>> 51654c3b1087f8f90258875e302e06c3bcbe4df0
 
 function Search(request, response) {
   var filter;

@@ -76,7 +76,9 @@ async function Insert(request, response) {
   floor = server.db(base);
   room = floor.collection(field);
   planted = await room.insertOne(stack);
-  response.send(planted);
+
+  request.body = undefined;
+  Select (request, response);
 }
 async function Update(request, response)
     {
@@ -103,7 +105,10 @@ async function Update(request, response)
        plant = await room.updateOne (filter, update);
 
        if (plant.acknowledged)
-           {  Select (request, response);  }
+           {
+              request.body = undefined;
+              Select (request, response);
+            }
        else
            {  response.send ("Failed");  }
      }
@@ -131,7 +136,10 @@ async function Delete(request, response)
        remove = await room.deleteOne (filter);
 
        if (remove.acknowledged)
-           {  Select (request, response);  }
+           {
+              request.body = undefined;
+              Select (request, response);
+            }
        else
            {  response.send ("Failed");  }
      }
@@ -160,10 +168,10 @@ function Connect() {
     return null;
   }
 
-  var server = new MongoClient(path);
+  var link = new MongoClient(path);
   try {
-    server.connect();
-    return server;
+    link.connect();
+    return link;
   } catch (report) {
     console.log(report);
     return null;

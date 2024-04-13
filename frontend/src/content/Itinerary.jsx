@@ -7,7 +7,7 @@ import { IoMdTime } from "react-icons/io";
 import { GrMoney } from "react-icons/gr";
 
 function Itinerary({ searchData }) {
-  const { setItineraryId } = useStateContext();
+  const { setItineraryId, users } = useStateContext();
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState(null);
   const [itinerary, setItinerary] = useState({});
@@ -26,24 +26,27 @@ function Itinerary({ searchData }) {
       .get("/show/courses")
       .then(({ data }) => {
         setLoading(false);
-        setItinerary(data);
-        /*itinerary.forEach((item) => {
-          let date = new Date(item.dateDep);
-          item.date = date.toLocaleDateString("en-US", {
-            month: "long",
-            day: "numeric",
-            year: "numeric",
-          });
-          item.time = date.toLocaleTimeString("en-US", {
-            hour: "2-digit",
-            minute: "2-digit",
-          });
-        });*/
+        setItinerary(
+          data.map((item) => ({
+            ...item,
+            dateDep: {
+              ...item.dateDep,
+              date: new Date(item.dateDep.date).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              }),
+            },
+          }))
+        );
+        console.log("ITINERARY DATA : ", data);
       })
       .catch(() => {
         setLoading(false);
       });
   };
+
+  console.log(users);
 
   const setfilter = () => {
     setSearch(null);
@@ -151,10 +154,11 @@ function Itinerary({ searchData }) {
             Object.values(itinerary).map((item) => (
               <Link
                 to={`/dashboard/itinerary/`}
-                onClick={() => setItineraryId(item.itineraryId)}
+                onClick={() => setItineraryId(item._id)}
                 className="bg-[#ffffff] shadow-xl rounded-lg mb-4 p-6 w-[60%] flex flex-col"
-                key={item.locStart + item.locEnd + item.dateDep}
+                key={item.locStart + item.locEnd}
               >
+                {console.log(item._id)}
                 <div className="flex w-full justify-between">
                   <ol className="relative border-s-4 h-[75px] border-teal-400">
                     <li className="mb-4 ms-6">
@@ -162,8 +166,8 @@ function Itinerary({ searchData }) {
                       <h3 className="font-medium leading-tight">
                         {item.locStart}
                       </h3>
-                      <p className="text-sm pl-4">{item.date}</p>
-                      <p className="text-sm pl-4">{item.time}</p>
+                      <p className="text-sm pl-4">{item.dateDep.date}</p>
+                      <p className="text-sm pl-4">{item.dateDep.time}</p>
                     </li>
                     <li className="ms-6 justify-between">
                       <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-white"></span>

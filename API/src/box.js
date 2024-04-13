@@ -13,8 +13,9 @@ async function Select(request, response) {
     return;
   }
 
-  if (typeof (request.body) != "object")
-      {  request.body = undefined;  }
+  if (typeof request.body != "object") {
+    request.body = undefined;
+  }
 
   room = request.params.table;
   floor = server.db(base);
@@ -22,7 +23,7 @@ async function Select(request, response) {
   found = stack.find(request.body);
   primary = await found.toArray();
   if (primary.length < 1) {
-    response.send ("Not found");
+    response.send("Not found");
     return;
   }
 
@@ -78,82 +79,78 @@ async function Insert(request, response) {
   planted = await room.insertOne(stack);
   response.send(planted);
 }
-async function Update(request, response)
-    {
-       var field, stack, floor,
-         update, filter, plant, room;
-       stack = request.body;
-       field = request.params.table;
-       filter = { "_id": new ObjectId (stack.id) };
-       update = { $set: stack.data };
+async function Update(request, response) {
+  var field, stack, floor, update, filter, plant, room;
+  stack = request.body;
+  field = request.params.table;
+  filter = { _id: new ObjectId(stack.id) };
+  update = { $set: stack.data };
 
-       if (server == null)
-           {
-              response.send ("Unreachable server");
-              return;
-            }
-       if (stack == undefined || field == undefined || stack.id == undefined || stack.data == undefined)
-           {
-              response.send ("Invalid input");
-              return;
-            }
+  if (server == null) {
+    response.send("Unreachable server");
+    return;
+  }
+  if (
+    stack == undefined ||
+    field == undefined ||
+    stack.id == undefined ||
+    stack.data == undefined
+  ) {
+    response.send("Invalid input");
+    return;
+  }
 
-       floor = server.db (base);
-       room = floor.collection (field);
-       plant = await room.updateOne (filter, update);
+  floor = server.db(base);
+  room = floor.collection(field);
+  plant = await room.updateOne(filter, update);
 
-       if (plant.acknowledged)
-           {  Select (request, response);  }
-       else
-           {  response.send ("Failed");  }
-     }
-async function Delete(request, response)
-    {
-       var field, stack,
-         remove, filter, floor, room;
-       stack = request.body;
-       field = request.params.table;
+  if (plant.acknowledged) {
+    Select(request, response);
+  } else {
+    response.send("Failed");
+  }
+}
+async function Delete(request, response) {
+  var field, stack, remove, filter, floor, room;
+  stack = request.body;
+  field = request.params.table;
 
-       if (server == null)
-           {
-              response.send ("Unreachable server");
-              return;
-            }
-       if (stack == undefined || field == undefined || stack.id == undefined)
-           {
-              response.send ("Invalid input");
-              return;
-            }
-       filter = { "_id": new ObjectId (stack.id) };
+  if (server == null) {
+    response.send("Unreachable server");
+    return;
+  }
+  if (stack == undefined || field == undefined || stack.id == undefined) {
+    response.send("Invalid input");
+    return;
+  }
+  filter = { _id: new ObjectId(stack.id) };
 
-       floor = server.db (base);
-       room = floor.collection (field);
-       remove = await room.deleteOne (filter);
+  floor = server.db(base);
+  room = floor.collection(field);
+  remove = await room.deleteOne(filter);
 
-       if (remove.acknowledged)
-           {  Select (request, response);  }
-       else
-           {  response.send ("Failed");  }
-     }
+  if (remove.acknowledged) {
+    Select(request, response);
+  } else {
+    response.send("Failed");
+  }
+}
 
-function Search(request, response)
-    {
-       var filter;
-       filter = request.body;
+function Search(request, response) {
+  var filter;
+  filter = request.body;
 
-       if (filter == undefined || filter == null)
-           {
-              Select (request, response);
-              return;
-            }
-       if (filter.id != undefined)
-           {
-              filter ["_id"] = new ObjectId (filter.id);
-              delete filter.id;
-            }
-       request.body = filter;
-       Select (request, response);
-     }
+  if (filter == undefined || filter == null) {
+    Select(request, response);
+    return;
+  }
+  if (filter.id != undefined) {
+    filter["_id"] = new ObjectId(filter.id);
+    delete filter.id;
+  }
+  request.body = filter;
+  Select(request, response);
+}
 
 function Connect() {
   if (path == null || path == undefined) {

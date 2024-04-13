@@ -12,6 +12,7 @@ import axiosClient from "../axios-client.js";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Course = () => {
   const navigate = useNavigate();
@@ -44,11 +45,10 @@ const Course = () => {
     car_num: "",
   });
 
-  console.log(course);
+  console.log(import.meta.env.VITE_API_OPENCAGE_GEOCODING_API_KEY_TOKEN);
 
-  const navigates = () => {
-    navigate(`/dashboard/itinerary`);
-  };
+  const [locationStart, setLocationStart] = useState("");
+  const [locationEnd, setLocationEnd] = useState("");
 
   const onSubmit = async (ev) => {
     ev.preventDefault();
@@ -59,8 +59,16 @@ const Course = () => {
 
     const payload = {
       idUsers: course.id_driver,
-      locStart: course.loc_start,
-      locEnd: course.loc_end,
+      locStart: {
+        name: course.loc_start,
+        latitude: locationStart.lat,
+        longitude: locationStart.lng,
+      },
+      locEnd: {
+        name: course.loc_end,
+        latitude: locationEnd.lat,
+        longitude: locationEnd.lng,
+      },
       cost: course.cost_one,
       dateDep: {
         date: course.date_start,
@@ -72,7 +80,7 @@ const Course = () => {
 
     console.log(payload);
 
-    try {
+    /*try {
       const response = await axiosClient.post("/add/courses", payload);
       setItineraryId(response.insertedId);
       navigate(`/dashboard/itinerary`);
@@ -82,7 +90,7 @@ const Course = () => {
       if (response && response.status === 422) {
         alert(response.data.message);
       }
-    }
+    }*/
   };
 
   function getMonthName(monthNumber) {

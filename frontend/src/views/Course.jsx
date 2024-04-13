@@ -47,7 +47,6 @@ const Course = () => {
 
   const [locationStart, setLocationStart] = useState("");
   const [locationEnd, setLocationEnd] = useState("");
-  M;
 
   const onSubmit = async (ev) => {
     ev.preventDefault();

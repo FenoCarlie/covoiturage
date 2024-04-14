@@ -14,8 +14,6 @@ export default function Header() {
 
   const [menu, setMenu] = useState(false);
 
-  console.log(user);
-
   const avatar = user.avatar.replace(/^data:image\/\w+;base64,/, "");
 
   const onLogout = (ev) => {

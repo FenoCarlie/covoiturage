@@ -99,7 +99,7 @@ const registerUser = async (req, res) => {
 
 app.get("/api/users", async (req, res) => {
   try {
-    const user = await User.find({});
+    const user = await Users.find({});
     console.log(user);
     res.status(200).send(user);
   } catch (error) {

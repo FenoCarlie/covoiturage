@@ -64,8 +64,8 @@ const Course = () => {
 
     try {
       const response = await axiosClient.post("/add/courses", payload);
-      setItineraryId(response);
-      navigate(`/dashboard/itinerary`);
+      //setItineraryId(response.insertedId);
+      //navigate(`/dashboard/itinerary`);
       console.log(response);
       setNotification("your course is added successfully");
     } catch (err) {

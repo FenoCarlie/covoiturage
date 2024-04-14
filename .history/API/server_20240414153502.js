@@ -100,7 +100,6 @@ const registerUser = async (req, res) => {
 app.get("/api/users", async (req, res) => {
   try {
     const user = await User.find({});
-    console.log(user);
     res.status(200).send(user);
   } catch (error) {
     console.error("Error while fetching users:", error);
@@ -175,23 +174,6 @@ app.get("/api/itinerary", async (req, res) => {
   } catch (error) {
     console.error("Error while fetching itinerary", error);
     res.status(500).send("Error while fetching itinerary.");
-  }
-});
-
-// Protected routes
-app.use(async (req, res, next) => {
-  const token = req.headers["x-auth"];
-
-  if (!token) {
-    return res.status(401).send({ msg: "No token provided." });
-  }
-
-  try {
-    const verifiedToken = jwt.verify(token, process.env.SECRET_KEY);
-    req.user = await User.findById(verifiedToken.id);
-    next();
-  } catch (e) {
-    res.status(401).send({ msg: "Invalid Token!" });
   }
 });
 

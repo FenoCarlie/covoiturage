@@ -95,7 +95,7 @@ const ReservationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const User = mongoose.model("users", userSchema);
+const User = mongoose.model(userSchema);
 const Course = mongoose.model("course", CourseSchema);
 const Reservation = mongoose.model("reservation", ReservationSchema);
 

@@ -100,7 +100,6 @@ const registerUser = async (req, res) => {
 app.get("/api/users", async (req, res) => {
   try {
     const user = await User.find({});
-    console.log(user);
     res.status(200).send(user);
   } catch (error) {
     console.error("Error while fetching users:", error);

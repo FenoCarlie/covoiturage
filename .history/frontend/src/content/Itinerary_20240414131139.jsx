@@ -10,7 +10,7 @@ function Itinerary({ searchData }) {
   const { setItineraryId, users } = useStateContext();
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState(null);
-  const [itinerary, setItinerary] = useState();
+  const [itinerary, setItinerary] = useState({});
 
   const options = {
     year: "numeric",
@@ -39,12 +39,14 @@ function Itinerary({ searchData }) {
             },
           }))
         );
+        console.log(itinerary);
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(() => {
         setLoading(false);
       });
   };
+
+  console.log(users);
 
   const setfilter = () => {
     setSearch(null);
@@ -149,20 +151,20 @@ function Itinerary({ searchData }) {
           {loading ? (
             <div>Loading...</div>
           ) : (
-            itinerary &&
-            itinerary.map((item) => (
+            Object.values(itinerary).map((item) => (
               <Link
-                onClick={() => setItineraryId(item._id)}
                 to={`/dashboard/itinerary/`}
+                onClick={() => setItineraryId(item._id)}
                 className="bg-[#ffffff] shadow-xl rounded-lg mb-4 p-6 w-[60%] flex flex-col"
-                key={item}
+                key={item.locStart + item.locEnd}
               >
+                {console.log(item._id)}
                 <div className="flex w-full justify-between">
                   <ol className="relative border-s-4 h-[75px] border-teal-400">
                     <li className="mb-4 ms-6">
                       <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
                       <h3 className="font-medium leading-tight">
-                        {item.locStart.name}
+                        {item.locStart}
                       </h3>
                       <p className="text-sm pl-4">{item.dateDep.date}</p>
                       <p className="text-sm pl-4">{item.dateDep.time}</p>
@@ -170,7 +172,7 @@ function Itinerary({ searchData }) {
                     <li className="ms-6 justify-between">
                       <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-white"></span>
                       <h3 className="font-medium leading-tight text-bold">
-                        {item.locEnd.name}
+                        {item.locEnd}
                       </h3>
                     </li>
                   </ol>

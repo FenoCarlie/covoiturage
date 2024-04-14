@@ -146,16 +146,16 @@ function Itinerary({ searchData }) {
           </div>
         </div>
         <div className="p-3 w-[60%] flex justify-star items-center flex-col overflow-y-auto">
+          onClick={() => setItineraryId(item._id)}
           {loading ? (
             <div>Loading...</div>
           ) : (
             itinerary &&
             itinerary.map((item) => (
               <Link
-                onClick={() => setItineraryId(item._id)}
-                to={`/dashboard/itinerary/`}
+                to={`/dashboard/itinerary/${item._id}`}
                 className="bg-[#ffffff] shadow-xl rounded-lg mb-4 p-6 w-[60%] flex flex-col"
-                key={item}
+                key={item.locStart.name + item.locEnd.name}
               >
                 <div className="flex w-full justify-between">
                   <ol className="relative border-s-4 h-[75px] border-teal-400">

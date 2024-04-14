@@ -3,13 +3,12 @@ require("dotenv").config();
 const opencage = require("opencage-api-client");
 
 var path, base;
-path = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/?authMechanism=DEFAULT`;
-//path = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}?retryWrites=true&w=majority`;
-base = "test";
+path = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}?retryWrites=true&w=majority`;
+base = "covoiturage";
 server = Connect();
 
 async function Select(request, response) {
-  var primary, member, room, floor, nested, stable, stack, found;
+  var primary, room, floor, nested, stable, stack, found;
   if (server == null) {
     response.send("server not response error");
     return;
@@ -28,12 +27,6 @@ async function Select(request, response) {
     response.send("Not found");
     return;
   }
-  for (member in primary)
-       {
-          if (isNaN (member))
-              {  continue;  }
-          delete primary [member].password;
-        }
 
   nested = await GetNestedCollections(primary[0]);
   for (stable in nested) {
@@ -44,7 +37,6 @@ async function Select(request, response) {
       filter = { _id: new ObjectId(primary[slot][joined.from]) };
       land = floor.collection(joined.to);
       water = await land.findOne(filter);
-      delete water.password;
       primary[slot][joined.to] = water;
     }
   }
@@ -111,8 +103,7 @@ async function Insert(request, response) {
   planted = await room.insertOne(stack);
 
   request.body = undefined;
-  response.send(planted.insertedId);
-  //Select(request, response);
+  Select(request, response);
 
   async function FixLocation(location = null) {
     if (location == null) {

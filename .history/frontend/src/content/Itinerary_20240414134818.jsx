@@ -155,7 +155,7 @@ function Itinerary({ searchData }) {
                 onClick={() => setItineraryId(item._id)}
                 to={`/dashboard/itinerary/`}
                 className="bg-[#ffffff] shadow-xl rounded-lg mb-4 p-6 w-[60%] flex flex-col"
-                key={item}
+                key={item.locStart.name + item.locEnd.name}
               >
                 <div className="flex w-full justify-between">
                   <ol className="relative border-s-4 h-[75px] border-teal-400">

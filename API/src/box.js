@@ -74,14 +74,56 @@ async function Insert(request, response) {
     return;
   }
 
+  if (field == "reservations")
+      {
+         sweep = { "params": {}, "body": {} };
+         sweep.params.table = "courses";
+         nested = await Find (sweep.params.table, { "id": stack.idCourses });
+         if (nested.carPlace != undefined && nested.seats == undefined)
+             {
+                nested.seats = nested.carPlace;
+                delete nested.carPlace;
+                sweep.body.remove = { "carPlace": "" };
+              }
+         if (nested.seats < stack.seats)
+             {
+                response.send ("{ left: " + nested.seats + " }");
+                return;
+              }
+         nested.seats -= stack.seats;
+         sweep.body.id = nested._id.toString ();
+         sweep.body.data = nested;
+         delete sweep.body.data._id;
+         Update (sweep);
+       }
+  else if (field == "courses")
+      {
+         request.body.locStart = await FixLocation (request.body.locStart);
+         request.body.locEnd = await FixLocation (request.body.locEnd);
+       }
+
   floor = server.db(base);
   room = floor.collection(field);
   planted = await room.insertOne(stack);
 
   request.body = undefined;
   Select (request, response);
+
+  async function FixLocation (location = null)
+      {
+         if (location == null)
+             {  return;  }
+
+         location = { "name": location };
+         location.result = opencage.geocode ({ q: location.name });
+         location.result = await Promise.resolve (location.result);
+         location.result = location.result.results;
+         location.coord = location.result [0].geometry;
+         delete location.result;
+         return (location);
+       }
 }
-async function Update(request, response) {
+async function Update(request, response = null) {
   var field, stack, floor, update, filter, plant, room;
   stack = request.body;
   field = request.params.table;
@@ -89,7 +131,8 @@ async function Update(request, response) {
   update = { $set: stack.data };
 
   if (server == null) {
-    response.send("Unreachable server");
+    if (response != null)
+        {  response.send("Unreachable server");  }
     return;
   }
   if (
@@ -98,13 +141,17 @@ async function Update(request, response) {
     stack.id == undefined ||
     stack.data == undefined
   ) {
-    response.send("Invalid input");
+    if (response != null)
+        {  response.send("Invalid input");  }
     return;
   }
 
   floor = server.db(base);
   room = floor.collection(field);
   plant = await room.updateOne(filter, update);
+
+  if (response == null)
+      {  return;  }
 
   if (plant.acknowledged) {
     Select(request, response);

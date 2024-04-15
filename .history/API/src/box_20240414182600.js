@@ -44,6 +44,7 @@ async function Select(request, response) {
       filter = { _id: new ObjectId(primary[slot][joined.from]) };
       land = floor.collection(joined.to);
       water = await land.findOne(filter);
+      console.log(filter, water);
       if (water == null) {
         continue;
       }

@@ -1,6 +1,5 @@
 import { useStateContext } from "../context/ContextProvider";
 import "react-datepicker/dist/react-datepicker.css";
-import { FaMapMarkedAlt } from "react-icons/fa";
 import axiosClient from "../axios-client";
 import { useEffect, useState } from "react";
 import { CiMail, CiPhone } from "react-icons/ci";
@@ -172,27 +171,21 @@ function ItineraryInfo() {
               <h1 className="font-bold text-myColor text-2xl mb-[60px]">
                 {date}
               </h1>
-              <div className="mb-16 w-[45%]">
+              <div className="mb-16">
                 <div className="flex w-full justify-between">
-                  <ol className="relative w-full border-s-4 h-[90px] border-teal-400">
+                  <ol className="relative bg-[#919191] border-s-4 h-[90px] border-teal-400">
                     <li className="mb-10 ms-6">
                       <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
-                      <span className="flex w-full justify-between">
-                        <h2 className="font-medium leading-tight">
-                          {itinerary.locStart?.name}
-                        </h2>
-                        <FaMapMarkedAlt className="w-6 h-6" />
-                      </span>
+                      <h3 className="font-medium leading-tight">
+                        {itinerary.locStart?.name}
+                      </h3>
                       <p className="text-sm pl-4">{itinerary.dateDep?.time}</p>
                     </li>
-                    <li className="ms-6">
+                    <li className="ms-6 justify-between">
                       <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
-                      <span className="flex w-full justify-between">
-                        <h2 className="font-medium leading-tight">
-                          {itinerary.locEnd?.name}
-                        </h2>
-                        <FaMapMarkedAlt className="w-6 h-6" />
-                      </span>
+                      <h3 className="font-medium leading-tight text-bold">
+                        {itinerary.locEnd?.name}
+                      </h3>
                       <p className="text-sm pl-4">06 : 00 a.m.</p>
                     </li>
                   </ol>

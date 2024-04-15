@@ -41,12 +41,15 @@ async function Select(request, response) {
     joined = nested[stable];
     for (slot in primary) {
       var land, water, filter;
-      filter = { _id: new ObjectId(primary[slot][joined.from]) };
+      filter = { _id: primary[slot][joined.from] };
+      filter._id = new ObjectId(filter._id);
       land = floor.collection(joined.to);
       water = await land.findOne(filter);
+      console.log(filter, water);
       if (water == null) {
         continue;
       }
+      console.log("on we go");
       delete water.password;
       primary[slot][joined.to] = water;
     }

@@ -47,6 +47,7 @@ async function Select(request, response) {
       if (water == null) {
         continue;
       }
+      console.log("on we go");
       delete water.password;
       primary[slot][joined.to] = water;
     }

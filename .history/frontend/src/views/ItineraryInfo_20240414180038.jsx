@@ -1,6 +1,5 @@
 import { useStateContext } from "../context/ContextProvider";
 import "react-datepicker/dist/react-datepicker.css";
-import { FaMapMarkedAlt } from "react-icons/fa";
 import axiosClient from "../axios-client";
 import { useEffect, useState } from "react";
 import { CiMail, CiPhone } from "react-icons/ci";
@@ -138,7 +137,7 @@ function ItineraryInfo() {
         ) : (
           <>
             <section className="w-[30%] h-full p-4">
-              <div className="p-3 mb-8 flex w-full border rounded-lg shadow-2xl">
+              <div className="p-3 flex w-full border rounded-lg shadow-2xl">
                 <div className="flex w-full">
                   <div
                     className={`mr-6 relative w-[45%] h-60 overflow-hidden bg-cover rounded-lg bg-center bg-no-repeat`}
@@ -166,44 +165,37 @@ function ItineraryInfo() {
                   </div>
                 </div>
               </div>
-              <div className="w-full bg-slate-400 h-[60%]">map</div>
             </section>
             <section className="w-[70%] flex flex-col items-center h-full p-4">
               <h1 className="font-bold text-myColor text-2xl mb-[60px]">
                 {date}
               </h1>
-              <div className="mb-16 w-[45%]">
+              <div className="mb-16">
                 <div className="flex w-full justify-between">
-                  <ol className="relative w-full border-s-4 h-[90px] border-teal-400">
+                  <ol className="relative border-s-4 h-[90px] border-teal-400">
                     <li className="mb-10 ms-6">
                       <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
-                      <span className="flex w-full justify-between">
-                        <h2 className="font-medium leading-tight">
-                          {itinerary.locStart?.name}
-                        </h2>
-                        <FaMapMarkedAlt className="w-6 h-6" />
-                      </span>
+                      <h3 className="font-medium leading-tight">
+                        {itinerary.locStart?.name}
+                      </h3>
                       <p className="text-sm pl-4">{itinerary.dateDep?.time}</p>
                     </li>
-                    <li className="ms-6">
+                    <li className="ms-6 justify-between">
                       <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
-                      <span className="flex w-full justify-between">
-                        <h2 className="font-medium leading-tight">
-                          {itinerary.locEnd?.name}
-                        </h2>
-                        <FaMapMarkedAlt className="w-6 h-6" />
-                      </span>
+                      <h3 className="font-medium leading-tight text-bold">
+                        {itinerary.locEnd?.name}
+                      </h3>
                       <p className="text-sm pl-4">06 : 00 a.m.</p>
                     </li>
                   </ol>
                 </div>
               </div>
-              <p className="h-1 mb-8 w-[50%] rounded-lg bg-[#c9c9c96e] text-sm"></p>
-              <div className="flex mb-8 justify-between w-[30%]">
-                <span>Price for one persone</span>
+              <p className="h-2 mb-6 w-[50%] rounded-lg bg-[#c9c9c96e] text-sm"></p>
+              <div className="flex mb-6 justify-between w-[30%]">
+                <span>price for one persone</span>
                 <h2>{itinerary?.cost}</h2>
               </div>
-              <p className="h-1 mb-8 w-[50%] rounded-lg bg-[#c9c9c96e] text-sm"></p>
+              <p className="h-2 mb-8 w-[50%] rounded-lg bg-[#c9c9c96e] text-sm"></p>
             </section>
           </>
         )}

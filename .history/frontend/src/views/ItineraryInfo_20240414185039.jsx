@@ -172,26 +172,26 @@ function ItineraryInfo() {
               <h1 className="font-bold text-myColor text-2xl mb-[60px]">
                 {date}
               </h1>
-              <div className="mb-16 w-[45%]">
+              <div className="mb-16">
                 <div className="flex w-full justify-between">
                   <ol className="relative w-full border-s-4 h-[90px] border-teal-400">
                     <li className="mb-10 ms-6">
                       <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
-                      <span className="flex w-full justify-between">
+                      <span className="flex w-full">
                         <h2 className="font-medium leading-tight">
                           {itinerary.locStart?.name}
                         </h2>
-                        <FaMapMarkedAlt className="w-6 h-6" />
+                        <FaMapMarkedAlt />
                       </span>
                       <p className="text-sm pl-4">{itinerary.dateDep?.time}</p>
                     </li>
                     <li className="ms-6">
                       <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
-                      <span className="flex w-full justify-between">
+                      <span className="flex w-full">
                         <h2 className="font-medium leading-tight">
                           {itinerary.locEnd?.name}
                         </h2>
-                        <FaMapMarkedAlt className="w-6 h-6" />
+                        <FaMapMarkedAlt />
                       </span>
                       <p className="text-sm pl-4">06 : 00 a.m.</p>
                     </li>

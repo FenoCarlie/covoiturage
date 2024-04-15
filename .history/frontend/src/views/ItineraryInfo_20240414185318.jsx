@@ -181,7 +181,7 @@ function ItineraryInfo() {
                         <h2 className="font-medium leading-tight">
                           {itinerary.locStart?.name}
                         </h2>
-                        <FaMapMarkedAlt className="w-6 h-6" />
+                        <FaMapMarkedAlt />
                       </span>
                       <p className="text-sm pl-4">{itinerary.dateDep?.time}</p>
                     </li>
@@ -191,7 +191,7 @@ function ItineraryInfo() {
                         <h2 className="font-medium leading-tight">
                           {itinerary.locEnd?.name}
                         </h2>
-                        <FaMapMarkedAlt className="w-6 h-6" />
+                        <FaMapMarkedAlt />
                       </span>
                       <p className="text-sm pl-4">06 : 00 a.m.</p>
                     </li>

@@ -5,7 +5,7 @@ const opencage = require("opencage-api-client");
 var path, base;
 path = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/?authMechanism=DEFAULT`;
 //path = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}?retryWrites=true&w=majority`;
-base = "test";
+base = "covoiturage";
 server = Connect();
 
 async function Select(request, response) {
@@ -44,6 +44,7 @@ async function Select(request, response) {
       filter = { _id: new ObjectId(primary[slot][joined.from]) };
       land = floor.collection(joined.to);
       water = await land.findOne(filter);
+      console.log(filter, water);
       if (water == null) {
         continue;
       }

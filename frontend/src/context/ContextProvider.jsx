@@ -8,6 +8,8 @@ const StateContext = createContext({
   setItineraryId: () => {},
   setToken: () => {},
   setNotification: () => {},
+  setAlert: () => {},
+  setError: () => {},
 });
 
 export const ContextProvider = ({ children }) => {
@@ -19,6 +21,8 @@ export const ContextProvider = ({ children }) => {
     localStorage.getItem("ITINERARY_ID")
   );
   const [notification, _setNotification] = useState("");
+  const [alert, _setAlert] = useState("");
+  const [error, _setError] = useState("");
 
   const setToken = (token) => {
     _setToken(token);
@@ -54,6 +58,20 @@ export const ContextProvider = ({ children }) => {
     }, 5000);
   };
 
+  const setAlert = (message) => {
+    _setAlert(message);
+    setTimeout(() => {
+      _setAlert("");
+    }, 5000);
+  };
+
+  const setError = (message) => {
+    _setError(message);
+    setTimeout(() => {
+      _setError("");
+    }, 5000);
+  };
+
   return (
     <StateContext.Provider
       value={{
@@ -65,6 +83,10 @@ export const ContextProvider = ({ children }) => {
         setToken,
         notification,
         setNotification,
+        alert,
+        setAlert,
+        error,
+        setError,
       }}
     >
       {children}

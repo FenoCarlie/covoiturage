@@ -190,7 +190,9 @@ function Itinerary({ searchData }) {
                   </div>
                   <div className="flex mb-2 relative items-center">
                     <BsPersonPlusFill className="h-6 w-6 mr-6" />
-                    <span>{item.carPlace} Place</span>
+                    <span>
+                      {item.seats} {item.seats === 1 ? "seat" : "seats"}
+                    </span>
                   </div>
                 </div>
               </Link>

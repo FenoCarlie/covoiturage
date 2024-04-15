@@ -1,52 +1,27 @@
-import React, { useEffect, useRef, useState } from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-
-import axios from "axios";
+import "@tomtom-international/web-sdk-maps/dist/maps.css";
+import * as tt from "@tomtom-international/web-sdk-maps";
+import { useEffect, useRef, useState } from "react";
 
 function Map() {
-  const mapRef = useRef(null);
-  const [address, setAddress] = useState("");
-  const [location, setLocation] = useState(null);
+  const mapElement = useRef();
+  const latitude = -18.1425919;
+  const longitude = 49.3927745;
+  const apiKey = import.meta.env.VITE_APP_TOMTOM_API_KEY;
 
-  const geocode = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.opencagedata.com/geocode/v1/json?q=${address}&key=b44772c85f8048ccb87cc4c7805b7a16`
-      );
-      setLocation(response.data.results[0].geometry);
-    } catch (error) {
-      console.error("Error fetching data: ", error);
-    }
-  };
+  /*useEffect(() => {
+    const map = tt.map({
+      key: apiKey,
+      container: mapElement.current,
+      style: "tomtom://vector/1/basic-main",
+      center: [longitude, latitude],
+      zoom: 10,
+    });
+    return () => map.remove();
+  }, [apiKey, longitude, latitude]);*/
 
   return (
     <>
-      {/*<MapContainer
-        center={[location.lat, location.lng]}
-        zoom={13}
-        ref={mapRef}
-        style={{ height: "100vh", width: "100vw" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-      </MapContainer>*/}
-      <div>
-        <input
-          type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-        <button onClick={geocode}>Geocode</button>
-        {location && (
-          <div>
-            <p>Latitude: {location.lat}</p>
-            <p>Longitude: {location.lng}</p>
-          </div>
-        )}
-      </div>
+      <div ref={mapElement} style={{ width: "100%", height: "100%" }}></div>
     </>
   );
 }

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+/*const mongoose = require("mongoose");
 require("dotenv").config();
 
 const Url = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/?authMechanism=DEFAULT`;
@@ -99,4 +99,4 @@ const User = mongoose.model("users", userSchema);
 const Course = mongoose.model("course", CourseSchema);
 const Reservation = mongoose.model("reservation", ReservationSchema);
 
-module.exports = { User, Course, Reservation };
+module.exports = { User, Course, Reservation };*/

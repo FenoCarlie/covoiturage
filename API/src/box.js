@@ -1,11 +1,12 @@
 const { MongoClient, ObjectId } = require("mongodb");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 require("dotenv").config();
 const opencage = require("opencage-api-client");
 
 var path, base;
-path = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}/?authMechanism=DEFAULT`;
-//path = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}?retryWrites=true&w=majority`;
-base = "test";
+path = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}?authMechanism=DEFAULT`;
+base = process.env.DB_NAME;
 server = Connect();
 
 async function Select(request, response) {
@@ -74,15 +75,16 @@ async function Select(request, response) {
   }
 }
 async function Insert(request, response) {
-  var field, stack, planted, floor, room;
+  var tokenize, field, stack, nested, planted, floor, room, sweep;
   stack = request.body;
   field = request.params.table;
+
   if (server == null) {
-    response.send("server not response error");
+    response.send("Unreachable server");
     return;
   }
   if (stack == undefined || field == undefined || typeof stack != "object") {
-    response.send("amia data eeeee!");
+    response.send("Bad input");
     return;
   }
 
@@ -108,14 +110,34 @@ async function Insert(request, response) {
     request.body.locStart = await FixLocation(request.body.locStart);
     request.body.locEnd = await FixLocation(request.body.locEnd);
   }
+  if (stack.password != undefined) {
+    let duplicate, sign;
+    sign = { email: stack.email };
+    duplicate = await Find(field, sign);
+    if (duplicate != null) {
+      response.send("Duplicate");
+      return;
+    }
+    stack.password = await bcrypt.hash(stack.password, 10);
+    tokenize = true;
+  }
 
   floor = server.db(base);
   room = floor.collection(field);
   planted = await room.insertOne(stack);
 
   request.body = undefined;
-  response.send(planted.insertedId);
-  //Select(request, response);
+  if (tokenize) {
+    let token;
+    token = jwt.sign({ id: planted.insertedId }, process.env.SECRET_KEY, {
+      expiresIn: "7d",
+    });
+    response.send(token);
+  } else {
+    field === "reservations"
+      ? response.send("Reservation successfully")
+      : console.log(Select(request, response));
+  }
 
   async function FixLocation(location = null) {
     if (location == null) {
@@ -125,7 +147,7 @@ async function Insert(request, response) {
     location = { name: location };
     location.result = opencage.geocode({
       q: location.name,
-      key: "44528d1f7adc48259362a60e9f4f0054",
+      key: process.env.OPENCAGE_API_KEY,
     });
     location.result = await Promise.resolve(location.result);
     location.result = location.result.results;
@@ -134,6 +156,20 @@ async function Insert(request, response) {
     return location;
   }
 }
+
+async function Logout(request, response) {
+  try {
+    // Clear the token from the client's storage
+    response.clearCookie("token");
+
+    // Send a success message
+    response.status(200).json({ message: "Logout successful" });
+  } catch (error) {
+    console.log("Logout Error: ", error);
+    response.status(500).send("Server error");
+  }
+}
+
 async function Update(request, response = null) {
   var field, stack, floor, update, filter, plant, room;
   stack = request.body;
@@ -205,10 +241,58 @@ async function Delete(request, response) {
   remove = await room.deleteOne(filter);
 
   if (remove.acknowledged) {
+    request.body = undefined;
     Select(request, response);
   } else {
     response.send("Failed");
   }
+}
+async function Login(request, response) {
+  var matched, sample, credential, table, filter, status;
+  credential = request.body;
+  table = request.params.table;
+  if (table == undefined || credential == undefined) {
+    response.send("Invalid input");
+    return;
+  }
+
+  filter = { email: credential.email };
+  sample = await Find(table, filter);
+  if (sample == null) {
+    response.send("Mail");
+    return;
+  }
+  matched = await bcrypt.compare(credential.password, sample.password);
+  if (matched) {
+    status = {};
+    status.token = jwt.sign({ id: sample._id }, process.env.SECRET_KEY, {
+      expiresIn: "7d",
+    });
+    delete sample.password;
+    status.user = sample;
+  } else {
+    status = "password";
+  }
+  response.send(status);
+}
+
+async function Find(table, filter) {
+  if (
+    table == undefined ||
+    (filter != undefined && typeof filter != "object")
+  ) {
+    return;
+  }
+
+  var collected, hay, stack;
+  stack = server.db(base);
+  hay = stack.collection(table);
+  if (filter.id != undefined) {
+    filter["_id"] = new ObjectId(filter.id);
+    delete filter.id;
+  }
+  collected = await hay.findOne(filter);
+  return collected;
 }
 
 function Search(request, response) {
@@ -235,6 +319,7 @@ function Connect() {
   var link = new MongoClient(path);
   try {
     link.connect();
+    console.log("Connected to database successfully");
     return link;
   } catch (report) {
     console.log(report);
@@ -242,4 +327,4 @@ function Connect() {
   }
 }
 
-module.exports = { Select, Insert, Update, Delete, Search };
+module.exports = { Select, Insert, Update, Delete, Search, Login, Logout };

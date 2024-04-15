@@ -18,13 +18,9 @@ export default function Header() {
 
   const avatar = user.avatar.replace(/^data:image\/\w+;base64,/, "");
 
-  const onLogout = (ev) => {
-    ev.preventDefault();
-
-    axiosClient.post("/logout").then(() => {
-      setUser({});
-      setToken(null);
-    });
+  const onLogout = () => {
+    setUser({});
+    setToken(null);
   };
 
   const handleMenu = () => {

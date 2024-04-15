@@ -56,7 +56,7 @@ const Course = () => {
         date: course.date_start,
         time: time_start,
       },
-      carPlace: course.car_place,
+      seats: course.car_place,
       carNumber: course.car_num,
     };
 

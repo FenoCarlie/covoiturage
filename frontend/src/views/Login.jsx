@@ -21,7 +21,7 @@ export default function Login() {
     };
 
     try {
-      const response = await axiosClient.post("/login", payload);
+      const response = await axiosClient.post("/login/users", payload);
       setToken(response.data.token);
       setUser(response.data.user);
       setNotification("welcome back");

@@ -13,6 +13,7 @@ const {
   Search,
   Login,
   Logout,
+  SearchIti,
 } = require("./src/box.js");
 
 const app = express();
@@ -27,8 +28,10 @@ app.delete("/api/delete/:table", Delete);
 app.post("/api/login/:table", Login);
 app.post("/api/search/:table", Search);
 app.post("/api/logout", Logout);
+app.post("/api/searchiti/:table", SearchIti);
 
 const port = process.env.PORT || 7000; // Use environment variable for port
+const host = `192.168.3.112`;
 app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });

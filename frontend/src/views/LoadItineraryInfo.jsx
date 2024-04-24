@@ -23,22 +23,24 @@ function LoadItineraryInfo() {
       </section>
       <section className="w-[70%] flex flex-col items-center h-full p-4 animate-pulse">
         <div className="mt-4 h-8 w-[15%] rounded-lg bg-slate-400 text-sm mb-[60px]"></div>
-        <div className="">
+        <div className="w-[45%]">
           <div className="flex w-full justify-between">
-            <ol className="relative border-s-4 h-[90px] border-teal-400">
+            <ol className="relative w-full border-s-4 h-[90px] border-teal-400">
               <li className="mb-10 ms-6">
                 <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
-                <div className="mt-4 h-6 w-[75%] rounded-lg bg-slate-400 text-sm"></div>
-                <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
+                <span className="flex w-full justify-between">
+                  <div className="h-6 w-[75%] rounded-lg bg-slate-400 text-sm"></div>
+                </span>
+                <div className="ml-4 mt-2 h-4 w-[40%] rounded-lg bg-slate-400 text-sm"></div>
               </li>
               <li className="ms-6 justify-between">
                 <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
                 <div className="mt-4 h-6 w-[75%] rounded-lg bg-slate-400 text-sm"></div>
-                <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
               </li>
             </ol>
           </div>
         </div>
+        <p className="h-1 mt-16 mb-8 w-[50%] rounded-lg bg-[#c9c9c96e] text-sm"></p>
       </section>
     </>
   );

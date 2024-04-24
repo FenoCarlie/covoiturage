@@ -3,14 +3,16 @@ import axiosClient from "../axios-client";
 import { Link } from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
 import { BsPersonPlusFill } from "react-icons/bs";
+import { FaRegFileAlt } from "react-icons/fa";
 import { IoMdTime } from "react-icons/io";
 import { GrMoney } from "react-icons/gr";
 
 function Itinerary({ searchData }) {
   const { setItineraryId, users } = useStateContext();
   const [loading, setLoading] = useState(false);
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState({});
   const [itinerary, setItinerary] = useState();
+  const [filter, setFilter] = useState("all");
 
   const options = {
     year: "numeric",
@@ -18,6 +20,39 @@ function Itinerary({ searchData }) {
     day: "numeric",
     hour: "2-digit",
     minute: "2-digit",
+  };
+
+  const searchItinerary = (options) => {
+    setLoading(true);
+
+    const payload = {
+      "locStart.name": options.from,
+      "locEnd.name": options.to,
+      seats: parseInt(options.passengers),
+    };
+
+    axiosClient
+      .post("/searchiti/courses", payload)
+      .then(({ data }) => {
+        setLoading(false);
+        setItinerary(
+          data.map((item) => ({
+            ...item,
+            dateDep: {
+              ...item.dateDep,
+              date: new Date(item.dateDep.date).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              }),
+            },
+          }))
+        );
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
   };
 
   const getItinerary = () => {
@@ -52,11 +87,28 @@ function Itinerary({ searchData }) {
   };
 
   useEffect(() => {
-    if (searchData) {
-      setSearch(searchData);
+    if (searchData === null) {
+      getItinerary();
+    } else {
+      searchItinerary(searchData);
+      setItinerary("");
     }
-    getItinerary();
   }, [searchData]);
+
+  const handleFilterChange = (e) => {
+    setFilter(e.target.id);
+  };
+
+  const filteredItineraries = itinerary?.sort((a, b) => {
+    if (filter === "all") {
+      return itinerary;
+    } else if (filter === "departure") {
+      return new Date(a.dateDep.date) - new Date(b.dateDep.date);
+    } else if (filter === "price") {
+      return parseFloat(a.cost) - parseFloat(a.cost);
+    }
+    return 0;
+  });
 
   return (
     <>
@@ -64,10 +116,25 @@ function Itinerary({ searchData }) {
         <div className="p-6 w-[40%] flex">
           <div className="flex flex-col items-center relative transition-all duration-[450ms] ease-in-out w-[50%]">
             <h1 className="mb-6 font-bold text-xl">Sort by</h1>
-            <article className=" rounded-lg  bg-white border-w-full ease-in-out duration p-6 left-0 inline-block">
+            <article className=" rounded-lg bg-white border-w-full ease-in-out duration p-6 left-0 inline-block">
+              <label
+                htmlFor="all"
+                className="hover:shadow-lg mb-3 has-[:checked]:shadow-lg relative w-full h-14 p-4 ease-in-out duration-300 border-solid border-teal-400 has-[:checked]:border group flex flex-row gap-3 items-center justify-start rounded-xl"
+              >
+                <FaRegFileAlt className="h-7 w-7 " />
+                <span className="mr-6">All itinerary</span>
+                <input
+                  className="hidden peer/expand"
+                  type="radio"
+                  name="path"
+                  id="all"
+                  checked={filter === "all"}
+                  onChange={handleFilterChange}
+                />
+              </label>
               <label
                 htmlFor="departure"
-                className="hover:shadow-lg  mb-3 has-[:checked]:shadow-lg relative w-full h-14 p-4 ease-in-out duration-300 border-solid border-teal-400 has-[:checked]:border group flex flex-row gap-3 items-center justify-start text-black rounded-xl"
+                className="hover:shadow-lg mb-3 has-[:checked]:shadow-lg relative w-full h-14 p-4 ease-in-out duration-300 border-solid border-teal-400 has-[:checked]:border group flex flex-row gap-3 items-center justify-start rounded-xl"
               >
                 <IoMdTime className="h-7 w-7 " />
                 <span className="mr-6">Earliest possible departure</span>
@@ -76,11 +143,13 @@ function Itinerary({ searchData }) {
                   type="radio"
                   name="path"
                   id="departure"
+                  checked={filter === "departure"}
+                  onChange={handleFilterChange}
                 />
               </label>
               <label
                 htmlFor="price"
-                className="hover:shadow-lg justify-start has-[:checked]:shadow-lg relative w-full h-14 p-4 ease-in-out duration-300 border-solid border-teal-400 has-[:checked]:border group flex flex-row gap-3 items-center text-black rounded-xl"
+                className="hover:shadow-lg justify-start has-[:checked]:shadow-lg relative w-full h-14 p-4 ease-in-out duration-300 border-solid border-teal-400 has-[:checked]:border group flex flex-row gap-3 items-center rounded-xl"
               >
                 <GrMoney className="h-7 w-7" />
                 <span className="mr-6">Lowest price</span>
@@ -89,73 +158,24 @@ function Itinerary({ searchData }) {
                   type="radio"
                   name="path"
                   id="price"
+                  checked={filter === "price"}
+                  onChange={handleFilterChange}
                 />
               </label>
             </article>
           </div>
-          <div className="w-[50%] flex flex-col items-center">
-            <h1 className="mb-6 font-bold text-xl">Departure time</h1>
-            <section className="flex flex-col">
-              <ul className=" rounded-lg w-[350px] flex flex-col bg-white border-w-full ease-in-out duration p-6 left-0">
-                <li className="w-full mb-3 flex justify-between border-gray-200 rounded-t-lg">
-                  <label htmlFor="06:00 a.m." className="text-gray-900">
-                    Before 06:00 a.m.
-                  </label>
-                  <input
-                    id="06:00 a.m."
-                    type="checkbox"
-                    value=""
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-                  />
-                </li>
-                <li className="w-full mb-3 flex justify-between border-gray-200 rounded-t-lg ">
-                  <label htmlFor="06:00 - 12:00" className="text-gray-900">
-                    06:00 a.m. - 12:00
-                  </label>
-                  <input
-                    id="06:00 - 12:00"
-                    type="checkbox"
-                    value=""
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-                  />
-                </li>
-                <li className="w-full mb-3 flex justify-between border-gray-200 rounded-t-lg ">
-                  <label htmlFor="12:01 - 06:00 p.m." className="text-gray-900">
-                    12:01 - 06:00 p.m.
-                  </label>
-                  <input
-                    id="12:01 - 06:00 p.m."
-                    type="checkbox"
-                    value=""
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-                  />
-                </li>
-                <li className="w-full flex justify-between border-gray-200 rounded-t-lg ">
-                  <label htmlFor="After 6:00 p.m." className="text-gray-900">
-                    After 6:00 p.m.
-                  </label>
-                  <input
-                    id="After 6:00 p.m."
-                    type="checkbox"
-                    value=""
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
-                  />
-                </li>
-              </ul>
-            </section>
-          </div>
         </div>
-        <div className="p-3 w-[60%] flex justify-star items-center flex-col overflow-y-auto">
+        <div className="p-3 w-[70%] flex justify-star items-center flex-col overflow-y-auto">
           {loading ? (
             <div>Loading...</div>
           ) : (
-            itinerary &&
-            itinerary.map((item) => (
+            filteredItineraries &&
+            filteredItineraries.map((item) => (
               <Link
                 onClick={() => setItineraryId(item._id)}
                 to={`/dashboard/itinerary/`}
                 className="bg-[#ffffff] shadow-xl rounded-lg mb-4 p-6 w-[60%] flex flex-col"
-                key={item}
+                key={item._id}
               >
                 <div className="flex w-full justify-between">
                   <ol className="relative border-s-4 h-[75px] border-teal-400">

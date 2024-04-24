@@ -7,11 +7,14 @@ import { CiMail, CiPhone } from "react-icons/ci";
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import { IoCarSportOutline } from "react-icons/io5";
 import { RxPerson } from "react-icons/rx";
-import Map from "./Map";
+import MapPage from "./Map";
 import LoadItineraryInfo from "./LoadItineraryInfo";
+import OpenLayersMap from "./MapTest";
+import { useNavigate } from "react-router-dom";
 
 function ItineraryInfo() {
-  const { itineraryId, user, setNotification, setError, setAlert } =
+  const navigate = useNavigate();
+  const { itineraryId, token, user, setNotification, setError, setAlert } =
     useStateContext();
   const [loading, setLoading] = useState(false);
   const [itinerary, setItinerary] = useState({});
@@ -45,10 +48,11 @@ function ItineraryInfo() {
     }
   };
 
-  const getPassengers = (_id) => {
+  const getPassengers = () => {
     setLoading(true);
+
     axiosClient
-      .post("/search/reservations", { idCourses: _id })
+      .post("/search/reservations", { idCourses: itineraryId })
       .then((res) => {
         setPassengers(res.data);
         setLoading(false);
@@ -81,22 +85,27 @@ function ItineraryInfo() {
       });
   };
 
-  const onSubmit = async (ev) => {
-    const payload = {
-      idCourses: reservation.idCourse,
-      idUsers: reservation.idResevation,
-      seats: reservation.car_place,
-    };
+  const onSubmit = async () => {
+    if (!token) {
+      navigate("/login");
+      return;
+    } else {
+      const payload = {
+        idCourses: reservation.idCourse,
+        idUsers: reservation.idResevation,
+        seats: reservation.car_place,
+      };
 
-    try {
-      const response = await axiosClient.post("/add/reservations", payload);
-      getItinerary();
-      getPassengers();
-      setNotification(response.data);
-    } catch (error) {
-      const response = error.response;
-      if (response && response.status === 422) {
-        alert(response.data.message);
+      try {
+        const response = await axiosClient.post("/add/reservations", payload);
+        getItinerary();
+        getPassengers();
+        setNotification(response.data);
+      } catch (error) {
+        const response = error.response;
+        if (response && response.status === 422) {
+          alert(response.data.message);
+        }
       }
     }
   };
@@ -111,7 +120,7 @@ function ItineraryInfo() {
   useEffect(() => {
     if (itineraryId) {
       getItinerary();
-      getPassengers(itineraryId);
+      getPassengers();
     }
   }, [itineraryId]);
 
@@ -175,7 +184,18 @@ function ItineraryInfo() {
                 </div>
               </div>
               <div className="w-full bg-slate-400 h-[60%]">
-                <Map />
+                {
+                  <MapPage
+                    start={{
+                      lon: itinerary.locStart?.coord.lng,
+                      lat: itinerary.locStart?.coord.lat,
+                    }}
+                    end={{
+                      lon: itinerary.locEnd?.coord.lng,
+                      lat: itinerary.locEnd?.coord.lat,
+                    }}
+                  />
+                }
               </div>
             </section>
             <section className="w-[70%] flex flex-col items-center h-full p-4">

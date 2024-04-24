@@ -3,7 +3,7 @@ import SearchBar from "./content/SearchBar";
 import Itinerary from "./content/Itinerary";
 
 function Dashboard() {
-  const [searchData, setSearchData] = useState({});
+  const [searchData, setSearchData] = useState(null);
 
   const handleSearch = (data) => {
     setSearchData(data);

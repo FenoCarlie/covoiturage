@@ -3,88 +3,44 @@ import { useStateContext } from "../context/ContextProvider";
 import { svg } from "../assets/image";
 import { BsPersonPlusFill } from "react-icons/bs";
 import { CiMail, CiPhone } from "react-icons/ci";
+import axiosClient from "../axios-client";
+import Itinerary from "../content/Itinerary";
 
 function User() {
   const { user } = useStateContext();
-  const [loading, setLoading] = useState();
+  const [loading, setLoading] = useState(false);
+  const [itinerary, setItinerary] = useState({});
+  const userId = user?._id;
 
-  const itinerary = {
-    1: {
-      itineraryId: "465132",
-      driver: {
-        firstName: "Jhone",
-        lastName: "DOE",
-        phone: "+261 33 00 000 00",
-        email: "doe@gmail.com",
-      },
-      locStart: "Paris",
-      locEnd: "Lyon",
-      cost: "35",
-      dateDep: "09-04-2024",
-      carPlace: "3",
-      carNumber: "3695 PO",
-    },
-    0: {
-      itineraryId: "35432",
-      driver: {
-        firstName: "Jhone",
-        lastName: "DOE",
-        phone: "+261 33 00 000 00",
-        email: "doe@gmail.com",
-      },
-      locStart: "Reims",
-      locEnd: "Bruxelles",
-      cost: "15",
-      dateDep: "10-04-2024",
-      carPlace: "4",
-      carNumber: "1231 DER",
-    },
-    2: {
-      itineraryId: "643",
-      driver: {
-        firstName: "Jhone",
-        lastName: "DOE",
-        phone: "+261 33 00 000 00",
-        email: "doe@gmail.com",
-      },
-      locStart: "Lille",
-      locEnd: "Paris",
-      cost: "45",
-      dateDep: "15-04.2024",
-      carPlace: "1",
-      carNumber: "5466 RT",
-    },
-    3: {
-      itineraryId: "621",
-      driver: {
-        firstName: "Jhone",
-        lastName: "DOE",
-        phone: "+261 33 00 000 00",
-        email: "doe@gmail.com",
-      },
-      locStart: "Nantes",
-      locEnd: "Nice",
-      cost: "56",
-      dateDep: "20-04-2024",
-      carPlace: "3",
-      carNumber: "8434 SER",
-    },
-    4: {
-      itineraryId: "32132",
-      driver: {
-        firstName: "Jhone",
-        lastName: "DOE",
-        phone: "+261 33 00 000 00",
-        email: "doe@gmail.com",
-      },
-      locStart: "Lyon",
-      locEnd: "Paris",
-      cost: "10",
-      dateDep: "22-04-2024",
-      carPlace: "3",
-      carNumber: "6555 AR",
-    },
+  const getCourses = () => {
+    setLoading(true);
+    axiosClient
+      .post("/search/courses", { idUsers: userId })
+      .then(({ data }) => {
+        setLoading(false);
+        setItinerary(
+          data.map((item) => ({
+            ...item,
+            dateDep: {
+              ...item.dateDep,
+              date: new Date(item.dateDep.date).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              }),
+            },
+          }))
+        );
+      });
   };
+
+  console.log(userId);
+
+  useEffect(() => {
+    if (userId) {
+      getCourses();
+    }
+  }, [userId]);
 
   const avatar = user.avatar.replace(/^data:image\/\w+;base64,/, "");
 
@@ -140,35 +96,42 @@ function User() {
         {loading ? (
           <div>Loading...</div>
         ) : (
-          Object.values(itinerary).map((item) => (
+          Array.isArray(itinerary) &&
+          itinerary.map((item) => (
             <div
-              to={`/dashboard/itinerary/`}
-              className="bg-[#ffffff] shadow-xl rounded-lg mb-4 p-6 w-[60%] flex flex-col "
-              key={item.locStart + item.locEnd + item.dateDep}
+              className="bg-[#ffffff] shadow-xl rounded-lg mb-4 p-6 w-[60%] flex flex-col"
+              key={item}
             >
               <div className="flex w-full justify-between">
-                <ol className="relative border-s-4 h-[54px] border-teal-400">
+                <ol className="relative border-s-4 h-[75px] border-teal-400">
                   <li className="mb-4 ms-6">
                     <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
                     <h3 className="font-medium leading-tight">
-                      {item.locStart}
+                      {item.locStart.name}
                     </h3>
-                    <p className="text-sm">{item.dateDep}</p>
+                    <p className="text-sm pl-4">{item.dateDep.date}</p>
+                    <p className="text-sm pl-4">{item.dateDep.time}</p>
                   </li>
                   <li className="ms-6 justify-between">
                     <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-white"></span>
                     <h3 className="font-medium leading-tight text-bold">
-                      {item.locEnd}
+                      {item.locEnd.name}
                     </h3>
                   </li>
                 </ol>
                 <span>{item.cost} $</span>
               </div>
-              <div className="flex mt-10 justify-between">
-                <div className="flex justify-center"></div>
+              <div className="flex mt-14 justify-between">
                 <div className="flex mb-2 relative items-center">
                   <BsPersonPlusFill className="h-6 w-6 mr-6" />
-                  <span>{item.carPlace} Place</span>
+                  <span>
+                    {item.seats} {item.seats === 1 ? "seat" : "seats"}
+                  </span>
+                </div>
+                <div>
+                  <button className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+                    Edit some Information
+                  </button>
                 </div>
               </div>
             </div>

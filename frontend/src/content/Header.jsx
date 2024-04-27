@@ -17,7 +17,7 @@ export default function Header() {
 
   console.log(user);
 
-  const avatar = user.avatar?.replace(/^data:image\/\w+;base64,/, "");
+  const avatar = user?.avatar.replace(/^data:image\/\w+;base64,/, "");
 
   const onLogout = () => {
     setUser({});

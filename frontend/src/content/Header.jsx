@@ -57,7 +57,9 @@ export default function Header() {
             </Link>
           </span>
           <span
-            className={url === course ? `hidden` : `relative mr-20 text-white`}
+            className={
+              url === course || !token ? `hidden` : `relative mr-20 text-white`
+            }
           >
             <span className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
               <IoIosAddCircleOutline className="w-[24px] h-[24px] mr-2" />

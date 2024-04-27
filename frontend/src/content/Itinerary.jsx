@@ -11,7 +11,7 @@ function Itinerary({ searchData }) {
   const { setItineraryId, users } = useStateContext();
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState({});
-  const [itinerary, setItinerary] = useState();
+  const [itinerary, setItinerary] = useState([]);
   const [filter, setFilter] = useState("all");
 
   const options = {
@@ -22,21 +22,18 @@ function Itinerary({ searchData }) {
     minute: "2-digit",
   };
 
-  const searchItinerary = (options) => {
+  const getItinerary = () => {
     setLoading(true);
-
-    const payload = {
-      "locStart.name": options.from,
-      "locEnd.name": options.to,
-      seats: parseInt(options.passengers),
-    };
-
     axiosClient
-      .post("/searchiti/courses", payload)
+      .get("/show/courses")
       .then(({ data }) => {
         setLoading(false);
+        const currentDate = new Date();
+        const filteredData = data.filter(
+          (item) => new Date(item.dateDep.date) >= currentDate
+        );
         setItinerary(
-          data.map((item) => ({
+          filteredData.map((item) => ({
             ...item,
             dateDep: {
               ...item.dateDep,
@@ -55,14 +52,25 @@ function Itinerary({ searchData }) {
       });
   };
 
-  const getItinerary = () => {
+  const searchItinerary = (options) => {
     setLoading(true);
+
+    const payload = {
+      "locStart.name": options.from,
+      "locEnd.name": options.to,
+      seats: parseInt(options.passengers),
+    };
+
     axiosClient
-      .get("/show/courses")
+      .post("/searchiti/courses", payload)
       .then(({ data }) => {
         setLoading(false);
+        const currentDate = new Date();
+        const filteredData = data.filter(
+          (item) => new Date(item.dateDep.date) >= currentDate
+        );
         setItinerary(
-          data.map((item) => ({
+          filteredData.map((item) => ({
             ...item,
             dateDep: {
               ...item.dateDep,
@@ -91,7 +99,6 @@ function Itinerary({ searchData }) {
       getItinerary();
     } else {
       searchItinerary(searchData);
-      setItinerary("");
     }
   }, [searchData]);
 
@@ -101,11 +108,11 @@ function Itinerary({ searchData }) {
 
   const filteredItineraries = itinerary?.sort((a, b) => {
     if (filter === "all") {
-      return itinerary;
+      return 0;
     } else if (filter === "departure") {
       return new Date(a.dateDep.date) - new Date(b.dateDep.date);
     } else if (filter === "price") {
-      return parseFloat(a.cost) - parseFloat(a.cost);
+      return parseFloat(a.cost) - parseFloat(b.cost);
     }
     return 0;
   });
@@ -168,8 +175,7 @@ function Itinerary({ searchData }) {
         <div className="p-3 w-[70%] flex justify-star items-center flex-col overflow-y-auto">
           {loading ? (
             <div>Loading...</div>
-          ) : (
-            filteredItineraries &&
+          ) : filteredItineraries.length > 0 ? (
             filteredItineraries.map((item) => (
               <Link
                 onClick={() => setItineraryId(item._id)}
@@ -217,6 +223,10 @@ function Itinerary({ searchData }) {
                 </div>
               </Link>
             ))
+          ) : (
+            <div className="bg-[#ffffff] shadow-xl rounded-lg mb-4 p-6 w-[60%] flex flex-col text-xl font-bold">
+              no data
+            </div>
           )}
         </div>
       </div>

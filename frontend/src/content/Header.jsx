@@ -1,9 +1,7 @@
 import { IoIosAddCircleOutline, IoIosSearch } from "react-icons/io";
 import { useStateContext } from "../context/ContextProvider";
-import { useEffect, useState } from "react";
-import axiosClient from "../axios-client";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import Login from "../views/Login";
+import { useState, useEffect } from "react";
 
 export default function Header() {
   const { user, setUser, setToken, token } = useStateContext();

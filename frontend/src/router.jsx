@@ -1,15 +1,14 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import Dashboard from "./Dashboard.jsx";
-import DefaultLayout from "./components/DefaultLayout.jsx";
-import GuestLayout from "./components/GuestLayout.jsx";
-import Login from "./views/Login.jsx";
-import NotFound from "./views/NotFound.jsx";
-import Signup from "./views/Signup.jsx";
-import User from "./views/User.jsx";
-import Course from "./views/Course.jsx";
-import ItineraryInfo from "./views/ItineraryInfo.jsx";
-import Map from "./views/Map.jsx";
-import Home from "./views/Home.jsx";
+import DefaultLayout from "./components/DefaultLayout/DefaultLayout";
+import Home from "./components/Home/Home";
+import Dashboard from "./components/DefaultLayout/content/dashboard/Dashboard";
+import Course from "./components/DefaultLayout/content/course/Course";
+import User from "./components/DefaultLayout/content/user/User";
+import ItineraryInfo from "./components/DefaultLayout/content/dashboard/itinerary/ItineraryInfo";
+import GuestLayout from "./components/GuestLayout/GuestLayout";
+import Login from "./components/GuestLayout/content/Login";
+import Signup from "./components/GuestLayout/content/Signup";
+import NotFound from "./views/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -39,10 +38,6 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/itinerary/",
         element: <ItineraryInfo />,
-      },
-      {
-        path: "/dashboard/map/",
-        element: <Map />,
       },
     ],
   },

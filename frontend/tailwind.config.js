@@ -1,6 +1,11 @@
-/** @type {import('tailwindcss').Config} */
+import tailwindcssAnimated from "tw-elements/plugin.cjs";
+
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/tw-elements/js/**/*.js",
+  ],
   theme: {
     extend: {
       boxShadow: {
@@ -11,5 +16,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [tailwindcssAnimated],
 };

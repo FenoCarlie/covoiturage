@@ -9,7 +9,7 @@ function Stepper({ steps, data }) {
     if (currentStep) currentStep.classList.remove("hidden");
     if (currentStepBar) {
       currentStepBar.classList.remove("text-gray-500/50");
-      currentStepBar.classList.add("text-sky-500");
+      currentStepBar.classList.add("text-myColor");
     }
   }, [activeStep]);
 
@@ -21,11 +21,14 @@ function Stepper({ steps, data }) {
       `stepBar-${(activeStep + 1) % steps.length}`
     );
     const currentStep = document.getElementById(`step-${activeStep}`);
-    if (nextStep) nextStep.classList.remove("hidden");
+    if (nextStep) {
+      nextStep.classList.remove("hidden");
+      nextStep.classList.add("animate-fade-down");
+    }
     if (currentStep) currentStep.classList.add("hidden");
     const currentStepBar = document.getElementById(`stepBar-${activeStep}`);
     if (nextStepBar) nextStepBar.classList.remove("text-gray-500/50");
-    if (currentStepBar) currentStepBar.classList.add("text-sky-500");
+    if (currentStepBar) currentStepBar.classList.add("text-myColor");
   };
 
   const toLeft = () => {
@@ -33,11 +36,18 @@ function Stepper({ steps, data }) {
       `step-${(activeStep - 1 + steps.length) % steps.length}`
     );
     const currentStep = document.getElementById(`step-${activeStep}`);
-    if (prevStep) prevStep.classList.remove("hidden");
+    if (prevStep) {
+      prevStep.classList.remove("hidden");
+      prevStep.classList.add(
+        "animate-fade-up",
+        "animate-once",
+        "animate-ease-in"
+      );
+    }
     if (currentStep) currentStep.classList.add("hidden");
     const currentStepBar = document.getElementById(`stepBar-${activeStep}`);
     if (currentStepBar) {
-      currentStepBar.classList.remove("text-sky-500");
+      currentStepBar.classList.remove("text-myColor");
       currentStepBar.classList.add("text-gray-500/50");
     }
   };
@@ -53,26 +63,9 @@ function Stepper({ steps, data }) {
   };
 
   return (
-    <div className="flex p-3 bg-slate-500 flex-col w-full">
-      <div className="flex h-[150px] flex-col px-[50px]">
-        <div className=" mb-2">
-          {steps.map((step, index) => (
-            <div
-              key={step.id}
-              className="flex items-center bg-slate-400 justify-center flex-col"
-            >
-              <div
-                id={`step-${index}`}
-                className={`flex ${
-                  activeStep === index ? "" : "hidden"
-                } w-full`}
-              >
-                {step.content}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="flex flex-row justify-between border p-4 bg-white rounded-lg">
+    <div className="flex p-3 h-full justify-center flex-col w-full">
+      <div className="flex m-2 flex-row px-[50px] h-[75%]">
+        <div className="flex flex-col justify-between w-[35%] mr-2 border-r p-4 ">
           {steps.map((step, index) => (
             <div key={step.id} className="">
               <ul className="items-center w-full space-y-4 sm:flex sm:space-x-8 sm:space-y-0 rtl:space-x-reverse">
@@ -82,21 +75,36 @@ function Stepper({ steps, data }) {
                       `}
                 >
                   <span className="flex items-center justify-center w-8 h-8 border rounded-full shrink-0">
-                    {step.icone}
+                    {index + 1}
                   </span>
                   <span>
-                    <h3 className="font-medium leading-tight">
+                    <h3 className="text-lg font-bold leading-tight">
                       {step.info.name}
                     </h3>
-                    <p className="text-sm">{step.info.description}</p>
+                    <p className="">{step.info.description}</p>
                   </span>
                 </li>
               </ul>
             </div>
           ))}
         </div>
+        <div className="mb-2 w-[65%] h-full">
+          {steps.map((step, index) => (
+            <div
+              key={step.id}
+              id={`step-${index}`}
+              className={`flex ${
+                activeStep === index
+                  ? "flex ml-10 items-start h-full flex-col"
+                  : "hidden"
+              }`}
+            >
+              {step.content}
+            </div>
+          ))}
+        </div>
       </div>
-      <div className={`p-3 flex w-full px-[200px] text-gl justify-between`}>
+      <div className={`p-3 flex px-[200px] text-gl justify-between`}>
         <button
           onClick={activeStep === 0 ? "" : prevStep}
           className={`text-white p-2 border rounded-lg px-[30px] ${

@@ -17,6 +17,7 @@ import { Navigate } from "react-router-dom";
 import { svg } from "../../../../assets/image";
 import axiosClient from "../../../../API/axios-client";
 import Stepper from "./content/stepper/Stepper";
+import { BsPersonBadgeFill, BsPersonPlusFill } from "react-icons/bs";
 
 const Course = () => {
   const navigate = useNavigate();
@@ -42,8 +43,20 @@ const Course = () => {
     minute_start: "00",
     period_start: period,
     car_place: place,
+    description: "",
     car_num: "",
   });
+
+  const time_start = `${course.hour_start} : ${
+    course.minute_start === 0 ? `00` : `${course.minute_start}`
+  } ${course.period_start}`;
+
+  const date_start = new Date(course.date_start).toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+
   const [startSuggestions, setStartSuggestions] = useState([]);
   const [endSuggestions, setEndSuggestions] = useState([]);
   const [currentStep, setCurrentStep] = useState(0);
@@ -68,10 +81,6 @@ const Course = () => {
   const onSubmit = async (ev) => {
     ev.preventDefault();
 
-    const time_start = `${course.hour_start} : ${
-      course.minute_start === 0 ? `00` : `${course.minute_start}`
-    } ${course.period_start}`;
-
     const payload = {
       idUsers: course.id_driver,
       locStart: course.loc_start,
@@ -83,6 +92,7 @@ const Course = () => {
       },
       seats: course.car_place,
       carNumber: course.car_num,
+      description: course.description,
     };
 
     try {
@@ -190,10 +200,11 @@ const Course = () => {
         <div className="w-[45%] flex h-full">
           <div className="bg-white w-full">
             <Stepper
+              data
               steps={[
                 {
                   content: (
-                    <div className="">
+                    <div className="pt-3">
                       <label
                         htmlFor="location-icon"
                         className="block mb-2 font-medium"
@@ -472,6 +483,23 @@ const Course = () => {
                           }
                         />
                       </div>
+                      <label className="block mb-2  font-medium mt-4">
+                        Put your car description
+                      </label>
+                      <div className="relative">
+                        <textarea
+                          type="text"
+                          className="bg-gray-50 border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 "
+                          placeholder="Peugeot 206, metal grey, with cocovoit sticker on right-hand doorframe,... "
+                          value={course.description}
+                          onChange={(e) =>
+                            setCourse({
+                              ...course,
+                              description: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
                     </div>
                   ),
                   icone: <FaLocationDot />,
@@ -482,7 +510,41 @@ const Course = () => {
                   },
                 },
                 {
-                  content: <div className=""> step 3</div>,
+                  content: (
+                    <div className="w-full pt-3">
+                      <div className="flex w-full justify-between">
+                        <ol className="relative border-s-4 h-[75px] border-teal-400">
+                          <li className="mb-4 ms-6">
+                            <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-2 ring-white"></span>
+                            <h3 className="font-medium leading-tight">
+                              {course.loc_start}
+                            </h3>
+                            <p className="text-sm pl-4">{date_start}</p>
+                            <p className="text-sm pl-4">{time_start}</p>
+                          </li>
+                          <li className="ms-6 justify-between">
+                            <span className="absolute flex items-center justify-center w-3 h-3 bg-[#255aaa] rounded-full -start-2 ring-white"></span>
+                            <h3 className="font-medium leading-tight text-bold">
+                              {course.loc_end}
+                            </h3>
+                          </li>
+                        </ol>
+                        <span>{course.cost_one} €</span>
+                      </div>
+                      <div className="flex flex-col mt-10">
+                        <div className="flex mb-2 relative items-center">
+                          <BsPersonPlusFill className="h-6 w-6 mr-6" />
+                          <span>
+                            {course.car_place}{" "}
+                            {course.car_place === 1 ? "seat" : "seats"}
+                          </span>
+                        </div>
+                        <div className="flex mt-2 relative items-center">
+                          <p>{course.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ),
                   icone: <FaLocationDot />,
                   info: {
                     name: "Validation",

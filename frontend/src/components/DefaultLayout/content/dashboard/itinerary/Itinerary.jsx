@@ -14,14 +14,6 @@ function Itinerary({ searchData }) {
   const [itinerary, setItinerary] = useState([]);
   const [filter, setFilter] = useState("all");
 
-  const options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  };
-
   const getItinerary = () => {
     setLoading(true);
     axiosClient

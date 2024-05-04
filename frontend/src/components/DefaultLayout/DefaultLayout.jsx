@@ -6,7 +6,7 @@ export default function DefaultLayout() {
   const { notification, alert, error } = useStateContext();
 
   return (
-    <div className="flex absolute left-0 top-[80px] right-0 bottom-0 flex-col justify-evenly bg-[#F6F8F9]">
+    <div className="font-rubik flex absolute left-0 top-[80px] right-0 bottom-0 flex-col justify-evenly bg-[#F6F8F9]">
       <Header />
       <Outlet />
       {notification ? (

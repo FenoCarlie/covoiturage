@@ -10,7 +10,10 @@ export default function GuestLayout() {
   }
 
   return (
-    <div id="guestLayout" className="flex justify-evenly h-full bg-[#F6F8F9]">
+    <div
+      id="guestLayout"
+      className=" font-rubik flex justify-evenly h-full bg-[#F6F8F9]"
+    >
       <div className="flex w-[65%] flex-col">
         <header className="flex text-xl justify-center p-6 items-center w-full">
           COCOVOIT

@@ -254,7 +254,7 @@ function Stepper() {
       description: data.course.description,
     };
 
-    /*try {
+    try {
       const response = await axiosClient.post("/add/courses", payload);
       setItineraryId(response.data);
       navigate(`/dashboard/itinerary`);
@@ -264,9 +264,7 @@ function Stepper() {
       if (response && response.status === 422) {
         alert(response.data.message);
       }
-    }*/
-
-    console.log(payload);
+    }
   };
 
   return (

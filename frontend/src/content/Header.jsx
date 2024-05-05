@@ -8,6 +8,8 @@ export default function Header() {
   const navigate = useNavigate();
   const course = "/dashboard/course";
   const dashboard = "/dashboard";
+  const login = "/login";
+  const signup = "/signup";
   const location = useLocation();
   const url = location.pathname;
 
@@ -85,7 +87,11 @@ export default function Header() {
             ) : (
               <Link
                 to="/login"
-                className="bg-[#00A3DF] text-white item-center hover:bg-[#0178a3] text-lg rounded-lg block px-4 py-2"
+                className={
+                  url === login || url === signup
+                    ? `hidden`
+                    : `bg-[#00A3DF] text-white item-center hover:bg-[#0178a3] text-lg rounded-lg block px-4 py-2`
+                }
               >
                 Login
               </Link>

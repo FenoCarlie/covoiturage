@@ -32,6 +32,8 @@ function User() {
       });
   };
 
+  console.log(userId);
+
   useEffect(() => {
     if (userId) {
       getCourses();

@@ -36,6 +36,7 @@ function User() {
     if (userId) {
       getCourses();
     }
+    console.log("onChange");
   }, [userId]);
 
   const avatar = user.avatar.replace(/^data:image\/\w+;base64,/, "");

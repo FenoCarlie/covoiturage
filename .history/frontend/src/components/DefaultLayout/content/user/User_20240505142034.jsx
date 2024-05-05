@@ -10,6 +10,8 @@ function User() {
   const [itinerary, setItinerary] = useState({});
   const userId = user?._id;
 
+  const test = 1;
+
   const getCourses = () => {
     setLoading(true);
     axiosClient
@@ -36,6 +38,7 @@ function User() {
     if (userId) {
       getCourses();
     }
+    console.log("onChange");
   }, [userId]);
 
   const avatar = user.avatar.replace(/^data:image\/\w+;base64,/, "");
@@ -125,7 +128,10 @@ function User() {
                   </span>
                 </div>
                 <div>
-                  <button className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full">
+                  <button
+                    onClick={test + 1}
+                    className="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"
+                  >
                     Edit some Information
                   </button>
                 </div>

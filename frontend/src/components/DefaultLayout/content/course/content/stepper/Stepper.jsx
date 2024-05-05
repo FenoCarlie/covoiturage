@@ -24,8 +24,6 @@ function Stepper() {
   const [palaceMenu, setPlaceMenu] = useState(false);
   const [period, setPeriod] = useState("a.m.");
   const [calendarMenu, setCalendarMenu] = useState(false);
-  const [incrementCondition, setIncrementCondition] = useState(false);
-  const [decrementCondition, setDecrementCondition] = useState(false);
   const minValue = 1;
   const maxValue = 22;
   const [start, setStart] = useState("");
@@ -58,16 +56,55 @@ function Stepper() {
     }
   }, [activeStep]);
 
+  useEffect(() => {
+    setCourse({ ...course, car_place: place });
+  }, [place]);
+
+  useEffect(() => {
+    const active = document.getElementById(`step-${activeStep}`);
+    const value = active.querySelectorAll("input");
+    var index = 0;
+    setIsEmpty(false);
+    while (index < value.length) {
+      if (value[index].value.trim() == "") {
+        setIsEmpty(true);
+      }
+      index++;
+    }
+  });
+
+  const steps = [
+    {
+      info: {
+        name: "Route & date",
+        description: "Specify your route and departure date",
+      },
+    },
+    {
+      info: {
+        name: "Details",
+        description:
+          "Add price per person, number of seats and car description",
+      },
+    },
+    {
+      info: {
+        name: "Validation",
+        description: "Check information before validating",
+      },
+    },
+  ];
+
   if (!token) {
     return <Navigate to="/login" />;
   }
 
   const toRight = () => {
     const nextStep = document.getElementById(
-      `step-${(activeStep + 1) % steps.length}`
+      `step-${(activeStep + 1) % NUMBER_OF_STEPS}`
     );
     const nextStepBar = document.getElementById(
-      `stepBar-${(activeStep + 1) % steps.length}`
+      `stepBar-${(activeStep + 1) % NUMBER_OF_STEPS}`
     );
     const currentStep = document.getElementById(`step-${activeStep}`);
     if (nextStep) {
@@ -82,7 +119,7 @@ function Stepper() {
 
   const toLeft = () => {
     const prevStep = document.getElementById(
-      `step-${(activeStep - 1 + steps.length) % steps.length}`
+      `step-${(activeStep - 1 + NUMBER_OF_STEPS) % NUMBER_OF_STEPS}`
     );
     const currentStep = document.getElementById(`step-${activeStep}`);
     if (prevStep) {
@@ -102,14 +139,12 @@ function Stepper() {
   };
 
   const prevStep = () => {
-    setActiveStep((activeStep - 1 + steps.length) % steps.length);
+    setActiveStep((activeStep - 1 + NUMBER_OF_STEPS) % NUMBER_OF_STEPS);
     toLeft();
   };
 
-  const getValue = () => {};
-
   const nextStep = () => {
-    setActiveStep((activeStep + 1) % steps.length);
+    setActiveStep((activeStep + 1) % NUMBER_OF_STEPS);
     toRight();
   };
 
@@ -140,6 +175,9 @@ function Stepper() {
 
   const handleStartChange = async (e) => {
     const value = e.target.value;
+    const inStart = document.getElementById("inStart");
+    const startValue = inStart.querySelector("input");
+
     setCourse({ ...course, loc_start: e.target.value });
 
     if (value.length > 2) {
@@ -152,12 +190,18 @@ function Stepper() {
     } else {
       setStartSuggestions([]);
     }
-    if (value.length === 0) {
+    if (value.length == 0 || value.length == 1) {
+      setStartSuggestions([]);
+    }
+
+    if (startValue.value == "") {
       setStartSuggestions([]);
     }
   };
 
   const handleEndChange = async (e) => {
+    const inEnd = document.getElementById("inEnd");
+    const endValue = inEnd.querySelector("input");
     const value = e.target.value;
     setCourse({ ...course, loc_end: e.target.value });
 
@@ -171,6 +215,26 @@ function Stepper() {
     } else {
       setEndSuggestions([]);
     }
+    if (value.length == 0 || value.length == 1) {
+      setEndSuggestions([]);
+    }
+    if (endValue.value == "") {
+      setEndSuggestions([]);
+    }
+  };
+
+  var incrementCondition = () => {
+    setPlace((prevCount) => {
+      const nextValue = prevCount + 1;
+      return nextValue > maxValue ? minValue : nextValue;
+    });
+  };
+
+  var decrementCondition = () => {
+    setPlace((prevCount) => {
+      const nextValue = prevCount - 1;
+      return nextValue < minValue ? minValue : nextValue;
+    });
   };
 
   const onSubmit = async (ev) => {
@@ -190,7 +254,7 @@ function Stepper() {
       description: data.course.description,
     };
 
-    try {
+    /*try {
       const response = await axiosClient.post("/add/courses", payload);
       setItineraryId(response.data);
       navigate(`/dashboard/itinerary`);
@@ -200,60 +264,10 @@ function Stepper() {
       if (response && response.status === 422) {
         alert(response.data.message);
       }
-    }
+    }*/
+
+    console.log(payload);
   };
-
-  const steps = [
-    {
-      info: {
-        name: "Route & date",
-        description: "Specify your route and departure date",
-      },
-    },
-    {
-      info: {
-        name: "Details",
-        description:
-          "Add price per person, number of seats and car description",
-      },
-    },
-    {
-      info: {
-        name: "Validation",
-        description: "Check information before validating",
-      },
-    },
-  ];
-
-  useEffect(() => {
-    if (incrementCondition) {
-      setPlace((prevCount) => {
-        const nextValue = prevCount + 1;
-        return nextValue > maxValue ? minValue : nextValue;
-      });
-      setIncrementCondition(false);
-    } else if (decrementCondition) {
-      setPlace((prevCount) => {
-        const nextValue = prevCount - 1;
-        return nextValue < minValue ? minValue : nextValue;
-      });
-      setDecrementCondition(false);
-    }
-    setCourse({ ...course, car_place: place });
-    const active = document.getElementById(`step-${activeStep}`);
-    const value = active.querySelectorAll("input");
-    var index = 0;
-    setIsEmpty(false);
-    console.lo;
-    while (index < value.length) {
-      console.log(value[index].value);
-      if (value[index].value == "") {
-        setIsEmpty(true);
-      }
-      console.log(isEmpty);
-      index++;
-    }
-  }, [incrementCondition, decrementCondition]);
 
   return (
     <div className="flex p-3 h-full justify-center flex-col w-full">
@@ -292,22 +306,18 @@ function Stepper() {
           >
             <div className="pt-3">
               <label className="flex">
-                <span
-                  htmlFor="location-icon"
-                  className="block mb-2 font-medium"
-                >
+                <span className="block mb-2 font-medium">
                   Select your start location
                 </span>
                 <span className="text-red-600 ml-[]">*</span>
               </label>
-              <div className="relative">
+              <div className="relative" id="inStart">
                 <div className=" border-indigo-500 absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                   <FaLocationDot />
                 </div>
                 <input
                   type="text"
                   autoComplete="off"
-                  id="location-icon"
                   className=" bg-gray-50 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  "
                   placeholder="16th Arrondissement, Paris, Ile-de-France, France"
                   value={course.loc_start}
@@ -315,7 +325,7 @@ function Stepper() {
                 />
                 <div
                   className={
-                    startSuggestions.length > 1
+                    startSuggestions.length > 0
                       ? `overflow-auto absolute max-h-56 w-[400px] fadeInDown animated_suggest mt-2 p-2  flex z-10 text-gl  origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ease-in-out duration-75`
                       : `hidden`
                   }
@@ -339,20 +349,19 @@ function Stepper() {
                   </ul>
                 </div>
               </div>
-              <label
-                htmlFor="email-address-icon"
-                className="block mb-2  font-medium mt-4"
-              >
-                Select your end location
+              <label className="flex mt-4">
+                <span className="block mb-2 font-medium">
+                  Select your end location
+                </span>
+                <span className="text-red-600 ml-[]">*</span>
               </label>
-              <div className="relative">
+              <div className="relative" id="inEnd">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
                   <FaLocationDot />
                 </div>
                 <input
                   type="text"
                   autoComplete="off"
-                  id="email-address-icon"
                   className="bg-gray-50 border border-gray-300  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 "
                   placeholder="Lyons-la-Forêt, Les Andelys, Normandy, France"
                   value={course.loc_end}
@@ -360,7 +369,7 @@ function Stepper() {
                 />
                 <div
                   className={
-                    endSuggestions.length > 1
+                    endSuggestions.length > 0
                       ? `overflow-auto absolute max-h-56 w-[400px] fadeInDown animated_suggest mt-2 p-2  flex z-10 text-gl  origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ease-in-out duration-75`
                       : `hidden`
                   }
@@ -384,11 +393,9 @@ function Stepper() {
                   </ul>
                 </div>
               </div>
-              <label
-                htmlFor="email-address-icon"
-                className="block mb-2  font-medium mt-4"
-              >
-                Select your date
+              <label className="flex mt-4">
+                <span className="block mb-2 font-medium">Select your date</span>
+                <span className="text-red-600 ml-[]">*</span>
               </label>
 
               <div className="relative">
@@ -494,11 +501,11 @@ function Stepper() {
             }`}
           >
             <div className="w-[85%]">
-              <label
-                htmlFor="email-address-icon"
-                className="block mb-2 font-medium mt-4"
-              >
-                Put your price per person
+              <label className="flex mt-4">
+                <span className="block mb-2 font-medium">
+                  Put your price per person
+                </span>
+                <span className="text-red-600 ml-[]">*</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
@@ -517,11 +524,11 @@ function Stepper() {
                   }
                 />
               </div>
-              <label
-                htmlFor="email-address-icon"
-                className="block mb-2 font-medium mt-4"
-              >
-                Put the number of free seats
+              <label className="flex mt-4">
+                <span className="block mb-2 font-medium">
+                  Put the number of free seats
+                </span>
+                <span className="text-red-600 ml-[]">*</span>
               </label>
               <div
                 className={`p-2 bg-gray-50 border border-gray-300 flex items-center justify-center text-  origin-top-right rounded-md mt-2 w-full focus:outline-none ease-in-out duration-500`}
@@ -533,16 +540,24 @@ function Stepper() {
                   className="py-1 flex  w-full justify-between items-center p-2"
                   role="none"
                 >
-                  <FaMinusCircle onClick={() => setDecrementCondition(true)} />
+                  <FaMinusCircle
+                    onClick={() => {
+                      decrementCondition();
+                    }}
+                  />
                   <span>{`${place} ${place === 1 ? "seat" : "seats"}`}</span>
-                  <FaPlusCircle onClick={() => setIncrementCondition(true)} />
+                  <FaPlusCircle
+                    onClick={() => {
+                      incrementCondition();
+                    }}
+                  />
                 </div>
               </div>
-              <label
-                htmlFor="email-address-icon"
-                className="block mb-2  font-medium mt-4"
-              >
-                Put your car number
+              <label className="flex mt-4">
+                <span className="block mb-2 font-medium">
+                  Put your car number
+                </span>
+                <span className="text-red-600 ml-[]">*</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
@@ -559,8 +574,11 @@ function Stepper() {
                   }
                 />
               </div>
-              <label className="block mb-2  font-medium mt-4">
-                Put your car description
+              <label className="flex mt-4">
+                <span className="block mb-2 font-medium">
+                  Put your car description
+                </span>
+                <span className="text-red-600 ml-[]">*</span>
               </label>
               <div className="relative">
                 <textarea
@@ -604,15 +622,17 @@ function Stepper() {
                     </h3>
                   </li>
                 </ol>
-                <span>{course.cost_one} €</span>
               </div>
               <div className="flex flex-col mt-10">
-                <div className="flex mb-2 relative items-center">
-                  <BsPersonPlusFill className="h-6 w-6 mr-6" />
-                  <span>
-                    {course.car_place}{" "}
-                    {course.car_place === 1 ? "seat" : "seats"}
-                  </span>
+                <div className="flex justify-between">
+                  <div className="flex mb-2 relative items-center">
+                    <BsPersonPlusFill className="h-6 w-6 mr-6" />
+                    <span>
+                      {course.car_place}{" "}
+                      {course.car_place === 1 ? "seat" : "seats"}
+                    </span>
+                  </div>
+                  <span className="">{`${course.cost_one} € each`}</span>
                 </div>
                 <div className="flex mt-2 relative items-center">
                   <p>{course.description}</p>
@@ -626,7 +646,9 @@ function Stepper() {
         <button
           onClick={activeStep === 0 ? "" : prevStep}
           className={`text-white p-2 border rounded-lg px-[30px] bg-sky-500 ${
-            activeStep === 0 ? "opacity-50 " : " hover:bg-sky-600"
+            activeStep === 0
+              ? "opacity-50 cursor-default"
+              : " hover:bg-sky-600 cursor-pointer"
           }`}
         >
           <span>Previous</span>
@@ -634,17 +656,17 @@ function Stepper() {
         {activeStep === steps.length - 1 ? (
           <button
             className="text-white p-2 bg-emerald-500 hover:bg-emerald-600 border rounded-lg px-[30px]"
-            onClick={() => {
-              onSubmit;
-            }}
+            onClick={onSubmit}
           >
             <span>Validate</span>
           </button>
         ) : (
           <button
             onClick={isEmpty === true ? null : nextStep}
-            className={`text-white bg-sky-500 hover:bg-sky-600 p-2 border rounded-lg px-[30px] ${
-              isEmpty === true ? "opacity-50" : ""
+            className={`text-white bg-sky-500  p-2 border rounded-lg px-[30px] ${
+              isEmpty === true
+                ? "opacity-50 cursor-default"
+                : "hover:bg-sky-600 cursor-pointer"
             }`}
           >
             <span>Next</span>

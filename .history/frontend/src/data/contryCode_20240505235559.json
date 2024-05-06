@@ -1,0 +1,1890 @@
+[
+  {
+    "name": "Afghanistan",
+    "code": "AF",
+    "emoji": "🇦🇫",
+    "unicode": "U+1F1E6 U+1F1EB",
+    "dial_code": "+93",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AF.svg"
+  },
+  {
+    "name": "Albania",
+    "code": "AL",
+    "emoji": "🇦🇱",
+    "unicode": "U+1F1E6 U+1F1F1",
+    "dial_code": "+355",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AL.svg"
+  },
+  {
+    "name": "Andorra",
+    "code": "AD",
+    "emoji": "🇦🇩",
+    "unicode": "U+1F1E6 U+1F1E9",
+    "dial_code": "+376",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AD.svg"
+  },
+  {
+    "name": "Angola",
+    "code": "AO",
+    "emoji": "🇦🇴",
+    "unicode": "U+1F1E6 U+1F1F4",
+    "dial_code": "+244",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AO.svg"
+  },
+  {
+    "name": "Anguilla",
+    "code": "AI",
+    "emoji": "🇦🇮",
+    "unicode": "U+1F1E6 U+1F1EE",
+    "dial_code": "+1264",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AI.svg"
+  },
+  {
+    "name": "Antarctica",
+    "code": "AQ",
+    "emoji": "🇦🇶",
+    "unicode": "U+1F1E6 U+1F1F6",
+    "dial_code": "+672",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AQ.svg"
+  },
+  {
+    "name": "Antigua & Barbuda",
+    "code": "AG",
+    "emoji": "🇦🇬",
+    "unicode": "U+1F1E6 U+1F1EC",
+    "dial_code": "+1268",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AG.svg"
+  },
+  {
+    "name": "Argentina",
+    "code": "AR",
+    "emoji": "🇦🇷",
+    "unicode": "U+1F1E6 U+1F1F7",
+    "dial_code": "+54",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AR.svg"
+  },
+  {
+    "name": "Armenia",
+    "code": "AM",
+    "emoji": "🇦🇲",
+    "unicode": "U+1F1E6 U+1F1F2",
+    "dial_code": "+374",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AM.svg"
+  },
+  {
+    "name": "Aruba",
+    "code": "AW",
+    "emoji": "🇦🇼",
+    "unicode": "U+1F1E6 U+1F1FC",
+    "dial_code": "+297",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AW.svg"
+  },
+  {
+    "name": "Ascension Island",
+    "code": "AC",
+    "emoji": "🇦🇨",
+    "unicode": "U+1F1E6 U+1F1E8",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AC.svg"
+  },
+  {
+    "name": "Australia",
+    "code": "AU",
+    "emoji": "🇦🇺",
+    "unicode": "U+1F1E6 U+1F1FA",
+    "dial_code": "+61",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AU.svg"
+  },
+  {
+    "name": "Austria",
+    "code": "AT",
+    "emoji": "🇦🇹",
+    "unicode": "U+1F1E6 U+1F1F9",
+    "dial_code": "+43",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AT.svg"
+  },
+  {
+    "name": "Azerbaijan",
+    "code": "AZ",
+    "emoji": "🇦🇿",
+    "unicode": "U+1F1E6 U+1F1FF",
+    "dial_code": "+994",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AZ.svg"
+  },
+  {
+    "name": "Bahamas",
+    "code": "BS",
+    "emoji": "🇧🇸",
+    "unicode": "U+1F1E7 U+1F1F8",
+    "dial_code": "+1242",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BS.svg"
+  },
+  {
+    "name": "Bahrain",
+    "code": "BH",
+    "emoji": "🇧🇭",
+    "unicode": "U+1F1E7 U+1F1ED",
+    "dial_code": "+973",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BH.svg"
+  },
+  {
+    "name": "Bangladesh",
+    "code": "BD",
+    "emoji": "🇧🇩",
+    "unicode": "U+1F1E7 U+1F1E9",
+    "dial_code": "+880",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BD.svg"
+  },
+  {
+    "name": "Barbados",
+    "code": "BB",
+    "emoji": "🇧🇧",
+    "unicode": "U+1F1E7 U+1F1E7",
+    "dial_code": "+1246",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BB.svg"
+  },
+  {
+    "name": "Belarus",
+    "code": "BY",
+    "emoji": "🇧🇾",
+    "unicode": "U+1F1E7 U+1F1FE",
+    "dial_code": "+375",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BY.svg"
+  },
+  {
+    "name": "Belgium",
+    "code": "BE",
+    "emoji": "🇧🇪",
+    "unicode": "U+1F1E7 U+1F1EA",
+    "dial_code": "+32",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BE.svg"
+  },
+  {
+    "name": "Belize",
+    "code": "BZ",
+    "emoji": "🇧🇿",
+    "unicode": "U+1F1E7 U+1F1FF",
+    "dial_code": "+501",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BZ.svg"
+  },
+  {
+    "name": "Benin",
+    "code": "BJ",
+    "emoji": "🇧🇯",
+    "unicode": "U+1F1E7 U+1F1EF",
+    "dial_code": "+229",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BJ.svg"
+  },
+  {
+    "name": "Bermuda",
+    "code": "BM",
+    "emoji": "🇧🇲",
+    "unicode": "U+1F1E7 U+1F1F2",
+    "dial_code": "+1441",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BM.svg"
+  },
+  {
+    "name": "Bhutan",
+    "code": "BT",
+    "emoji": "🇧🇹",
+    "unicode": "U+1F1E7 U+1F1F9",
+    "dial_code": "+975",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BT.svg"
+  },
+  {
+    "name": "Bolivia",
+    "code": "BO",
+    "emoji": "🇧🇴",
+    "unicode": "U+1F1E7 U+1F1F4",
+    "dial_code": "+591",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BO.svg"
+  },
+  {
+    "name": "Bosnia & Herzegovina",
+    "code": "BA",
+    "emoji": "🇧🇦",
+    "unicode": "U+1F1E7 U+1F1E6",
+    "dial_code": "+387",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BA.svg"
+  },
+  {
+    "name": "Botswana",
+    "code": "BW",
+    "emoji": "🇧🇼",
+    "unicode": "U+1F1E7 U+1F1FC",
+    "dial_code": "+267",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BW.svg"
+  },
+  {
+    "name": "Brazil",
+    "code": "BR",
+    "emoji": "🇧🇷",
+    "unicode": "U+1F1E7 U+1F1F7",
+    "dial_code": "+55",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BR.svg"
+  },
+  {
+    "name": "British Indian Ocean Territory",
+    "code": "IO",
+    "emoji": "🇮🇴",
+    "unicode": "U+1F1EE U+1F1F4",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/IO.svg"
+  },
+  {
+    "name": "Brunei",
+    "code": "BN",
+    "emoji": "🇧🇳",
+    "unicode": "U+1F1E7 U+1F1F3",
+    "dial_code": "+673",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BN.svg"
+  },
+  {
+    "name": "Bulgaria",
+    "code": "BG",
+    "emoji": "🇧🇬",
+    "unicode": "U+1F1E7 U+1F1EC",
+    "dial_code": "+359",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BG.svg"
+  },
+  {
+    "name": "Burkina Faso",
+    "code": "BF",
+    "emoji": "🇧🇫",
+    "unicode": "U+1F1E7 U+1F1EB",
+    "dial_code": "+226",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BF.svg"
+  },
+  {
+    "name": "Burundi",
+    "code": "BI",
+    "emoji": "🇧🇮",
+    "unicode": "U+1F1E7 U+1F1EE",
+    "dial_code": "+257",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BI.svg"
+  },
+  {
+    "name": "Cabo Verde",
+    "code": "CV",
+    "emoji": "🇨🇻",
+    "unicode": "U+1F1E8 U+1F1FB",
+    "dial_code": "+238",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CV.svg"
+  },
+  {
+    "name": "Cambodia",
+    "code": "KH",
+    "emoji": "🇰🇭",
+    "unicode": "U+1F1F0 U+1F1ED",
+    "dial_code": "+855",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/KH.svg"
+  },
+  {
+    "name": "Cameroon",
+    "code": "CM",
+    "emoji": "🇨🇲",
+    "unicode": "U+1F1E8 U+1F1F2",
+    "dial_code": "+237",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CM.svg"
+  },
+  {
+    "name": "Canada",
+    "code": "CA",
+    "emoji": "🇨🇦",
+    "unicode": "U+1F1E8 U+1F1E6",
+    "dial_code": "+1",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CA.svg"
+  },
+  {
+    "name": "Cayman Islands",
+    "code": "KY",
+    "emoji": "🇰🇾",
+    "unicode": "U+1F1F0 U+1F1FE",
+    "dial_code": "+1345",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/KY.svg"
+  },
+  {
+    "name": "Central African Republic",
+    "code": "CF",
+    "emoji": "🇨🇫",
+    "unicode": "U+1F1E8 U+1F1EB",
+    "dial_code": "+236",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CF.svg"
+  },
+  {
+    "name": "Chad",
+    "code": "TD",
+    "emoji": "🇹🇩",
+    "unicode": "U+1F1F9 U+1F1E9",
+    "dial_code": "+235",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TD.svg"
+  },
+  {
+    "name": "Chile",
+    "code": "CL",
+    "emoji": "🇨🇱",
+    "unicode": "U+1F1E8 U+1F1F1",
+    "dial_code": "+56",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CL.svg"
+  },
+  {
+    "name": "China",
+    "code": "CN",
+    "emoji": "🇨🇳",
+    "unicode": "U+1F1E8 U+1F1F3",
+    "dial_code": "+86",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CN.svg"
+  },
+  {
+    "name": "Christmas Island",
+    "code": "CX",
+    "emoji": "🇨🇽",
+    "unicode": "U+1F1E8 U+1F1FD",
+    "dial_code": "+61",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CX.svg"
+  },
+  {
+    "name": " (Keeling) Islands",
+    "code": "CC",
+    "emoji": "🇨🇨",
+    "unicode": "U+1F1E8 U+1F1E8",
+    "dial_code": "+61",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CC.svg"
+  },
+  {
+    "name": "Colombia",
+    "code": "CO",
+    "emoji": "🇨🇴",
+    "unicode": "U+1F1E8 U+1F1F4",
+    "dial_code": "+57",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CO.svg"
+  },
+  {
+    "name": "Comoros",
+    "code": "KM",
+    "emoji": "🇰🇲",
+    "unicode": "U+1F1F0 U+1F1F2",
+    "dial_code": "+269",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/KM.svg"
+  },
+  {
+    "name": "Congo - Brazzaville",
+    "code": "CG",
+    "emoji": "🇨🇬",
+    "unicode": "U+1F1E8 U+1F1EC",
+    "dial_code": "+242",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CG.svg"
+  },
+  {
+    "name": "Congo - Kinshasa",
+    "code": "CD",
+    "emoji": "🇨🇩",
+    "unicode": "U+1F1E8 U+1F1E9",
+    "dial_code": "+243",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CD.svg"
+  },
+  {
+    "name": "Cook Islands",
+    "code": "CK",
+    "emoji": "🇨🇰",
+    "unicode": "U+1F1E8 U+1F1F0",
+    "dial_code": "+682",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CK.svg"
+  },
+  {
+    "name": "Costa Rica",
+    "code": "CR",
+    "emoji": "🇨🇷",
+    "unicode": "U+1F1E8 U+1F1F7",
+    "dial_code": "+506",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CR.svg"
+  },
+  {
+    "name": "Croatia",
+    "code": "HR",
+    "emoji": "🇭🇷",
+    "unicode": "U+1F1ED U+1F1F7",
+    "dial_code": "+385",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/HR.svg"
+  },
+  {
+    "name": "Cuba",
+    "code": "CU",
+    "emoji": "🇨🇺",
+    "unicode": "U+1F1E8 U+1F1FA",
+    "dial_code": "+53",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CU.svg"
+  },
+  {
+    "name": "Curaçao",
+    "code": "CW",
+    "emoji": "🇨🇼",
+    "unicode": "U+1F1E8 U+1F1FC",
+    "dial_code": "+599",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CW.svg"
+  },
+  {
+    "name": "Cyprus",
+    "code": "CY",
+    "emoji": "🇨🇾",
+    "unicode": "U+1F1E8 U+1F1FE",
+    "dial_code": "+357",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CY.svg"
+  },
+  {
+    "name": "Czechia",
+    "code": "CZ",
+    "emoji": "🇨🇿",
+    "unicode": "U+1F1E8 U+1F1FF",
+    "dial_code": "+420",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CZ.svg"
+  },
+  {
+    "name": "Côte d’Ivoire",
+    "code": "CI",
+    "emoji": "🇨🇮",
+    "unicode": "U+1F1E8 U+1F1EE",
+    "dial_code": "+225",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CI.svg"
+  },
+  {
+    "name": "Denmark",
+    "code": "DK",
+    "emoji": "🇩🇰",
+    "unicode": "U+1F1E9 U+1F1F0",
+    "dial_code": "+45",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/DK.svg"
+  },
+  {
+    "name": "Djibouti",
+    "code": "DJ",
+    "emoji": "🇩🇯",
+    "unicode": "U+1F1E9 U+1F1EF",
+    "dial_code": "+253",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/DJ.svg"
+  },
+  {
+    "name": "Dominica",
+    "code": "DM",
+    "emoji": "🇩🇲",
+    "unicode": "U+1F1E9 U+1F1F2",
+    "dial_code": "+1767",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/DM.svg"
+  },
+  {
+    "name": "Dominican Republic",
+    "code": "DO",
+    "emoji": "🇩🇴",
+    "unicode": "U+1F1E9 U+1F1F4",
+    "dial_code": "+1 809, +1 829, +1 849",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/DO.svg"
+  },
+  {
+    "name": "Ecuador",
+    "code": "EC",
+    "emoji": "🇪🇨",
+    "unicode": "U+1F1EA U+1F1E8",
+    "dial_code": "+593",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/EC.svg"
+  },
+  {
+    "name": "Egypt",
+    "code": "EG",
+    "emoji": "🇪🇬",
+    "unicode": "U+1F1EA U+1F1EC",
+    "dial_code": "+20",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/EG.svg"
+  },
+  {
+    "name": "El Salvador",
+    "code": "SV",
+    "emoji": "🇸🇻",
+    "unicode": "U+1F1F8 U+1F1FB",
+    "dial_code": "+503",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SV.svg"
+  },
+  {
+    "name": "Equatorial Guinea",
+    "code": "GQ",
+    "emoji": "🇬🇶",
+    "unicode": "U+1F1EC U+1F1F6",
+    "dial_code": "+240",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GQ.svg"
+  },
+  {
+    "name": "Eritrea",
+    "code": "ER",
+    "emoji": "🇪🇷",
+    "unicode": "U+1F1EA U+1F1F7",
+    "dial_code": "+291",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/ER.svg"
+  },
+  {
+    "name": "Estonia",
+    "code": "EE",
+    "emoji": "🇪🇪",
+    "unicode": "U+1F1EA U+1F1EA",
+    "dial_code": "+372",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/EE.svg"
+  },
+  {
+    "name": "Eswatini",
+    "code": "SZ",
+    "emoji": "🇸🇿",
+    "unicode": "U+1F1F8 U+1F1FF",
+    "dial_code": "+268",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SZ.svg"
+  },
+  {
+    "name": "Ethiopia",
+    "code": "ET",
+    "emoji": "🇪🇹",
+    "unicode": "U+1F1EA U+1F1F9",
+    "dial_code": "+251",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/ET.svg"
+  },
+  {
+    "name": "Falkland Islands",
+    "code": "FK",
+    "emoji": "🇫🇰",
+    "unicode": "U+1F1EB U+1F1F0",
+    "dial_code": "+500",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/FK.svg"
+  },
+  {
+    "name": "Faroe Islands",
+    "code": "FO",
+    "emoji": "🇫🇴",
+    "unicode": "U+1F1EB U+1F1F4",
+    "dial_code": "+298",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/FO.svg"
+  },
+  {
+    "name": "Fiji",
+    "code": "FJ",
+    "emoji": "🇫🇯",
+    "unicode": "U+1F1EB U+1F1EF",
+    "dial_code": "+679",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/FJ.svg"
+  },
+  {
+    "name": "Finland",
+    "code": "FI",
+    "emoji": "🇫🇮",
+    "unicode": "U+1F1EB U+1F1EE",
+    "dial_code": "+358",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/FI.svg"
+  },
+  {
+    "name": "France",
+    "code": "FR",
+    "emoji": "🇫🇷",
+    "unicode": "U+1F1EB U+1F1F7",
+    "dial_code": "+33",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/FR.svg"
+  },
+  {
+    "name": "French Guiana",
+    "code": "GF",
+    "emoji": "🇬🇫",
+    "unicode": "U+1F1EC U+1F1EB",
+    "dial_code": "+594",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GF.svg"
+  },
+  {
+    "name": "French Polynesia",
+    "code": "PF",
+    "emoji": "🇵🇫",
+    "unicode": "U+1F1F5 U+1F1EB",
+    "dial_code": "+689",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PF.svg"
+  },
+  {
+    "name": "French Southern Territories",
+    "code": "TF",
+    "emoji": "🇹🇫",
+    "unicode": "U+1F1F9 U+1F1EB",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TF.svg"
+  },
+  {
+    "name": "Gabon",
+    "code": "GA",
+    "emoji": "🇬🇦",
+    "unicode": "U+1F1EC U+1F1E6",
+    "dial_code": "+241",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GA.svg"
+  },
+  {
+    "name": "Gambia",
+    "code": "GM",
+    "emoji": "🇬🇲",
+    "unicode": "U+1F1EC U+1F1F2",
+    "dial_code": "+220",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GM.svg"
+  },
+  {
+    "name": "Georgia",
+    "code": "GE",
+    "emoji": "🇬🇪",
+    "unicode": "U+1F1EC U+1F1EA",
+    "dial_code": "+995",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GE.svg"
+  },
+  {
+    "name": "Germany",
+    "code": "DE",
+    "emoji": "🇩🇪",
+    "unicode": "U+1F1E9 U+1F1EA",
+    "dial_code": "+49",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/DE.svg"
+  },
+  {
+    "name": "Ghana",
+    "code": "GH",
+    "emoji": "🇬🇭",
+    "unicode": "U+1F1EC U+1F1ED",
+    "dial_code": "+233",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GH.svg"
+  },
+  {
+    "name": "Gibraltar",
+    "code": "GI",
+    "emoji": "🇬🇮",
+    "unicode": "U+1F1EC U+1F1EE",
+    "dial_code": "+350",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GI.svg"
+  },
+  {
+    "name": "Greece",
+    "code": "GR",
+    "emoji": "🇬🇷",
+    "unicode": "U+1F1EC U+1F1F7",
+    "dial_code": "+30",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GR.svg"
+  },
+  {
+    "name": "Greenland",
+    "code": "GL",
+    "emoji": "🇬🇱",
+    "unicode": "U+1F1EC U+1F1F1",
+    "dial_code": "+299",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GL.svg"
+  },
+  {
+    "name": "Grenada",
+    "code": "GD",
+    "emoji": "🇬🇩",
+    "unicode": "U+1F1EC U+1F1E9",
+    "dial_code": "+1473",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GD.svg"
+  },
+  {
+    "name": "Guadeloupe",
+    "code": "GP",
+    "emoji": "🇬🇵",
+    "unicode": "U+1F1EC U+1F1F5",
+    "dial_code": "+590",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GP.svg"
+  },
+  {
+    "name": "Guam",
+    "code": "GU",
+    "emoji": "🇬🇺",
+    "unicode": "U+1F1EC U+1F1FA",
+    "dial_code": "+1671",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GU.svg"
+  },
+  {
+    "name": "Guatemala",
+    "code": "GT",
+    "emoji": "🇬🇹",
+    "unicode": "U+1F1EC U+1F1F9",
+    "dial_code": "+502",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GT.svg"
+  },
+  {
+    "name": "Guernsey",
+    "code": "GG",
+    "emoji": "🇬🇬",
+    "unicode": "U+1F1EC U+1F1EC",
+    "dial_code": "+44",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GG.svg"
+  },
+  {
+    "name": "Guinea",
+    "code": "GN",
+    "emoji": "🇬🇳",
+    "unicode": "U+1F1EC U+1F1F3",
+    "dial_code": "+224",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GN.svg"
+  },
+  {
+    "name": "Guinea-Bissau",
+    "code": "GW",
+    "emoji": "🇬🇼",
+    "unicode": "U+1F1EC U+1F1FC",
+    "dial_code": "+245",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GW.svg"
+  },
+  {
+    "name": "Guyana",
+    "code": "GY",
+    "emoji": "🇬🇾",
+    "unicode": "U+1F1EC U+1F1FE",
+    "dial_code": "+592",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GY.svg"
+  },
+  {
+    "name": "Haiti",
+    "code": "HT",
+    "emoji": "🇭🇹",
+    "unicode": "U+1F1ED U+1F1F9",
+    "dial_code": "+509",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/HT.svg"
+  },
+  {
+    "name": "Heard & McDonald Islands",
+    "code": "HM",
+    "emoji": "🇭🇲",
+    "unicode": "U+1F1ED U+1F1F2",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/HM.svg"
+  },
+  {
+    "name": "Honduras",
+    "code": "HN",
+    "emoji": "🇭🇳",
+    "unicode": "U+1F1ED U+1F1F3",
+    "dial_code": "+504",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/HN.svg"
+  },
+  {
+    "name": "Hong Kong SAR China",
+    "code": "HK",
+    "emoji": "🇭🇰",
+    "unicode": "U+1F1ED U+1F1F0",
+    "dial_code": "+852",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/HK.svg"
+  },
+  {
+    "name": "Hungary",
+    "code": "HU",
+    "emoji": "🇭🇺",
+    "unicode": "U+1F1ED U+1F1FA",
+    "dial_code": "+36",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/HU.svg"
+  },
+  {
+    "name": "Iceland",
+    "code": "IS",
+    "emoji": "🇮🇸",
+    "unicode": "U+1F1EE U+1F1F8",
+    "dial_code": "+354",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/IS.svg"
+  },
+  {
+    "name": "India",
+    "code": "IN",
+    "emoji": "🇮🇳",
+    "unicode": "U+1F1EE U+1F1F3",
+    "dial_code": "+91",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/IN.svg"
+  },
+  {
+    "name": "Indonesia",
+    "code": "ID",
+    "emoji": "🇮🇩",
+    "unicode": "U+1F1EE U+1F1E9",
+    "dial_code": "+62",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/ID.svg"
+  },
+  {
+    "name": "Iran",
+    "code": "IR",
+    "emoji": "🇮🇷",
+    "unicode": "U+1F1EE U+1F1F7",
+    "dial_code": "+98",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/IR.svg"
+  },
+  {
+    "name": "Iraq",
+    "code": "IQ",
+    "emoji": "🇮🇶",
+    "unicode": "U+1F1EE U+1F1F6",
+    "dial_code": "+964",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/IQ.svg"
+  },
+  {
+    "name": "Ireland",
+    "code": "IE",
+    "emoji": "🇮🇪",
+    "unicode": "U+1F1EE U+1F1EA",
+    "dial_code": "+353",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/IE.svg"
+  },
+  {
+    "name": "Isle of Man",
+    "code": "IM",
+    "emoji": "🇮🇲",
+    "unicode": "U+1F1EE U+1F1F2",
+    "dial_code": "+44",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/IM.svg"
+  },
+  {
+    "name": "Israel",
+    "code": "IL",
+    "emoji": "🇮🇱",
+    "unicode": "U+1F1EE U+1F1F1",
+    "dial_code": "+972",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/IL.svg"
+  },
+  {
+    "name": "Italy",
+    "code": "IT",
+    "emoji": "🇮🇹",
+    "unicode": "U+1F1EE U+1F1F9",
+    "dial_code": "+39",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/IT.svg"
+  },
+  {
+    "name": "Jamaica",
+    "code": "JM",
+    "emoji": "🇯🇲",
+    "unicode": "U+1F1EF U+1F1F2",
+    "dial_code": "+1 876",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/JM.svg"
+  },
+  {
+    "name": "Japan",
+    "code": "JP",
+    "emoji": "🇯🇵",
+    "unicode": "U+1F1EF U+1F1F5",
+    "dial_code": "+81",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/JP.svg"
+  },
+  {
+    "name": "Jersey",
+    "code": "JE",
+    "emoji": "🇯🇪",
+    "unicode": "U+1F1EF U+1F1EA",
+    "dial_code": "+44",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/JE.svg"
+  },
+  {
+    "name": "Jordan",
+    "code": "JO",
+    "emoji": "🇯🇴",
+    "unicode": "U+1F1EF U+1F1F4",
+    "dial_code": "+962",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/JO.svg"
+  },
+  {
+    "name": "Kazakhstan",
+    "code": "KZ",
+    "emoji": "🇰🇿",
+    "unicode": "U+1F1F0 U+1F1FF",
+    "dial_code": "+7",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/KZ.svg"
+  },
+  {
+    "name": "Kenya",
+    "code": "KE",
+    "emoji": "🇰🇪",
+    "unicode": "U+1F1F0 U+1F1EA",
+    "dial_code": "+254",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/KE.svg"
+  },
+  {
+    "name": "Kiribati",
+    "code": "KI",
+    "emoji": "🇰🇮",
+    "unicode": "U+1F1F0 U+1F1EE",
+    "dial_code": "+686",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/KI.svg"
+  },
+  {
+    "name": "Kosovo",
+    "code": "XK",
+    "emoji": "🇽🇰",
+    "unicode": "U+1F1FD U+1F1F0",
+    "dial_code": "+383",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/XK.svg"
+  },
+  {
+    "name": "Kuwait",
+    "code": "KW",
+    "emoji": "🇰🇼",
+    "unicode": "U+1F1F0 U+1F1FC",
+    "dial_code": "+965",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/KW.svg"
+  },
+  {
+    "name": "Kyrgyzstan",
+    "code": "KG",
+    "emoji": "🇰🇬",
+    "unicode": "U+1F1F0 U+1F1EC",
+    "dial_code": "+996",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/KG.svg"
+  },
+  {
+    "name": "Laos",
+    "code": "LA",
+    "emoji": "🇱🇦",
+    "unicode": "U+1F1F1 U+1F1E6",
+    "dial_code": "+856",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/LA.svg"
+  },
+  {
+    "name": "Latvia",
+    "code": "LV",
+    "emoji": "🇱🇻",
+    "unicode": "U+1F1F1 U+1F1FB",
+    "dial_code": "+371",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/LV.svg"
+  },
+  {
+    "name": "Lebanon",
+    "code": "LB",
+    "emoji": "🇱🇧",
+    "unicode": "U+1F1F1 U+1F1E7",
+    "dial_code": "+961",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/LB.svg"
+  },
+  {
+    "name": "Lesotho",
+    "code": "LS",
+    "emoji": "🇱🇸",
+    "unicode": "U+1F1F1 U+1F1F8",
+    "dial_code": "+266",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/LS.svg"
+  },
+  {
+    "name": "Liberia",
+    "code": "LR",
+    "emoji": "🇱🇷",
+    "unicode": "U+1F1F1 U+1F1F7",
+    "dial_code": "+231",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/LR.svg"
+  },
+  {
+    "name": "Libya",
+    "code": "LY",
+    "emoji": "🇱🇾",
+    "unicode": "U+1F1F1 U+1F1FE",
+    "dial_code": "+218",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/LY.svg"
+  },
+  {
+    "name": "Liechtenstein",
+    "code": "LI",
+    "emoji": "🇱🇮",
+    "unicode": "U+1F1F1 U+1F1EE",
+    "dial_code": "+423",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/LI.svg"
+  },
+  {
+    "name": "Lithuania",
+    "code": "LT",
+    "emoji": "🇱🇹",
+    "unicode": "U+1F1F1 U+1F1F9",
+    "dial_code": "+370",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/LT.svg"
+  },
+  {
+    "name": "Luxembourg",
+    "code": "LU",
+    "emoji": "🇱🇺",
+    "unicode": "U+1F1F1 U+1F1FA",
+    "dial_code": "+352",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/LU.svg"
+  },
+  {
+    "name": "Macao SAR China",
+    "code": "MO",
+    "emoji": "🇲🇴",
+    "unicode": "U+1F1F2 U+1F1F4",
+    "dial_code": "+853",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MO.svg"
+  },
+  {
+    "name": "Madagascar",
+    "code": "MG",
+    "emoji": "🇲🇬",
+    "unicode": "U+1F1F2 U+1F1EC",
+    "dial_code": "+261",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MG.svg"
+  },
+  {
+    "name": "Malawi",
+    "code": "MW",
+    "emoji": "🇲🇼",
+    "unicode": "U+1F1F2 U+1F1FC",
+    "dial_code": "+265",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MW.svg"
+  },
+  {
+    "name": "Malaysia",
+    "code": "MY",
+    "emoji": "🇲🇾",
+    "unicode": "U+1F1F2 U+1F1FE",
+    "dial_code": "+60",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MY.svg"
+  },
+  {
+    "name": "Maldives",
+    "code": "MV",
+    "emoji": "🇲🇻",
+    "unicode": "U+1F1F2 U+1F1FB",
+    "dial_code": "+960",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MV.svg"
+  },
+  {
+    "name": "Mali",
+    "code": "ML",
+    "emoji": "🇲🇱",
+    "unicode": "U+1F1F2 U+1F1F1",
+    "dial_code": "+223",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/ML.svg"
+  },
+  {
+    "name": "Malta",
+    "code": "MT",
+    "emoji": "🇲🇹",
+    "unicode": "U+1F1F2 U+1F1F9",
+    "dial_code": "+356",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MT.svg"
+  },
+  {
+    "name": "Marshall Islands",
+    "code": "MH",
+    "emoji": "🇲🇭",
+    "unicode": "U+1F1F2 U+1F1ED",
+    "dial_code": "+692",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MH.svg"
+  },
+  {
+    "name": "Martinique",
+    "code": "MQ",
+    "emoji": "🇲🇶",
+    "unicode": "U+1F1F2 U+1F1F6",
+    "dial_code": "+596",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MQ.svg"
+  },
+  {
+    "name": "Mauritania",
+    "code": "MR",
+    "emoji": "🇲🇷",
+    "unicode": "U+1F1F2 U+1F1F7",
+    "dial_code": "+222",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MR.svg"
+  },
+  {
+    "name": "Mauritius",
+    "code": "MU",
+    "emoji": "🇲🇺",
+    "unicode": "U+1F1F2 U+1F1FA",
+    "dial_code": "+230",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MU.svg"
+  },
+  {
+    "name": "Mayotte",
+    "code": "YT",
+    "emoji": "🇾🇹",
+    "unicode": "U+1F1FE U+1F1F9",
+    "dial_code": "+262",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/YT.svg"
+  },
+  {
+    "name": "Mexico",
+    "code": "MX",
+    "emoji": "🇲🇽",
+    "unicode": "U+1F1F2 U+1F1FD",
+    "dial_code": "+52",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MX.svg"
+  },
+  {
+    "name": "Micronesia",
+    "code": "FM",
+    "emoji": "🇫🇲",
+    "unicode": "U+1F1EB U+1F1F2",
+    "dial_code": "+691",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/FM.svg"
+  },
+  {
+    "name": "Moldova",
+    "code": "MD",
+    "emoji": "🇲🇩",
+    "unicode": "U+1F1F2 U+1F1E9",
+    "dial_code": "+373",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MD.svg"
+  },
+  {
+    "name": "Monaco",
+    "code": "MC",
+    "emoji": "🇲🇨",
+    "unicode": "U+1F1F2 U+1F1E8",
+    "dial_code": "+377",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MC.svg"
+  },
+  {
+    "name": "Mongolia",
+    "code": "MN",
+    "emoji": "🇲🇳",
+    "unicode": "U+1F1F2 U+1F1F3",
+    "dial_code": "+976",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MN.svg"
+  },
+  {
+    "name": "Montenegro",
+    "code": "ME",
+    "emoji": "🇲🇪",
+    "unicode": "U+1F1F2 U+1F1EA",
+    "dial_code": "+382",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/ME.svg"
+  },
+  {
+    "name": "Montserrat",
+    "code": "MS",
+    "emoji": "🇲🇸",
+    "unicode": "U+1F1F2 U+1F1F8",
+    "dial_code": "+1 664",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MS.svg"
+  },
+  {
+    "name": "Morocco",
+    "code": "MA",
+    "emoji": "🇲🇦",
+    "unicode": "U+1F1F2 U+1F1E6",
+    "dial_code": "+212",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MA.svg"
+  },
+  {
+    "name": "Mozambique",
+    "code": "MZ",
+    "emoji": "🇲🇿",
+    "unicode": "U+1F1F2 U+1F1FF",
+    "dial_code": "+258",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MZ.svg"
+  },
+  {
+    "name": "Myanmar (Burma)",
+    "code": "MM",
+    "emoji": "🇲🇲",
+    "unicode": "U+1F1F2 U+1F1F2",
+    "dial_code": "+95",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MM.svg"
+  },
+  {
+    "name": "Namibia",
+    "code": "NA",
+    "emoji": "🇳🇦",
+    "unicode": "U+1F1F3 U+1F1E6",
+    "dial_code": "+264",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/NA.svg"
+  },
+  {
+    "name": "Nauru",
+    "code": "NR",
+    "emoji": "🇳🇷",
+    "unicode": "U+1F1F3 U+1F1F7",
+    "dial_code": "+674",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/NR.svg"
+  },
+  {
+    "name": "Nepal",
+    "code": "NP",
+    "emoji": "🇳🇵",
+    "unicode": "U+1F1F3 U+1F1F5",
+    "dial_code": "+977",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/NP.svg"
+  },
+  {
+    "name": "Netherlands",
+    "code": "NL",
+    "emoji": "🇳🇱",
+    "unicode": "U+1F1F3 U+1F1F1",
+    "dial_code": "+31",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/NL.svg"
+  },
+  {
+    "name": "New Caledonia",
+    "code": "NC",
+    "emoji": "🇳🇨",
+    "unicode": "U+1F1F3 U+1F1E8",
+    "dial_code": "+687",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/NC.svg"
+  },
+  {
+    "name": "New Zealand",
+    "code": "NZ",
+    "emoji": "🇳🇿",
+    "unicode": "U+1F1F3 U+1F1FF",
+    "dial_code": "+64",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/NZ.svg"
+  },
+  {
+    "name": "Nicaragua",
+    "code": "NI",
+    "emoji": "🇳🇮",
+    "unicode": "U+1F1F3 U+1F1EE",
+    "dial_code": "+505",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/NI.svg"
+  },
+  {
+    "name": "Niger",
+    "code": "NE",
+    "emoji": "🇳🇪",
+    "unicode": "U+1F1F3 U+1F1EA",
+    "dial_code": "+227",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/NE.svg"
+  },
+  {
+    "name": "Nigeria",
+    "code": "NG",
+    "emoji": "🇳🇬",
+    "unicode": "U+1F1F3 U+1F1EC",
+    "dial_code": "+234",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/NG.svg"
+  },
+  {
+    "name": "Niue",
+    "code": "NU",
+    "emoji": "🇳🇺",
+    "unicode": "U+1F1F3 U+1F1FA",
+    "dial_code": "+683",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/NU.svg"
+  },
+  {
+    "name": "Norfolk Island",
+    "code": "NF",
+    "emoji": "🇳🇫",
+    "unicode": "U+1F1F3 U+1F1EB",
+    "dial_code": "+672",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/NF.svg"
+  },
+  {
+    "name": "North Korea",
+    "code": "KP",
+    "emoji": "🇰🇵",
+    "unicode": "U+1F1F0 U+1F1F5",
+    "dial_code": "+850",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/KP.svg"
+  },
+  {
+    "name": "Northern Mariana Islands",
+    "code": "MP",
+    "emoji": "🇲🇵",
+    "unicode": "U+1F1F2 U+1F1F5",
+    "dial_code": "+1 670",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MP.svg"
+  },
+  {
+    "name": "Norway",
+    "code": "NO",
+    "emoji": "🇳🇴",
+    "unicode": "U+1F1F3 U+1F1F4",
+    "dial_code": "+47",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/NO.svg"
+  },
+  {
+    "name": "Oman",
+    "code": "OM",
+    "emoji": "🇴🇲",
+    "unicode": "U+1F1F4 U+1F1F2",
+    "dial_code": "+968",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/OM.svg"
+  },
+  {
+    "name": "Pakistan",
+    "code": "PK",
+    "emoji": "🇵🇰",
+    "unicode": "U+1F1F5 U+1F1F0",
+    "dial_code": "+92",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PK.svg"
+  },
+  {
+    "name": "Palau",
+    "code": "PW",
+    "emoji": "🇵🇼",
+    "unicode": "U+1F1F5 U+1F1FC",
+    "dial_code": "+680",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PW.svg"
+  },
+  {
+    "name": "Palestinian Territories",
+    "code": "PS",
+    "emoji": "🇵🇸",
+    "unicode": "U+1F1F5 U+1F1F8",
+    "dial_code": "+970",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PS.svg"
+  },
+  {
+    "name": "Panama",
+    "code": "PA",
+    "emoji": "🇵🇦",
+    "unicode": "U+1F1F5 U+1F1E6",
+    "dial_code": "+507",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PA.svg"
+  },
+  {
+    "name": "Papua New Guinea",
+    "code": "PG",
+    "emoji": "🇵🇬",
+    "unicode": "U+1F1F5 U+1F1EC",
+    "dial_code": "+675",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PG.svg"
+  },
+  {
+    "name": "Paraguay",
+    "code": "PY",
+    "emoji": "🇵🇾",
+    "unicode": "U+1F1F5 U+1F1FE",
+    "dial_code": "+595",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PY.svg"
+  },
+  {
+    "name": "Peru",
+    "code": "PE",
+    "emoji": "🇵🇪",
+    "unicode": "U+1F1F5 U+1F1EA",
+    "dial_code": "+51",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PE.svg"
+  },
+  {
+    "name": "Philippines",
+    "code": "PH",
+    "emoji": "🇵🇭",
+    "unicode": "U+1F1F5 U+1F1ED",
+    "dial_code": "+63",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PH.svg"
+  },
+  {
+    "name": "Pitcairn Islands",
+    "code": "PN",
+    "emoji": "🇵🇳",
+    "unicode": "U+1F1F5 U+1F1F3",
+    "dial_code": "+64",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PN.svg"
+  },
+  {
+    "name": "Poland",
+    "code": "PL",
+    "emoji": "🇵🇱",
+    "unicode": "U+1F1F5 U+1F1F1",
+    "dial_code": "+48",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PL.svg"
+  },
+  {
+    "name": "Portugal",
+    "code": "PT",
+    "emoji": "🇵🇹",
+    "unicode": "U+1F1F5 U+1F1F9",
+    "dial_code": "+351",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PT.svg"
+  },
+  {
+    "name": "Puerto Rico",
+    "code": "PR",
+    "emoji": "🇵🇷",
+    "unicode": "U+1F1F5 U+1F1F7",
+    "dial_code": "+1 787",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PR.svg"
+  },
+  {
+    "name": "Qatar",
+    "code": "QA",
+    "emoji": "🇶🇦",
+    "unicode": "U+1F1F6 U+1F1E6",
+    "dial_code": "+974",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/QA.svg"
+  },
+  {
+    "name": "Réunion",
+    "code": "RE",
+    "emoji": "🇷🇪",
+    "unicode": "U+1F1F7 U+1F1EA",
+    "dial_code": "+262",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/RE.svg"
+  },
+  {
+    "name": "Romania",
+    "code": "RO",
+    "emoji": "🇷🇴",
+    "unicode": "U+1F1F7 U+1F1F4",
+    "dial_code": "+40",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/RO.svg"
+  },
+  {
+    "name": "Russia",
+    "code": "RU",
+    "emoji": "🇷🇺",
+    "unicode": "U+1F1F7 U+1F1FA",
+    "dial_code": "+7",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/RU.svg"
+  },
+  {
+    "name": "Rwanda",
+    "code": "RW",
+    "emoji": "🇷🇼",
+    "unicode": "U+1F1F7 U+1F1FC",
+    "dial_code": "+250",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/RW.svg"
+  },
+  {
+    "name": "Saint Barthélemy",
+    "code": "BL",
+    "emoji": "🇧🇱",
+    "unicode": "U+1F1E7 U+1F1F1",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/BL.svg"
+  },
+  {
+    "name": "Saint Helena",
+    "code": "SH",
+    "emoji": "🇸🇭",
+    "unicode": "U+1F1F8 U+1F1ED",
+    "dial_code": "+290",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SH.svg"
+  },
+  {
+    "name": "Saint Kitts & Nevis",
+    "code": "KN",
+    "emoji": "🇰🇳",
+    "unicode": "U+1F1F0 U+1F1F3",
+    "dial_code": "+1 869",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/KN.svg"
+  },
+  {
+    "name": "Saint Lucia",
+    "code": "LC",
+    "emoji": "🇱🇨",
+    "unicode": "U+1F1F1 U+1F1E8",
+    "dial_code": "+1 758",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/LC.svg"
+  },
+  {
+    "name": "Saint Martin",
+    "code": "MF",
+    "emoji": "🇲🇫",
+    "unicode": "U+1F1F2 U+1F1EB",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/MF.svg"
+  },
+  {
+    "name": "Saint Pierre & Miquelon",
+    "code": "PM",
+    "emoji": "🇵🇲",
+    "unicode": "U+1F1F5 U+1F1F2",
+    "dial_code": "+508",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/PM.svg"
+  },
+  {
+    "name": "Samoa",
+    "code": "WS",
+    "emoji": "🇼🇸",
+    "unicode": "U+1F1FC U+1F1F8",
+    "dial_code": "+685",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/WS.svg"
+  },
+  {
+    "name": "San Marino",
+    "code": "SM",
+    "emoji": "🇸🇲",
+    "unicode": "U+1F1F8 U+1F1F2",
+    "dial_code": "+378",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SM.svg"
+  },
+  {
+    "name": "Sao Tome & Principe",
+    "code": "ST",
+    "emoji": "🇸🇹",
+    "unicode": "U+1F1F8 U+1F1F9",
+    "dial_code": "+239",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/ST.svg"
+  },
+  {
+    "name": "Saudi Arabia",
+    "code": "SA",
+    "emoji": "🇸🇦",
+    "unicode": "U+1F1F8 U+1F1E6",
+    "dial_code": "+966",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SA.svg"
+  },
+  {
+    "name": "Senegal",
+    "code": "SN",
+    "emoji": "🇸🇳",
+    "unicode": "U+1F1F8 U+1F1F3",
+    "dial_code": "+221",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SN.svg"
+  },
+  {
+    "name": "Serbia",
+    "code": "RS",
+    "emoji": "🇷🇸",
+    "unicode": "U+1F1F7 U+1F1F8",
+    "dial_code": "+381",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/RS.svg"
+  },
+  {
+    "name": "Seychelles",
+    "code": "SC",
+    "emoji": "🇸🇨",
+    "unicode": "U+1F1F8 U+1F1E8",
+    "dial_code": "+248",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SC.svg"
+  },
+  {
+    "name": "Sierra Leone",
+    "code": "SL",
+    "emoji": "🇸🇱",
+    "unicode": "U+1F1F8 U+1F1F1",
+    "dial_code": "+232",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SL.svg"
+  },
+  {
+    "name": "Singapore",
+    "code": "SG",
+    "emoji": "🇸🇬",
+    "unicode": "U+1F1F8 U+1F1EC",
+    "dial_code": "+65",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SG.svg"
+  },
+  {
+    "name": "Sint Maarten",
+    "code": "SX",
+    "emoji": "🇸🇽",
+    "unicode": "U+1F1F8 U+1F1FD",
+    "dial_code": "+1 721",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SX.svg"
+  },
+  {
+    "name": "Slovakia",
+    "code": "SK",
+    "emoji": "🇸🇰",
+    "unicode": "U+1F1F8 U+1F1F0",
+    "dial_code": "+421",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SK.svg"
+  },
+  {
+    "name": "Slovenia",
+    "code": "SI",
+    "emoji": "🇸🇮",
+    "unicode": "U+1F1F8 U+1F1EE",
+    "dial_code": "+386",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SI.svg"
+  },
+  {
+    "name": "Solomon Islands",
+    "code": "SB",
+    "emoji": "🇸🇧",
+    "unicode": "U+1F1F8 U+1F1E7",
+    "dial_code": "+677",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SB.svg"
+  },
+  {
+    "name": "Somalia",
+    "code": "SO",
+    "emoji": "🇸🇴",
+    "unicode": "U+1F1F8 U+1F1F4",
+    "dial_code": "+252",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SO.svg"
+  },
+  {
+    "name": "South Africa",
+    "code": "ZA",
+    "emoji": "🇿🇦",
+    "unicode": "U+1F1FF U+1F1E6",
+    "dial_code": "+27",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/ZA.svg"
+  },
+  {
+    "name": "South Georgia & South Sandwich Islands",
+    "code": "GS",
+    "emoji": "🇬🇸",
+    "unicode": "U+1F1EC U+1F1F8",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GS.svg"
+  },
+  {
+    "name": "South Korea",
+    "code": "KR",
+    "emoji": "🇰🇷",
+    "unicode": "U+1F1F0 U+1F1F7",
+    "dial_code": "+82",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/KR.svg"
+  },
+  {
+    "name": "South Sudan",
+    "code": "SS",
+    "emoji": "🇸🇸",
+    "unicode": "U+1F1F8 U+1F1F8",
+    "dial_code": "+211",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SS.svg"
+  },
+  {
+    "name": "Spain",
+    "code": "ES",
+    "emoji": "🇪🇸",
+    "unicode": "U+1F1EA U+1F1F8",
+    "dial_code": "+34",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/ES.svg"
+  },
+  {
+    "name": "Sri Lanka",
+    "code": "LK",
+    "emoji": "🇱🇰",
+    "unicode": "U+1F1F1 U+1F1F0",
+    "dial_code": "+94",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/LK.svg"
+  },
+  {
+    "name": "Sudan",
+    "code": "SD",
+    "emoji": "🇸🇩",
+    "unicode": "U+1F1F8 U+1F1E9",
+    "dial_code": "+249",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SD.svg"
+  },
+  {
+    "name": "Suriname",
+    "code": "SR",
+    "emoji": "🇸🇷",
+    "unicode": "U+1F1F8 U+1F1F7",
+    "dial_code": "+597",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SR.svg"
+  },
+  {
+    "name": "Svalbard & Jan Mayen",
+    "code": "SJ",
+    "emoji": "🇸🇯",
+    "unicode": "U+1F1F8 U+1F1EF",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SJ.svg"
+  },
+  {
+    "name": "Sweden",
+    "code": "SE",
+    "emoji": "🇸🇪",
+    "unicode": "U+1F1F8 U+1F1EA",
+    "dial_code": "+46",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SE.svg"
+  },
+  {
+    "name": "Switzerland",
+    "code": "CH",
+    "emoji": "🇨🇭",
+    "unicode": "U+1F1E8 U+1F1ED",
+    "dial_code": "+41",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/CH.svg"
+  },
+  {
+    "name": "Syria",
+    "code": "SY",
+    "emoji": "🇸🇾",
+    "unicode": "U+1F1F8 U+1F1FE",
+    "dial_code": "+963",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/SY.svg"
+  },
+  {
+    "name": "Taiwan",
+    "code": "TW",
+    "emoji": "🇹🇼",
+    "unicode": "U+1F1F9 U+1F1FC",
+    "dial_code": "+886",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TW.svg"
+  },
+  {
+    "name": "Tajikistan",
+    "code": "TJ",
+    "emoji": "🇹🇯",
+    "unicode": "U+1F1F9 U+1F1EF",
+    "dial_code": "+992",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TJ.svg"
+  },
+  {
+    "name": "Tanzania",
+    "code": "TZ",
+    "emoji": "🇹🇿",
+    "unicode": "U+1F1F9 U+1F1FF",
+    "dial_code": "+255",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TZ.svg"
+  },
+  {
+    "name": "Thailand",
+    "code": "TH",
+    "emoji": "🇹🇭",
+    "unicode": "U+1F1F9 U+1F1ED",
+    "dial_code": "+66",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TH.svg"
+  },
+  {
+    "name": "Timor-Leste",
+    "code": "TL",
+    "emoji": "🇹🇱",
+    "unicode": "U+1F1F9 U+1F1F1",
+    "dial_code": "+670",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TL.svg"
+  },
+  {
+    "name": "Togo",
+    "code": "TG",
+    "emoji": "🇹🇬",
+    "unicode": "U+1F1F9 U+1F1EC",
+    "dial_code": "+228",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TG.svg"
+  },
+  {
+    "name": "Tokelau",
+    "code": "TK",
+    "emoji": "🇹🇰",
+    "unicode": "U+1F1F9 U+1F1F0",
+    "dial_code": "+690",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TK.svg"
+  },
+  {
+    "name": "Tonga",
+    "code": "TO",
+    "emoji": "🇹🇴",
+    "unicode": "U+1F1F9 U+1F1F4",
+    "dial_code": "+676",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TO.svg"
+  },
+  {
+    "name": "Trinidad & Tobago",
+    "code": "TT",
+    "emoji": "🇹🇹",
+    "unicode": "U+1F1F9 U+1F1F9",
+    "dial_code": "+1 868",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TT.svg"
+  },
+  {
+    "name": "Tunisia",
+    "code": "TN",
+    "emoji": "🇹🇳",
+    "unicode": "U+1F1F9 U+1F1F3",
+    "dial_code": "+216",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TN.svg"
+  },
+  {
+    "name": "Turkey",
+    "code": "TR",
+    "emoji": "🇹🇷",
+    "unicode": "U+1F1F9 U+1F1F7",
+    "dial_code": "+90",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TR.svg"
+  },
+  {
+    "name": "Turkmenistan",
+    "code": "TM",
+    "emoji": "🇹🇲",
+    "unicode": "U+1F1F9 U+1F1F2",
+    "dial_code": "+993",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TM.svg"
+  },
+  {
+    "name": "Turks & Caicos Islands",
+    "code": "TC",
+    "emoji": "🇹🇨",
+    "unicode": "U+1F1F9 U+1F1E8",
+    "dial_code": "+1 649",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TC.svg"
+  },
+  {
+    "name": "Tuvalu",
+    "code": "TV",
+    "emoji": "🇹🇻",
+    "unicode": "U+1F1F9 U+1F1FB",
+    "dial_code": "+688",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/TV.svg"
+  },
+  {
+    "name": "Uganda",
+    "code": "UG",
+    "emoji": "🇺🇬",
+    "unicode": "U+1F1FA U+1F1EC",
+    "dial_code": "+256",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/UG.svg"
+  },
+  {
+    "name": "Ukraine",
+    "code": "UA",
+    "emoji": "🇺🇦",
+    "unicode": "U+1F1FA U+1F1E6",
+    "dial_code": "+380",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/UA.svg"
+  },
+  {
+    "name": "United Arab Emirates",
+    "code": "AE",
+    "emoji": "🇦🇪",
+    "unicode": "U+1F1E6 U+1F1EA",
+    "dial_code": "+971",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/AE.svg"
+  },
+  {
+    "name": "United Kingdom",
+    "code": "GB",
+    "emoji": "🇬🇧",
+    "unicode": "U+1F1EC U+1F1E7",
+    "dial_code": "+44",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/GB.svg"
+  },
+  {
+    "name": "United States",
+    "code": "US",
+    "emoji": "🇺🇸",
+    "unicode": "U+1F1FA U+1F1F8",
+    "dial_code": "+1",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/US.svg"
+  },
+  {
+    "name": "Uruguay",
+    "code": "UY",
+    "emoji": "🇺🇾",
+    "unicode": "U+1F1FA U+1F1FE",
+    "dial_code": "+598",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/UY.svg"
+  },
+  {
+    "name": "Uzbekistan",
+    "code": "UZ",
+    "emoji": "🇺🇿",
+    "unicode": "U+1F1FA U+1F1FF",
+    "dial_code": "+998",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/UZ.svg"
+  },
+  {
+    "name": "Vanuatu",
+    "code": "VU",
+    "emoji": "🇻🇺",
+    "unicode": "U+1F1FB U+1F1FA",
+    "dial_code": "+678",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/VU.svg"
+  },
+  {
+    "name": "Vatican City",
+    "code": "VA",
+    "emoji": "🇻🇦",
+    "unicode": "U+1F1FB U+1F1E6",
+    "dial_code": "+379",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/VA.svg"
+  },
+  {
+    "name": "Venezuela",
+    "code": "VE",
+    "emoji": "🇻🇪",
+    "unicode": "U+1F1FB U+1F1EA",
+    "dial_code": "+58",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/VE.svg"
+  },
+  {
+    "name": "Vietnam",
+    "code": "VN",
+    "emoji": "🇻🇳",
+    "unicode": "U+1F1FB U+1F1F3",
+    "dial_code": "+84",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/VN.svg"
+  },
+  {
+    "name": "Wallis & Futuna",
+    "code": "WF",
+    "emoji": "🇼🇫",
+    "unicode": "U+1F1FC U+1F1EB",
+    "dial_code": "+681",
+    "image": "../../node_modules/country-flag-emoji-json/dist/images/WF.svg"
+  }
+]

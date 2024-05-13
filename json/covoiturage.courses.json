@@ -1,0 +1,108 @@
+[{
+  "_id": {
+    "$oid": "661bd383a8873995af56e38f"
+  },
+  "carNumber": "2545 ES",
+  "seats": 3,
+  "cost": "24",
+  "dateDep": {
+    "date": "Wed Apr 17 2024 14:51:10 GMT+0300 (heure normale d’Afrique de l’Est)",
+    "time": "05 : 00 a.m."
+  },
+  "idUsers": "661688713bab554272e57c1e",
+  "locEnd": {
+    "name": "67ha Nord, Antananarivo, Analamanga, Madagascar",
+    "coord": {
+      "lat": -18.9025431,
+      "lng": 47.5088294
+    }
+  },
+  "locStart": {
+    "name": "Ankirihiry, Toamasina, Atsinanana, Madagascar",
+    "coord": {
+      "lat": -18.1425919,
+      "lng": 49.3927745
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "661e63a8c118b2769dd464f1"
+  },
+  "idUsers": "66168a2c3bab554272e57c20",
+  "locStart": {
+    "name": "Nice, Provence-Alpes-Côte d'Azur, France",
+    "coord": {
+      "lat": 43.7009358,
+      "lng": 7.2683912
+    }
+  },
+  "locEnd": {
+    "name": "Montpellier, Occitania, France",
+    "coord": {
+      "lat": 43.6112422,
+      "lng": 3.8767337
+    }
+  },
+  "cost": "45",
+  "dateDep": {
+    "date": "2024-04-18T11:39:59.000Z",
+    "time": "12 : 00 a.m."
+  },
+  "seats": 0,
+  "carNumber": "3543 TVS"
+},
+{
+  "_id": {
+    "$oid": "661e69a33ee26a99386888a1"
+  },
+  "idUsers": "66168a743bab554272e57c22",
+  "locStart": {
+    "name": "Nancy, Grand Est, France",
+    "coord": {
+      "lat": 48.6937223,
+      "lng": 6.1834097
+    }
+  },
+  "locEnd": {
+    "name": "Nantes, Pays de la Loire, France",
+    "coord": {
+      "lat": 47.2186371,
+      "lng": -1.5541362
+    }
+  },
+  "cost": "54",
+  "dateDep": {
+    "date": "2024-04-18T12:04:23.000Z",
+    "time": "12 : 00 a.m."
+  },
+  "seats": 2,
+  "carNumber": "5468 TVS"
+},
+{
+  "_id": {
+    "$oid": "6626b62cc8e3c006968d58d9"
+  },
+  "idUsers": "661673259bc225fe5011bac0",
+  "locStart": {
+    "name": "Paris, France",
+    "coord": {
+      "lat": 48.8588897,
+      "lng": 2.320041
+    }
+  },
+  "locEnd": {
+    "name": "Nice, Alpes-Maritimes, France",
+    "coord": {
+      "lat": 43.7009358,
+      "lng": 7.2683912
+    }
+  },
+  "cost": 50,
+  "dateDep": {
+    "date": "2024-04-24T19:10:05.000Z",
+    "time": "06 : 00 a.m."
+  },
+  "seats": 2,
+  "carNumber": "4435 VT"
+}]
